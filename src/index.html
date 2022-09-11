@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+@@include('components/page/_1_head.html',{
+'title': 'Онлайн магазин автозапчастей | Главная страница',
+'favicon': 'favicon.ico',
+'favicon192x192': 'images/favicon/android-chrome-192x192.png',
+'favicon512x512': 'images/favicon/android-chrome-512x512.png',
+'favicon16x16': 'images/favicon/favicon-16x16.png',
+'favicon32x32': 'images/favicon/favicon-32x32.png',
+'apple-touch-icon': 'images/favicon/apple-touch-icon.png',
+})
+
+<body>
+  @@include('components/page/_2_header.html')
+  <main class="main">
+    <!-- спросить про заголовок 1 уровня -->
+    <section class="hero" style="background-image: url(images/hero-bg.jpg);">
+      <div class="hero__mobile-bg" style="background-image: url(images/hero-mobile-bg.jpg);">
+        <div class="container">
+          <div class="hero__inner">
+            <div class="hero__info">
+              <h2 class="hero__title">Автозапчасти за 2 минуты на <span>______________</span></h2>
+              <div class="hero__mobile ">
+                <form class="hero__form">
+                  <label class="hero__label">
+                    <span class="hide">Введите артикул или наименование</span>
+                    <input class="hero__search input" type="search" placeholder="Артикул или наименование">
+                  </label>
+                  <button class="hero__btn btn" type="submit">Поиск</button>
+                </form>
+              </div>
+              <div class="hero__mobile-bg2" style="background-image: url(images/hero-mobile-bg2.jpg);"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="selection-form">
+      <div class="container selection-form__container">
+        <div class="selection-form__inner" style="background-image: url(images/selecection-bg.jpg)">
+          <div class="selection-form__info">
+            <h2 class="selection-form__title title">
+              Подберём автозапчасти за вас, заполните форму ниже
+            </h2>
+
+            <form class="selection-form__form">
+              <label for="" class="selection-form__label">
+                <span class="hide">Введите ваш Email или номер телефона</span>
+                <input class="input" type="text" placeholder="Email или номер телефона">
+              </label>
+
+              <label for="" class="selection-form__label">
+                <span class="hide">Введите ваш VIN или Frame код</span>
+                <input class="input" type="text" placeholder="VIN / Frame код">
+              </label>
+
+              <label for="" class="selection-form__label">
+                <span class="hide">Напишите Список артикулов автозапчастей или произвольный текст</span>
+                <textarea class="input input--area" type="text"
+                  placeholder="Список артикулов автозапчастей или произвольный текст"></textarea>
+              </label>
+
+              <div class="selection-form__text">
+                Нажимая кнопку «Отправить» Вы:
+
+
+                <ul class="selection-form__list">
+                  <li class="selection-form__item">
+                    — Даете право на обработку <a href="">персональных данных</a>
+                  </li>
+                  <li class="selection-form__item">
+                    — Соглашаетесь с <a href="">пользовательским соглашением</a>
+                  </li>
+                </ul>
+              </div>
+              <button class="selection-form__btn btn" type="submit">
+                Отправить
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+  </main>
+  @@include('components/page/_3_footer.html')
+  @@include('components/page/_4_scripts.html')
+</body>
+
+</html>
