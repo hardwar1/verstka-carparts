@@ -472,7 +472,7 @@ body {
 
 // ========= footer ============
 .footer {
-  padding: 20px 0;
+  padding: 15px 0;
   background-color: #9dbae7;
   font-weight: 500;
   font-size: 13px;
@@ -521,7 +521,6 @@ body {
   }
 
   &__inner {
-    
     @include max-w($lg) {
       display: flex;
       position: relative;
@@ -534,14 +533,19 @@ body {
   }
 
   &__top {
-    margin-bottom: 50px;
-
+    
     @include min-w($lg) {
       display: flex;
       max-width: 1515px;
       width: 100%;
       justify-content: space-between;
     }
+
+    @include max-w($lg) {
+      margin-bottom: 50px;
+    }
+
+
   }
 
   &__burger {
