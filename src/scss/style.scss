@@ -301,7 +301,7 @@ body {
       top: 35%;
       left: 0;
       transition: top 0.3s;
-      
+
       &.active-js {
         top: 0;
       }
@@ -533,7 +533,6 @@ body {
   }
 
   &__top {
-    
     @include min-w($lg) {
       display: flex;
       max-width: 1515px;
@@ -544,8 +543,6 @@ body {
     @include max-w($lg) {
       margin-bottom: 50px;
     }
-
-
   }
 
   &__burger {
@@ -706,21 +703,52 @@ body {
   padding-top: 79px;
   overflow: hidden;
 
+  @include max-w($md) {
+    padding-top: 74px;
+  }
+
+  @include max-w($sm) {
+    padding-top: 0;
+  }
+
   &__bg {
     padding: 44px 54px;
     height: calc(100vh - 79px - 170px);
     width: calc(100% + 8px);
     background-size: cover;
-    background-position: -4px 0;
+    background-position: left top;
     background-repeat: no-repeat;
     font-weight: 600;
     font-size: 40px;
     line-height: 1, 2;
     color: #e5e5e5;
+
+    @include max-w(1600px) {
+      font-size: 24px;
+      padding: 20px 15px;
+    }
+
+    @include max-w($lg) {
+      height: calc(100vh - 79px);
+      background-position: center top;
+    }
+
+    @include max-w($md) {
+      height: calc(100vh - 74px);
+      font-size: 20px;
+    }
+
+    @include max-w($sm) {
+      height: 100vh;
+    }
   }
 
   &__text {
     max-width: 1450px;
+
+    @include max-w(1600px) {
+      max-width: 600px;
+    }
 
     &--big {
       font-size: 100px;
