@@ -36,7 +36,6 @@ document.addEventListener("DOMContentLoaded", function () {
   window.addEventListener("scroll", function () {
     scrollTop = window.scrollY;
     scrollTop1 = window.scrollY;
-    console.log(scrollTop1 + "  " + top);
 
     if (scrollTop > 100) {
       header.classList.add("header--scroll");

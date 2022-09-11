@@ -135,7 +135,7 @@ body {
   width: 100%;
   z-index: 50;
 
-  @include max-w($md) {
+  @include max-w($sm) {
     background-color: transparent;
     backdrop-filter: unset;
   }
@@ -158,17 +158,13 @@ body {
   &__nav {
     display: flex;
     align-items: center;
-
-    @include max-w($lg) {
-      justify-content: space-between;
-    }
   }
 
   &__logo {
     margin-right: 190px;
 
     @include max-w($lg) {
-      margin-right: 0;
+      margin-right: 50px;
     }
     @include max-w($md) {
       img {
@@ -179,7 +175,7 @@ body {
   }
 
   &__menu {
-    @include max-w($md) {
+    @include max-w($sm) {
       display: none;
     }
   }
@@ -525,13 +521,10 @@ body {
   }
 
   &__inner {
-    position: relative;
-    display: flex;
-    max-width: 1515px;
-    width: 100%;
-    justify-content: space-between;
-
+    
     @include max-w($lg) {
+      display: flex;
+      position: relative;
       justify-content: unset;
       flex-direction: column;
       height: calc(100vh - 41px);
@@ -542,6 +535,13 @@ body {
 
   &__top {
     margin-bottom: 50px;
+
+    @include min-w($lg) {
+      display: flex;
+      max-width: 1515px;
+      width: 100%;
+      justify-content: space-between;
+    }
   }
 
   &__burger {
