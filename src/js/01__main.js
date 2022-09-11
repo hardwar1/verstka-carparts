@@ -58,6 +58,10 @@ document.addEventListener("DOMContentLoaded", function () {
       footerNav.classList.remove("footer__nav--hide");
       top1 = scrollTop1;
     }
+
+    if (scrollTop1 < 80) {
+      footerNav.classList.remove("footer__nav--hide");
+    }
   });
 
   // в hero изменение положения инпута и фона
