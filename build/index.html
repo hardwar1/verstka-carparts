@@ -54,13 +54,23 @@
             <div class="hero__info">
               <h2 class="hero__title">Автозапчасти за 2 минуты на <span>______________</span></h2>
               <div class="hero__mobile ">
-                <form class="hero__form">
-                  <label class="hero__label">
-                    <span class="hide">Введите артикул или наименование</span>
-                    <input class="hero__search input" type="search" placeholder="Артикул или наименование">
-                  </label>
-                  <button class="hero__btn btn" type="submit">Поиск</button>
-                </form>
+                <div class="main-search">
+                  <form class="main-search__form">
+                    <label class="main-search__label">
+                      <span class="hide">Введите артикул или наименование</span>
+                      <input class="main-search__search input" type="search" placeholder="Артикул или наименование">
+                    </label>
+                    <button class="main-search__btn btn" type="submit">Поиск</button>
+                  </form>
+                  <div class="error-message">
+                    <p>
+                      Введите данные в указанном формате 
+                    </p>
+                    <p>
+                      Введеное не может быть коороче 3-х символов 
+                    </p>
+                  </div>
+                </div>
               </div>
               <div class="hero__mobile-bg2" style="background-image: url(images/hero-mobile-bg2.jpg);"></div>
             </div>
@@ -70,6 +80,24 @@
     </section>
 
     <section class="selection-form">
+
+      <div class="selection-form__search">
+        <div class="main-search main-search--big">
+          <form class="main-search__form">
+            <label class="main-search__label">
+              <span class="hide">Введите артикул или наименование</span>
+              <input class="main-search__search input" type="search" placeholder="Артикул или наименование">
+            </label>
+            <button class="main-search__btn btn" type="submit">Поиск</button>
+          </form>
+          <div class="error-message">
+            <p>
+              Заполните поле 
+            </p>
+          </div>
+        </div>
+      </div>
+
       <div class="container selection-form__container">
         <div class="selection-form__inner" style="background-image: url(images/selecection-bg.jpg)">
           <div class="selection-form__info">
