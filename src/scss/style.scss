@@ -138,6 +138,7 @@ body {
   @include max-w($sm) {
     background-color: transparent;
     backdrop-filter: unset;
+    position: absolute;
   }
 
   transform: translateY(0);
