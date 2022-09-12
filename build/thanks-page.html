@@ -46,13 +46,48 @@
   </div>
 </header>
   <main class="main">
-    <div class="stop stop--404">
-      <div class="stop__bg" style="background-image: url(images/404.jpg)">
-        <div class="stop__text">
+    <div class="thanks">
+      <div class="container">
+
+        <div class="thanks__main-search main-search main-search--big">
+          <form class="main-search__form">
+            <label class="main-search__label">
+              <span class="hide">Введите артикул или наименование</span>
+              <input class="main-search__search input" type="search" placeholder="Артикул или наименование">
+            </label>
+            <button class="main-search__btn btn" type="submit">Поиск</button>
+          </form>
+          <div class="error-message">
+            <p>
+              Заполните поле
+            </p>
+          </div>
+        </div>
+        <h1 class="thanks__title">
+          Спасибо!
+        </h1>
+        <div class="thanks__text">
+
           <p>
-            504 - Время запроса истекло, попробуйте снова
+            Обращение принято, скоро менеджер свяжется с Вами и поможет подобрать автозапчасти
+          </p>
+          <p>
+            Обязательно запишите номер обращения
           </p>
         </div>
+
+        <div class="thanks__box">
+          <div class="thanks__text">
+            <p>
+              Номер обращения: <span>1656523254_123</span>
+            </p>
+          </div>
+          <button class="thanks__copy copy-btn" type="button">
+            <span class="hide">Скопировать номер обращения</span>
+          </button>
+        </div>
+
+        <div class="thanks__bg" style="background-image: url(images/thanks-bg.png)"></div>
       </div>
     </div>
   </main>

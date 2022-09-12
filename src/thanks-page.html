@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+@@include('components/page/_1_head.html',{
+'title': 'Онлайн магазин автозапчастей | Главная страница',
+'favicon': 'favicon.ico',
+'favicon192x192': 'images/favicon/android-chrome-192x192.png',
+'favicon512x512': 'images/favicon/android-chrome-512x512.png',
+'favicon16x16': 'images/favicon/favicon-16x16.png',
+'favicon32x32': 'images/favicon/favicon-32x32.png',
+'apple-touch-icon': 'images/favicon/apple-touch-icon.png',
+})
+
+<body>
+  @@include('components/page/_2_header.html')
+  <main class="main">
+    <div class="thanks">
+      <div class="container">
+
+        <div class="thanks__main-search main-search main-search--big">
+          <form class="main-search__form">
+            <label class="main-search__label">
+              <span class="hide">Введите артикул или наименование</span>
+              <input class="main-search__search input" type="search" placeholder="Артикул или наименование">
+            </label>
+            <button class="main-search__btn btn" type="submit">Поиск</button>
+          </form>
+          <div class="error-message">
+            <p>
+              Заполните поле
+            </p>
+          </div>
+        </div>
+        <h1 class="thanks__title">
+          Спасибо!
+        </h1>
+        <div class="thanks__text">
+
+          <p>
+            Обращение принято, скоро менеджер свяжется с Вами и поможет подобрать автозапчасти
+          </p>
+          <p>
+            Обязательно запишите номер обращения
+          </p>
+        </div>
+
+        <div class="thanks__box">
+          <div class="thanks__text">
+            <p>
+              Номер обращения: <span>1656523254_123</span>
+            </p>
+          </div>
+          <button class="thanks__copy copy-btn" type="button">
+            <span class="hide">Скопировать номер обращения</span>
+          </button>
+        </div>
+
+        <div class="thanks__bg" style="background-image: url(images/thanks-bg.png)"></div>
+      </div>
+    </div>
+  </main>
+  @@include('components/page/_3_footer.html')
+  @@include('components/page/_4_scripts.html')
+</body>
+
+</html>
