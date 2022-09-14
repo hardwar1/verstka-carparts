@@ -23,19 +23,22 @@
               <h2 class="hero__title">Автозапчасти за 2 минуты на <span>______________</span></h2>
               <div class="hero__mobile ">
                 <div class="main-search">
-                  <form class="main-search__form">
+                  <div class="main-search__form">
                     <label class="main-search__label">
                       <span class="hide">Введите артикул или наименование</span>
-                      <input class="main-search__search input" type="search" placeholder="Артикул или наименование">
+                      <input class="main-search__search input input--main" type="search" placeholder="Артикул или наименование">
                     </label>
-                    <button class="main-search__btn btn" type="submit">Поиск</button>
-                  </form>
+                    <button class="main-search__burger burger burger--close" type="button">
+                      <span class="burger__line"></span>
+                      <span class="hide"> открыть/закрыть меню</span>
+                    </button>
+                  </div>
                   <div class="error-message">
                     <p>
-                      Введите данные в указанном формате 
+                      Введите данные в указанном формате
                     </p>
                     <p>
-                      Введеное не может быть коороче 3-х символов 
+                      Введеное не может быть коороче 3-х символов
                     </p>
                   </div>
                 </div>
@@ -51,16 +54,19 @@
 
       <div class="selection-form__search">
         <div class="main-search main-search--big">
-          <form class="main-search__form">
+          <div class="main-search__form">
             <label class="main-search__label">
               <span class="hide">Введите артикул или наименование</span>
-              <input class="main-search__search input" type="search" placeholder="Артикул или наименование">
+              <input class="main-search__search input input--main" type="search" placeholder="Артикул или наименование">
             </label>
-            <button class="main-search__btn btn" type="submit">Поиск</button>
-          </form>
+            <button class="main-search__burger burger burger--close" type="button">
+              <span class="burger__line"></span>
+              <span class="hide"> открыть/закрыть меню</span>
+            </button>
+          </div>
           <div class="error-message">
             <p>
-              Заполните поле 
+              Заполните поле
             </p>
           </div>
         </div>

@@ -234,6 +234,10 @@ body {
     font-size: 15px;
     padding: 7px 15px;
   }
+
+  &--main{
+    padding-right: 60px;
+  }
 }
 // ========= /input ============
 // ========= error-message ============
@@ -282,43 +286,27 @@ body {
 
   &__label {
     display: block;
-    max-width: 625px;
     width: 100%;
-    margin-right: 6px;
-    @include max-w($sm) {
-      margin-right: 0;
+  }
+
+  &__burger {
+    background-color: transparent;
+    position: absolute;
+    right: 0;
+    top: 3px;
+    width: 70px;
+    height: 39px;
+    border-left: 1px solid #adadad;
+    display: block;
+
+    &::after,
+    .burger__line {
+      background-color: #5d78d9;
+      left: 20px;
+      width: 27px;
     }
   }
 
-  &__btn {
-    @include max-w($sm) {
-      background-color: transparent;
-
-      position: absolute;
-      right: 0;
-      top: 3px;
-      font-size: 0;
-      padding: 0;
-      width: 50px;
-      height: 39px;
-      border-left: 1px solid #adadad;
-      border-radius: 0;
-
-      &::after {
-        content: "";
-        position: absolute;
-        top: 50%;
-        right: 50%;
-        transform: translate(50%, -50%);
-        width: 22px;
-        height: 22px;
-        background-image: url(../images/sprite.svg#search);
-        background-repeat: no-repeat;
-        background-position: center;
-        background-size: contain;
-      }
-    }
-  }
 }
 // ========= /main-search ============
 
@@ -769,8 +757,9 @@ body {
 
 .box-in-cart {
   position: relative;
+
   &::after {
-    content: '';
+    content: "";
     position: absolute;
     left: 8px;
     top: -3px;
@@ -783,8 +772,6 @@ body {
     z-index: -1;
     opacity: 0;
     transition: opacity 0.3;
-
-
   }
 
   &--yes::after {
@@ -895,6 +882,21 @@ body {
       &__text {
         max-width: 490px;
         margin-top: auto;
+      }
+    }
+  }
+
+  &--502 {
+    .stop__bg {
+      background-position: left top;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 90px 77px;
+      text-align: left;
+
+      &::after {
+        background-color: rgba(0, 0, 0, 0.2);
       }
     }
   }
