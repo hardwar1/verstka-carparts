@@ -14,7 +14,7 @@
 <body>
   @@include('components/page/_2_header.html')
   <main class="main">
-    <!-- спросить про заголовок 1 уровня -->
+
     <section class="hero" style="background-image: url(images/hero-bg.jpg);">
       <div class="hero__mobile-bg" style="background-image: url(images/hero-mobile-bg.jpg);">
         <div class="container">
@@ -26,7 +26,8 @@
                   <div class="main-search__form">
                     <label class="main-search__label">
                       <span class="hide">Введите артикул или наименование</span>
-                      <input class="main-search__search input input--main" type="search" placeholder="Артикул или наименование">
+                      <input class="main-search__search input input--main" type="search"
+                        placeholder="Артикул или наименование">
                     </label>
                     <button class="main-search__burger burger burger--close" type="button">
                       <span class="burger__line"></span>
@@ -50,9 +51,8 @@
       </div>
     </section>
 
-    <section class="selection-form">
-
-      <div class="selection-form__search">
+    <section class="result-search">
+      <div class="container">
         <div class="main-search main-search--big">
           <div class="main-search__form">
             <label class="main-search__label">
@@ -70,6 +70,95 @@
             </p>
           </div>
         </div>
+
+        <div class="result-search__text">
+          <p>
+            Информация о заменах и аналогах является справочной и требует дополнительной проверки с помощью оригинальных
+            программ-каталогов!
+          </p>
+        </div>
+
+        <div class="swiper">
+          <ul class="result-search__slider swiper-wrapper">
+            <li class="result-search__slide swiper-slide">
+              <div class="result-search__item">
+                <img class="result-search__img" src="images/result-search/2.jpg" alt="фото товара">
+              </div>
+            </li>
+
+            <li class="result-search__slide swiper-slide">
+              <div class="result-search__item">
+                <img class="result-search__img" src="images/result-search/3.jpg" alt="фото товара">
+              </div>
+            </li>
+
+            <li class="result-search__slide swiper-slide">
+              <div class="result-search__item">
+                <img class="result-search__img" src="images/result-search/4.jpg" alt="фото товара">
+              </div>
+            </li>
+
+            <li class="result-search__slide swiper-slide">
+              <div class="result-search__item">
+                <img class="result-search__img" src="images/result-search/1.jpg" alt="фото товара">
+              </div>
+            </li>
+
+            <li class="result-search__slide swiper-slide">
+              <div class="result-search__item">
+                <img class="result-search__img" src="images/result-search/5.jpg" alt="фото товара">
+              </div>
+            </li>
+          </ul>
+        </div>
+
+        <a class="link" href="">посмотреть картинки в Яндекс</a>
+        <div class="table">
+          <div class="table__head">
+            <span class="table__caption">Наименование</span>
+            <span class="table__caption">Производитель</span>
+            <span class="table__caption">ОЕ Артикул</span>
+            <span class="table__caption">Артикул</span>
+            <span class="table__caption">Цена</span>
+            <span class="table__caption">Наличие</span>
+            <span class="table__caption">В корзину</span>
+          </div>
+
+          <div class="swiper1">
+            <ul class="swiper-wrapper">
+              <li class="table__item swiper-slide">
+                <form class="table__inner">
+                  <span class="table__name">Denso K16RU-11 свеча зажигания</span>
+                  <span class="table__brand">Denso</span>
+                  <span class="table__oe-article">1822A030</span>
+                  <span class="table__article">K16RU-11</span>
+                  <span class="table__price">3568</span>
+                  <span class="table__much">4</span>
+                  <div class="table__cart">
+                    <div class="number-input">
+                      <button class="number-input__btn" type="button"></button>
+                      <label class="number-input__label">
+                        <span class="hide">количество приобретаемого товара</span>
+                        <input class="number-input__input" type="text">
+                      </label>
+                      <button class="number-input__btn number-input__btn--plus" type="button"></button>
+                    </div>
+                    <button class="table__btn cart" type="submit"></button>
+                  </div>
+
+                </form>
+              </li>
+
+
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="selection-form">
+      <div class="selection-form__search">
+
       </div>
 
       <div class="container selection-form__container">

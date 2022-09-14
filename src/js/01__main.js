@@ -82,7 +82,6 @@ document.addEventListener("DOMContentLoaded", function () {
       closeActiveJs();
     });
 
-
     let inputsMain = qAll(".input--main");
 
     for (const input of inputsMain) {
@@ -109,16 +108,15 @@ document.addEventListener("DOMContentLoaded", function () {
   const mainSearchClears = qAll(".main-search__burger");
   if (mainSearchClears) {
     for (const clearBtn of mainSearchClears) {
-      clearBtn.addEventListener("click", 
-      ()=> {
-       const inputMain = clearBtn.closest(".main-search__form")
-        .querySelector("input");
-        inputMain.value = '';
+      clearBtn.addEventListener("click", () => {
+        const inputMain = clearBtn
+          .closest(".main-search__form")
+          .querySelector("input");
+        inputMain.value = "";
         clearBtn.classList.remove("show");
       });
     }
   }
-  
 
   // закрытие всех активных окошек и прочего по клику с клавиатуры
   function closeActiveJs() {
