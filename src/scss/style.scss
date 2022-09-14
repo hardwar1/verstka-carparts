@@ -765,8 +765,31 @@ body {
     flex-direction: column;
     justify-content: end;
   }
+}
 
-  
+.box-in-cart {
+  position: relative;
+  &::after {
+    content: '';
+    position: absolute;
+    left: 8px;
+    top: -3px;
+    width: 20px;
+    height: 20px;
+    border-radius: 4px;
+    background-image: url(../images/sprite.svg#box);
+    background-repeat: no-repeat;
+    background-size: contain;
+    z-index: -1;
+    opacity: 0;
+    transition: opacity 0.3;
+
+
+  }
+
+  &--yes::after {
+    opacity: 1;
+  }
 }
 
 // ========= /footer ============
