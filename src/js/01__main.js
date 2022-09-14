@@ -21,8 +21,7 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 
   footerBurger.addEventListener("click", () => {
-    adaptiveMenu.classList.remove("active-js");
-    body.classList.remove("lock");
+    closeActiveJs();
   });
 
   //скроллы хеадера и мобильного меню футера
@@ -65,26 +64,75 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 
   // в hero изменение положения инпута и фона
-  const heroSearch = qOne(".hero__search"),
+  const mainSearch = qOne(".main-search__search"),
     heroMobileBg2 = qOne(".hero__mobile-bg2"),
     heroMobile = qOne(".hero__mobile");
 
-  heroSearch.addEventListener("click", () => {
-    heroMobile.classList.add("active-js");
-    heroMobileBg2.classList.add("active-js");
-  });
+  if (heroMobile) {
+    mainSearch.addEventListener("click", () => {
+      heroMobile.classList.add("active-js");
+      heroMobileBg2.classList.add("active-js");
+    });
+  }
 
-  //закрытие всех активных окошек и прочего по клику с клавиатуры
-  document.addEventListener('keydown', (e) => {
-    //key: 'Escape'
-    if (e.key === 'Escape') {
-      const activeJs = qAll('.active-js');
+  // потеря фокуса инпутом на главной
+  const inputMain = qOne(".input--main");
+  if (inputMain) {
+    inputMain.addEventListener("focusout", function () {
+      closeActiveJs();
+    });
 
-      for (let item of activeJs) {
-        item.classList.remove("active-js");
-      }
 
-      body.classList.remove("lock");
+    let inputsMain = qAll(".input--main");
+
+    for (const input of inputsMain) {
+      input.addEventListener("input", function (evt) {
+        if (input.value.length > 0) {
+          let clearBtn = input
+            .closest(".main-search__form")
+            .querySelector("button");
+
+          console.log(clearBtn);
+          clearBtn.classList.add("show");
+        } else {
+          let clearBtn = input
+            .closest(".main-search__form")
+            .querySelector("button");
+
+          clearBtn.classList.remove("show");
+        }
+      });
     }
-  })
+  }
+
+  // стирание в инпуте
+  const mainSearchClears = qAll(".main-search__burger");
+  if (mainSearchClears) {
+    for (const clearBtn of mainSearchClears) {
+      clearBtn.addEventListener("click", 
+      ()=> {
+       const inputMain = clearBtn.closest(".main-search__form")
+        .querySelector("input");
+        inputMain.value = '';
+        clearBtn.classList.remove("show");
+      });
+    }
+  }
+  
+
+  // закрытие всех активных окошек и прочего по клику с клавиатуры
+  function closeActiveJs() {
+    const activeJs = qAll(".active-js");
+
+    for (let item of activeJs) {
+      item.classList.remove("active-js");
+    }
+    body.classList.remove("lock");
+  }
+
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape") {
+      closeActiveJs();
+    }
+  });
 });
