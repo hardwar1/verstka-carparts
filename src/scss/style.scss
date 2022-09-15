@@ -533,7 +533,7 @@ body {
   }
 
   &__img {
-    object-fit: contain;
+    object-fit: cover;
     object-position: center;
     overflow: hidden;
     border-radius: 15px;
