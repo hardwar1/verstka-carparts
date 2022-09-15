@@ -133,4 +133,51 @@ document.addEventListener("DOMContentLoaded", function () {
       closeActiveJs();
     }
   });
+
+  // слайдеры 
+  function swiperInit(selector) {
+    const swiper = new Swiper(selector, {
+      speed: 400,
+      spaceBetween: 25,
+      pagination: {
+        el: ".swiper-pagination",
+        type: "bullets",
+        clickable: "true",
+      },
+      navigation: {
+        nextEl: ".button-next",
+        prevEl: ".button-prev",
+      },
+    });
+  }
+
+    // swiperInit('.swiper');
+
+  const swiper = new Swiper('.swiper', {
+    speed: 400,
+    spaceBetween: 10,
+    slidesPerView: "auto",
+    centeredSlides: true,
+    initialSlide: 1,
+    loop: true,
+
+    pagination: {
+      el: ".swiper-pagination",
+      type: "bullets",
+      clickable: "true",
+    },
+    navigation: {
+      nextEl: ".button-next",
+      prevEl: ".button-prev",
+    },
+
+    breakpoints: {
+      992: {
+        initialSlide: 2
+      }
+    }
+  });
+
+
+
 });
