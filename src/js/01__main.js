@@ -178,6 +178,32 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   });
 
+  //quantity инпут с + и -
+  if (qOne(".number-input__btn--plus")) {
+    const quantityPlusBtn = qAll(".number-input__btn--plus"),
+      quantityMinusBtn = qAll(".number-input__btn--minus");
 
+    for (let i of quantityPlusBtn) {
+      i.addEventListener("click", function () {
+        let value = i
+          .closest(".number-input")
+          .querySelector("input");
+        if (Number(value.value) < value.getAttribute("max")) {
+          value.value = Number(value.value) + 1;
+        }
+      });
+    }
+
+    for (let i of quantityMinusBtn) {
+      i.addEventListener("click", function () {
+        let value = i
+          .closest(".number-input")
+          .querySelector("input");
+        if (Number(value.value) > 1) {
+          value.value = Number(value.value) - 1;
+        }
+      });
+    }
+  }
 
 });

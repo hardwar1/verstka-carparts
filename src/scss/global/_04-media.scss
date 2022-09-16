@@ -1,7 +1,7 @@
 $sm: 600px;
 $md: 768px;
 $lg: 992px;
-$xl: 1200px;
+$xl: 1500px;
 
 @mixin max-w($width) {
   @media only screen and (max-width: $width) {

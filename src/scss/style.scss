@@ -22,7 +22,7 @@ body {
 }
 
 .fancybox__nav svg {
-  stroke: #5D78D9;
+  stroke: #5d78d9;
 }
 
 .title {
@@ -602,8 +602,6 @@ body {
     z-index: 10;
   }
 
-
-
   &__img {
     object-fit: contain;
     object-position: center;
@@ -688,6 +686,10 @@ body {
 
   &:nth-child(6) {
     width: 110px;
+    @include max-w($xl) {
+      border-radius: 0 0 10px 10px;
+      margin-bottom: 7px;
+    }
   }
 
   &:nth-child(7) {
@@ -712,22 +714,69 @@ body {
     margin-bottom: 5px;
     height: 52px;
     align-items: center;
+    @include max-w($xl) {
+      display: none;
+      border: 0;
+    }
 
     &--slider {
       display: none;
+
+      @include max-w($xl) {
+        display: flex;
+        flex-direction: column;
+        height: unset;
+        text-align-last: left;
+      }
     }
   }
 
   &__caption {
     padding-right: 10px;
+    @include max-w($xl) {
+      padding-right: 0;
+      width: 131px !important;
+      font-size: 14px;
+      height: 47px;
+      display: flex;
+      align-items: center;
+
+      &:last-child {
+        height: 47px;
+      }
+    }
   }
 
   &__item {
+    @include max-w($xl) {
+      display: flex;
+      border: 3px solid #5d78d9;
+      border-radius: 10px;
+      width: fit-content;
+      position: relative;
+      @include max-w($xl) {
+        padding: 7px;
+      }
+
+      &::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 63px;
+        border-bottom: 2px dashed #5d78d9;
+      }
+    }
   }
 
   &__inner {
     display: flex;
     margin-bottom: 1px;
+    @include max-w($xl) {
+      flex-direction: column;
+      align-items: stretch;
+      width: 380px;
+    }
   }
 
   &__text {
@@ -737,6 +786,23 @@ body {
     background-color: #fff;
     border-right: 1px solid #ededed;
     padding: 5px 4px;
+
+    @include max-w($xl) {
+      padding: 5px 15px;
+      text-align: left;
+      line-height: 1.1;
+      width: unset !important;
+      border-bottom: 1px solid #ededed;
+      border-right: 0;
+      height: 47px;
+      justify-content: start;
+      overflow-x: scroll;
+      white-space: nowrap;
+
+      &:first-child {
+        border-radius: 10px 10px 0 0;
+      }
+    }
   }
 
   &__cart {
@@ -744,10 +810,17 @@ body {
     align-items: center;
     justify-content: space-between;
     padding-right: 12px;
+    @include max-w($xl) {
+      justify-content: flex-end;
+      width: unset !important;
+      background-color: #fff;
+      border-radius: 10px;
+      overflow: hidden;
+    }
   }
 
   &__btn {
-    background: #ededed;
+    background-color: transparent;
     border: 3px solid #5d78d9;
     border-radius: 10px;
     width: 65px;
@@ -757,6 +830,12 @@ body {
     align-items: center;
     justify-content: center;
     transition: background-color 0.3s, border-color 0.3s;
+
+    @include max-w($xl) {
+      border: 0;
+      box-shadow: 0 0 4px rgba(0, 0, 0, 0.2);
+      border-radius: 5px;
+    }
 
     svg {
       stroke: #5d78d9;
@@ -781,6 +860,31 @@ body {
     background-color: #fff;
     border-radius: 0 10px 10px 0;
     height: 52px;
+    height: 100%;
+    @include max-w($xl) {
+      margin-right: 25px;
+    }
+  }
+}
+
+.pseudo-shadow {
+  position: relative;
+
+  &::after {
+    
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 100%;
+    height: 44px;
+    box-shadow: 0 0 4px rgba(0, 0, 0, 0.2);
+    border-radius: 5px;
+    z-index: 2;
+    left: 0;
+
+    @include max-w($xl) {
+      content: "";
+    }
   }
 }
 
@@ -795,17 +899,37 @@ body {
     line-height: 50px;
     padding: 0 5px 0 15px;
     transition: background-color 0.3s, border-color 0.3s;
+    -webkit-tap-highlight-color: transparent;
 
-    &:hover {
-      background-color: rgba(169, 183, 255, 0.57);
+    &:after {
+      left: 12px;
+      width: 22px;
+      height: 22px;
     }
+    // &:hover {
+    //   background-color: rgba(169, 183, 255, 0.57);
+    // }
 
     &--plus {
       padding: 0 15px 0 5px;
+
+      &::after {
+        left: unset;
+        right: 11px;
+      }
     }
   }
 
   &__label {
+    @include max-w($xl) {
+      margin: 0 5px 0 6px;
+
+      &::after {
+        height: 26px;
+        width: 41px;
+        left: -1px;
+      }
+    }
   }
 
   &__input {
