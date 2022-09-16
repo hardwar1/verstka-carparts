@@ -87,4 +87,8 @@ address {
   &--big {
     max-width: 1830px;
   }
+
+  @include max-w($sm) {
+    padding: 0 8px;
+  }
 }

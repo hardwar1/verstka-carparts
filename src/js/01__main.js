@@ -155,7 +155,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   const swiper = new Swiper('.swiper', {
     speed: 400,
-    spaceBetween: 10,
+    spaceBetween: 20,
     slidesPerView: "auto",
     centeredSlides: true,
     initialSlide: 1,
@@ -167,8 +167,8 @@ document.addEventListener("DOMContentLoaded", function () {
       clickable: "true",
     },
     navigation: {
-      nextEl: ".button-next",
-      prevEl: ".button-prev",
+      nextEl: ".result-search__swiper-button--prev",
+      prevEl: ".result-search__swiper-button--next",
     },
 
     breakpoints: {
