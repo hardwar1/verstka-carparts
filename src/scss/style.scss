@@ -568,9 +568,9 @@ body {
   &__item {
     display: flex;
     align-items: center;
+    position: relative;
 
     @include max-w($sm) {
-      position: relative;
       width: 80%;
       height: 100px;
     }
@@ -582,6 +582,15 @@ body {
       width: 7px;
       height: 7px;
     }
+  }
+
+  &__fancybox {
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 10;
   }
 
   &__img {

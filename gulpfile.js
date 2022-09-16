@@ -33,11 +33,13 @@ const {
 const js_plugins = [
   // // 'node_modules/jquery/dist/jquery.js',
   'node_modules/swiper/swiper-bundle.min.js',
+  'node_modules/@fancyapps/ui/dist/fancybox.umd.js',
   // 'node_modules/wow.js/dist/wow.js',
 ];
 
 const css_plugins = [
   'node_modules/normalize.css/normalize.css',
+  'node_modules/@fancyapps/ui/dist/fancybox.css',
   'node_modules/swiper/swiper-bundle.min.css',
   // 'node_modules/animate.css/animate.css',
 ];

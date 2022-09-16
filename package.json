@@ -6,6 +6,7 @@
 	"devDependencies": {
 		"@babel/core": "^7.12.10",
 		"@babel/preset-env": "^7.12.11",
+		"@fancyapps/ui": "^4.0.31",
 		"animate.css": "^4.1.1",
 		"browser-sync": "^2.26.13",
 		"fs": "^0.0.1-security",
