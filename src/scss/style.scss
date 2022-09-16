@@ -745,6 +745,26 @@ body {
         height: 47px;
       }
     }
+
+    @include max-w($sm) {
+      width: 113px !important;
+    }
+  }
+
+  &__relative {
+    position: relative;
+  }
+
+  &__slider {
+    @include max-w($xl) {
+      width: 570px;
+      margin: 0 auto;
+    }
+
+    @include max-w($sm) {
+      width: 304px;
+
+    }
   }
 
   &__item {
@@ -775,7 +795,11 @@ body {
     @include max-w($xl) {
       flex-direction: column;
       align-items: stretch;
-      width: 380px;
+      width: 417px;
+    }
+
+    @include max-w($sm) {
+      width: 169px;
     }
   }
 
@@ -815,7 +839,11 @@ body {
       width: unset !important;
       background-color: #fff;
       border-radius: 10px;
-      overflow: hidden;
+    }
+
+    @include max-w($sm) {
+      overflow-x: scroll;
+      white-space: nowrap;
     }
   }
 
@@ -863,6 +891,9 @@ body {
     height: 100%;
     @include max-w($xl) {
       margin-right: 25px;
+    }
+    @include max-w($sm) {
+      margin-right: 5px;
     }
   }
 }

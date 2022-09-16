@@ -134,32 +134,30 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   });
 
-  // слайдеры 
+  // слайдеры
   function swiperInit(selector) {
     const swiper = new Swiper(selector, {
       speed: 400,
-      spaceBetween: 25,
       pagination: {
         el: ".swiper-pagination",
         type: "bullets",
         clickable: "true",
       },
-      navigation: {
-        nextEl: ".button-next",
-        prevEl: ".button-prev",
-      },
+
+      // navigation: {
+      //   nextEl: ".button-next",
+      //   prevEl: ".button-prev",
+      // },
     });
   }
 
-    // swiperInit('.swiper');
-
-  const swiper = new Swiper('.swiper', {
+  var swiper = new Swiper(".result-search__slider", {
     speed: 400,
     spaceBetween: 20,
     slidesPerView: "auto",
-    centeredSlides: true,
     initialSlide: 1,
     loop: true,
+    centeredSlides: true,
 
     pagination: {
       el: ".swiper-pagination",
@@ -173,10 +171,55 @@ document.addEventListener("DOMContentLoaded", function () {
 
     breakpoints: {
       992: {
-        initialSlide: 2
-      }
-    }
+        initialSlide: 2,
+      },
+    },
   });
+
+  var win = window,
+    doc = document,
+    docElem = doc.documentElement,
+    x = win.innerWidth || docElem.clientWidth || body[0].clientWidth;
+
+  if (x < 1500) {
+    qOne(".swiper2").querySelector("ul").classList.add("swiper-wrapper");
+    qOne(".swiper3").querySelector("ul").classList.add("swiper-wrapper");
+    var swiper2 = new Swiper(".swiper2", {
+      speed: 400,
+      spaceBetween: 20,
+      initialSlide: 1,
+      slidesPerView: "auto",
+      // pagination: {
+      //   el: ".swiper-pagination1",
+      //   type: "bullets",
+      //   clickable: "true",
+      // },
+
+      // navigation: {
+      //   nextEl: ".button-next",
+      //   prevEl: ".button-prev",
+      // },
+    });
+
+    var swiper3 = new Swiper(".swiper3", {
+      speed: 400,
+      spaceBetween: 20,
+      initialSlide: 1,
+      slidesPerView: "auto",
+      // pagination: {
+      //   el: ".swiper-pagination1",
+      //   type: "bullets",
+      //   clickable: "true",
+      // },
+
+      // navigation: {
+      //   nextEl: ".button-next",
+      //   prevEl: ".button-prev",
+      // },
+    });
+
+
+  }
 
   //quantity инпут с + и -
   if (qOne(".number-input__btn--plus")) {
@@ -185,9 +228,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     for (let i of quantityPlusBtn) {
       i.addEventListener("click", function () {
-        let value = i
-          .closest(".number-input")
-          .querySelector("input");
+        let value = i.closest(".number-input").querySelector("input");
         if (Number(value.value) < value.getAttribute("max")) {
           value.value = Number(value.value) + 1;
         }
@@ -196,14 +237,11 @@ document.addEventListener("DOMContentLoaded", function () {
 
     for (let i of quantityMinusBtn) {
       i.addEventListener("click", function () {
-        let value = i
-          .closest(".number-input")
-          .querySelector("input");
+        let value = i.closest(".number-input").querySelector("input");
         if (Number(value.value) > 1) {
           value.value = Number(value.value) - 1;
         }
       });
     }
   }
-
 });
