@@ -16,6 +16,15 @@ body {
   overflow: hidden;
 }
 
+.fancybox__backdrop {
+  background-color: rgba(178, 189, 227, 0.59);
+  backdrop-filter: blur(10px);
+}
+
+.fancybox__nav svg {
+  stroke: #5D78D9;
+}
+
 .title {
   font-weight: 700;
   font-size: 35px;
@@ -592,6 +601,8 @@ body {
     bottom: 0;
     z-index: 10;
   }
+
+
 
   &__img {
     object-fit: contain;
