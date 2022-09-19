@@ -798,6 +798,7 @@ body {
     display: block;
     word-break: break-all;
     text-align: center;
+    line-height: 1;
 
     @include max-w($xl) {
       padding-right: 0;
@@ -991,6 +992,7 @@ body {
     background-color: #fff;
     border-right: 1px solid #ededed;
     padding: 5px 15px;
+    line-height: 1;
 
     &--brand {
       width: 186px;
@@ -1020,7 +1022,7 @@ body {
     @include max-w($xl) {
       width: calc(100% - 131px);
       text-align: left;
-      line-height: 1;
+
       border-bottom: 1px solid #ededed;
       border-right: 0;
       justify-content: start;
