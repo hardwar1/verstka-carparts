@@ -800,23 +800,6 @@ body {
     text-align: center;
     line-height: 1;
 
-    @include max-w($xl) {
-      padding-right: 0;
-      width: 131px;
-      font-size: 14px;
-      height: 48px;
-      display: flex;
-      align-items: center;
-    }
-
-    @include max-w($sm) {
-      padding: 5px;
-      font-size: 12px;
-      line-height: 1;
-      width: 79px;
-      margin: auto;
-    }
-
     &--brand {
       width: 186px;
     }
@@ -843,6 +826,27 @@ body {
 
     &--cart {
       width: 235px;
+    }
+
+    @include max-w($xl) {
+      padding-right: 0;
+      width: 131px;
+      font-size: 14px;
+      height: 48px;
+      display: flex;
+      align-items: center;
+
+      &--much {
+        margin-bottom: 6px;
+      }
+    }
+
+    @include max-w($sm) {
+      padding: 5px;
+      font-size: 12px;
+      line-height: 1;
+      width: 79px;
+      margin: auto;
     }
   }
 
