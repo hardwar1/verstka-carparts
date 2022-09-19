@@ -135,91 +135,64 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 
   // слайдеры
-  function swiperInit(selector) {
-    const swiper = new Swiper(selector, {
+
+  function slider1On() {
+    var swiper = new Swiper(".result-search__slider", {
       speed: 400,
+      spaceBetween: 20,
+      slidesPerView: "auto",
+      initialSlide: 1,
+      loop: true,
+      centeredSlides: true,
+
       pagination: {
         el: ".swiper-pagination",
         type: "bullets",
         clickable: "true",
       },
+      navigation: {
+        nextEl: ".result-search__swiper-button--next",
+        prevEl: ".result-search__swiper-button--prev",
+      },
 
-      // navigation: {
-      //   nextEl: ".button-next",
-      //   prevEl: ".button-prev",
-      // },
+      breakpoints: {
+        992: {
+          initialSlide: 2,
+        },
+      },
     });
   }
-
-  var swiper = new Swiper(".result-search__slider", {
-    speed: 400,
-    spaceBetween: 20,
-    slidesPerView: "auto",
-    initialSlide: 1,
-    loop: true,
-    centeredSlides: true,
-
-    pagination: {
-      el: ".swiper-pagination",
-      type: "bullets",
-      clickable: "true",
-    },
-    navigation: {
-      nextEl: ".result-search__swiper-button--prev",
-      prevEl: ".result-search__swiper-button--next",
-    },
-
-    breakpoints: {
-      992: {
-        initialSlide: 2,
-      },
-    },
-  });
 
   var win = window,
     doc = document,
     docElem = doc.documentElement,
     x = win.innerWidth || docElem.clientWidth || body[0].clientWidth;
 
-  if (x < 1500) {
-    qOne(".swiper2").querySelector("ul").classList.add("swiper-wrapper");
-    qOne(".swiper3").querySelector("ul").classList.add("swiper-wrapper");
-    var swiper2 = new Swiper(".swiper2", {
+  function sliders(number) {
+    if (x < 1500 && qOne(`.swiper${number}`)) {
+      qOne(`.swiper${number}`).querySelector("ul").classList.add("swiper-wrapper");
+    }
+
+    var swiper2 = new Swiper(`.swiper${number}`, {
       speed: 400,
-      spaceBetween: 20,
-      initialSlide: 1,
+      spaceBetween: 0,
       slidesPerView: "auto",
-      // pagination: {
-      //   el: ".swiper-pagination1",
-      //   type: "bullets",
-      //   clickable: "true",
-      // },
+      pagination: {
+        el: ".swiper-pagination",
+        type: "fraction",
+      },
 
-      // navigation: {
-      //   nextEl: ".button-next",
-      //   prevEl: ".button-prev",
-      // },
+      navigation: {
+        nextEl: `.next${number}`,
+        prevEl: `.prev${number}`,
+      },
     });
-
-    var swiper3 = new Swiper(".swiper3", {
-      speed: 400,
-      spaceBetween: 20,
-      initialSlide: 1,
-      slidesPerView: "auto",
-      // pagination: {
-      //   el: ".swiper-pagination1",
-      //   type: "bullets",
-      //   clickable: "true",
-      // },
-
-      // navigation: {
-      //   nextEl: ".button-next",
-      //   prevEl: ".button-prev",
-      // },
-    });
-
-
   }
+
+  slider1On();
+  var swiper2, swiper3;
+  sliders("2");
+  sliders("3");
 
   //quantity инпут с + и -
   if (qOne(".number-input__btn--plus")) {
@@ -243,5 +216,15 @@ document.addEventListener("DOMContentLoaded", function () {
         }
       });
     }
+  }
+
+  //info в look-at-order
+  const orderButton = qOne(".look-at-order__button"),
+    orderInfoText = qOne(".look-at-order__info-text");
+  if (orderButton) {
+    orderButton.addEventListener("click", () => {
+      orderInfoText.classList.toggle("show");
+      orderButton.classList.toggle("active");
+    });
   }
 });

@@ -32,6 +32,7 @@
         <li class="menu__item">
           <a class="menu__link" href="">
             Корзина
+            <span class="cart-much">356</span>
           </a>
         </li>
         <li class="menu__item">
@@ -54,6 +55,7 @@
             <div class="hero__info">
               <h2 class="hero__title">Автозапчасти за 2 минуты на <span>______________</span></h2>
               <div class="hero__mobile ">
+
                 <div class="main-search">
                   <div class="main-search__form">
                     <label class="main-search__label">
@@ -66,6 +68,7 @@
                       <span class="hide"> открыть/закрыть меню</span>
                     </button>
                   </div>
+
                   <div class="error-message">
                     <p>
                       Введите данные в указанном формате
@@ -74,6 +77,30 @@
                       Введеное не может быть коороче 3-х символов
                     </p>
                   </div>
+
+                  <ul class="main-search__answer" id="suggestions_by_description">
+                    <li>
+                      <a href="">
+                        <span>№ детали</span>
+                        Наименование НаименованиеНаименованиеНаименование Наиме нованиеНаименованиеНаименованиеНаименов|
+                        Проиапзводитель...
+                      </a>
+                    </li>
+                    <li>
+                      <a href="">
+                        <span>№ детали</span>
+                        Наименование Наименование Наименование Наименование Наиме нование Наименование Наименование Наименов|
+                        Проиапзводитель...
+                      </a>
+                    </li>
+                    <li>
+                      <a href="">
+                        <span>№ детали</span>
+                        Наименование Наименование Наименование Наименование Наиме нование Наименование Наименование Наименов|
+                        Проиапзводитель...
+                      </a>
+                    </li>
+                  </ul>
                 </div>
               </div>
               <div class="hero__mobile-bg2" style="background-image: url(images/hero-mobile-bg2.jpg);"></div>
@@ -85,6 +112,7 @@
 
     <section class="result-search">
       <div class="container">
+
         <div class="result-search__main-search main-search main-search--big">
           <div class="main-search__form">
             <label class="main-search__label">
@@ -96,11 +124,36 @@
               <span class="hide"> открыть/закрыть меню</span>
             </button>
           </div>
+
           <div class="error-message">
             <p>
               Заполните поле
             </p>
           </div>
+
+          <ul class="main-search__answer" id="suggestions_by_description">
+            <li>
+              <a href="">
+                <span>№ детали</span>
+                Наименование НаименованиеНаименованиеНаименование Наиме нованиеНаименованиеНаименованиеНаименов|
+                Проиапзводитель...
+              </a>
+            </li>
+            <li>
+              <a href="">
+                <span>№ детали</span>
+                Наименование Наименование Наименование Наименование Наиме нование Наименование Наименование Наименов|
+                Проиапзводитель...
+              </a>
+            </li>
+            <li>
+              <a href="">
+                <span>№ детали</span>
+                Наименование Наименование Наименование Наименование Наиме нование Наименование Наименование Наименов|
+                Проиапзводитель...
+              </a>
+            </li>
+          </ul>
         </div>
 
         <div class="result-search__text">
@@ -119,6 +172,7 @@
                 <use xlink:href="images/sprite.svg#arrow"></use>
               </svg>
             </button>
+
             <button class="result-search__swiper-button result-search__swiper-button--next" type="button">
               <span class="hide">следующий слайд</span>
               <svg width="30" height="30">
@@ -198,43 +252,49 @@
           </div>
         </div>
 
+        <div class="result-search__no-img">
+          <div class="result-search__no-img-text">
+            <p>
+              Информация о заменах и аналогах является справочной и требует дополнительной проверки по с помощью оригинальных программ-каталогов!
+            </p>
+          </div>
+          
+          <div class="result-search__pic" style="background-image: url(images/no-img.png);"></div>
+        </div>
+
         <a class="result-search__link link" href="">посмотреть картинки в Яндекс</a>
 
         <div class="table">
           <div class="table__head">
-            <span class="table__caption table-width">Наименование</span>
-            <span class="table__caption table-width">Производитель</span>
-            <span class="table__caption table-width">ОЕ Артикул</span>
-            <span class="table__caption table-width">Артикул</span>
-            <span class="table__caption table-width">Цена</span>
-            <span class="table__caption table-width">Наличие</span>
-            <span class="table__caption table-width">В корзину</span>
+            <span class="table__caption table__caption--brand">Производитель</span>
+            <span class="table__caption table__caption--name">Наименование</span>
+            <span class="table__caption table__caption--oe-article">ОЕ Артикул</span>
+            <span class="table__caption table__caption--article">Артикул</span>
+            <span class="table__caption table__caption--price">Цена</span>
+            <span class="table__caption table__caption--much">Наличие</span>
+            <span class="table__caption table__caption--cart">В корзину</span>
           </div>
 
           <div class="table__relative">
             <div class="table__slider swiper swiper2">
               <ul class="">
                 <li class="table__item swiper-slide">
-                  <div class="table__head  table__head--slider">
-                    <span class="table__caption table-width">Производитель</span>
-                    <span class="table__caption table-width">Наименование</span>
-                    <span class="table__caption table-width">ОЕ Артикул</span>
-                    <span class="table__caption table-width">Артикул</span>
-                    <span class="table__caption table-width">Цена</span>
-                    <span class="table__caption table-width">Наличие</span>
-                    <span class="table__caption table-width">В корзину</span>
-                  </div>
-
                   <form class="table__inner">
-                    <span class="table__text table-width">Denso K16RU-11 свеча зажигания</span>
-                    <span class="table__text table-width">Denso Denso Denso Denso Denso Denso Denso Denso Denso
-                      DensoDenso</span>
-                    <span class="table__text table-width">1822A030</span>
-                    <span class="table__text table-width">K16RU-11</span>
-                    <span class="table__text table-width">3568</span>
-                    <span class="table__text table-width">4</span>
-
-                    <div class="table__cart table-width">
+                    <span class="table__caption">Производитель</span>
+                    <div class="table__text table__text--brand">Denso Denso Denso Denso Denso Denso Denso Denso Denso
+                      DensoDenso</div>
+                    <span class="table__caption">Наименование</span>
+                    <div class="table__text table__text--name">Denso K16RU-11 свеча зажигания</div>
+                    <span class="table__caption">ОЕ Артикул</span>
+                    <div class="table__text table__text--oe-article">1822A030</div>
+                    <span class="table__caption">Артикул</span>
+                    <div class="table__text table__text--article">K16RU-11</div>
+                    <span class="table__caption">Цена</span>
+                    <div class="table__text table__text--price">3568</div>
+                    <span class="table__caption">Наличие</span>
+                    <div class="table__text table__text--much">4</div>
+                    <span class="table__caption">В корзину</span>
+                    <div class="table__cart">
                       <div class="table__number-input number-input ">
                         <button class="number-input__btn number-input__btn--minus pseudo-shadow" type="button">--
                           <span class="hide">отнять 1</span>
@@ -259,39 +319,35 @@
                 </li>
 
                 <li class="table__item swiper-slide">
-                  <div class="table__head  table__head--slider">
-                    <span class="table__caption table-width">Производитель</span>
-                    <span class="table__caption table-width">Наименование</span>
-                    <span class="table__caption table-width">ОЕ Артикул</span>
-                    <span class="table__caption table-width">Артикул</span>
-                    <span class="table__caption table-width">Цена</span>
-                    <span class="table__caption table-width">Наличие</span>
-                    <span class="table__caption table-width">В корзину</span>
-                  </div>
-
                   <form class="table__inner">
-                    <span class="table__text table-width">Denso K16RU-11 свеча зажигания Denso K16RU-11 свеча
-                      зажигания</span>
-                    <span class="table__text table-width">Denso</span>
-                    <span class="table__text table-width">1822A030</span>
-                    <span class="table__text table-width">K16RU-11</span>
-                    <span class="table__text table-width">3568</span>
-                    <span class="table__text table-width">4</span>
-
-                    <div class="table__cart table-width">
-                      <div class="table__number-input number-input">
+                    <span class="table__caption">Производитель</span>
+                    <div class="table__text table__text--brand">Denso Denso Denso Denso Denso Denso Denso Denso Denso
+                      DensoDenso</div>
+                    <span class="table__caption">Наименование</span>
+                    <div class="table__text table__text--name">Denso K16RU-11 свеча зажигания</div>
+                    <span class="table__caption">ОЕ Артикул</span>
+                    <div class="table__text table__text--oe-article">1822A030</div>
+                    <span class="table__caption">Артикул</span>
+                    <div class="table__text table__text--article">K16RU-11</div>
+                    <span class="table__caption">Цена</span>
+                    <div class="table__text table__text--price">3568</div>
+                    <span class="table__caption">Наличие</span>
+                    <div class="table__text table__text--much">4</div>
+                    <span class="table__caption">В корзину</span>
+                    <div class="table__cart">
+                      <div class="table__number-input number-input ">
                         <button class="number-input__btn number-input__btn--minus pseudo-shadow" type="button">--
                           <span class="hide">отнять 1</span>
                         </button>
                         <label class="number-input__label pseudo-shadow">
                           <span class="hide">количество приобретаемого товара</span>
-                          <input class="number-input__input" type="number" min="1" value="1" max="20">
+                          <input class="number-input__input " type="number" min="1" value="231" max="231">
                         </label>
-                        <button class="number-input__btn number-input__btn--plus pseudo-shadow" type="button">
+                        <button class="number-input__btn pseudo-shadow number-input__btn--plus" type="button">
                           <span class="hide">прибавить 1</span>+
                         </button>
                       </div>
-                      <button class="table__btn cart" type="submit">
+                      <button class="table__btn cart" type="submit" disabled>
                         <span class="hide">добавить в корзину</span>
                         <svg width="24" height="24">
                           <use xlink:href="images/sprite.svg#cart"></use>
@@ -303,180 +359,94 @@
                 </li>
 
                 <li class="table__item swiper-slide">
-                  <div class="table__head  table__head--slider">
-                    <span class="table__caption table-width">Производитель</span>
-                    <span class="table__caption table-width">Наименование</span>
-                    <span class="table__caption table-width">ОЕ Артикул</span>
-                    <span class="table__caption table-width">Артикул</span>
-                    <span class="table__caption table-width">Цена</span>
-                    <span class="table__caption table-width">Наличие</span>
-                    <span class="table__caption table-width">В корзину</span>
-                  </div>
-
                   <form class="table__inner">
-                    <span class="table__text table-width">Denso K16RU-11 свеча зажигания</span>
-                    <span class="table__text table-width">Denso</span>
-                    <span class="table__text table-width">1822A030</span>
-                    <span class="table__text table-width">K16RU-11</span>
-                    <span class="table__text table-width">3568</span>
-                    <span class="table__text table-width">4</span>
-
-                    <div class="table__cart table-width">
-                      <div class="table__number-input number-input">
+                    <span class="table__caption">Производитель</span>
+                    <div class="table__text table__text--brand">Denso Denso Denso Denso Denso Denso Denso Denso Denso
+                      DensoDenso</div>
+                    <span class="table__caption">Наименование</span>
+                    <div class="table__text table__text--name">Denso K16RU-11 свеча зажигания</div>
+                    <span class="table__caption">ОЕ Артикул</span>
+                    <div class="table__text table__text--oe-article">1822A030</div>
+                    <span class="table__caption">Артикул</span>
+                    <div class="table__text table__text--article">K16RU-11</div>
+                    <span class="table__caption">Цена</span>
+                    <div class="table__text table__text--price">3568</div>
+                    <span class="table__caption">Наличие</span>
+                    <div class="table__text table__text--much">4</div>
+                    <span class="table__caption">В корзину</span>
+                    <div class="table__cart">
+                      <div class="table__number-input number-input ">
                         <button class="number-input__btn number-input__btn--minus pseudo-shadow" type="button">--
                           <span class="hide">отнять 1</span>
                         </button>
                         <label class="number-input__label pseudo-shadow">
                           <span class="hide">количество приобретаемого товара</span>
-                          <input class="number-input__input" type="number" min="1" value="1" max="20">
+                          <input class="number-input__input " type="number" min="1" value="231" max="231">
                         </label>
-                        <button class="number-input__btn number-input__btn--plus pseudo-shadow" type="button">
+                        <button class="number-input__btn pseudo-shadow number-input__btn--plus" type="button">
                           <span class="hide">прибавить 1</span>+
                         </button>
                       </div>
-                      <button class="table__btn cart" type="submit">
+                      <button class="table__btn cart" type="submit" disabled>
                         <span class="hide">добавить в корзину</span>
                         <svg width="24" height="24">
                           <use xlink:href="images/sprite.svg#cart"></use>
                         </svg>
                       </button>
                     </div>
-                  </form>
-                </li>
 
-                <li class="table__item swiper-slide">
-                  <div class="table__head  table__head--slider">
-                    <span class="table__caption table-width">Производитель</span>
-                    <span class="table__caption table-width">Наименование</span>
-                    <span class="table__caption table-width">ОЕ Артикул</span>
-                    <span class="table__caption table-width">Артикул</span>
-                    <span class="table__caption table-width">Цена</span>
-                    <span class="table__caption table-width">Наличие</span>
-                    <span class="table__caption table-width">В корзину</span>
-                  </div>
-
-                  <form class="table__inner">
-                    <span class="table__text table-width">Denso K16RU-11 свеча зажигания</span>
-                    <span class="table__text table-width">Denso</span>
-                    <span class="table__text table-width">1822A030</span>
-                    <span class="table__text table-width">K16RU-11</span>
-                    <span class="table__text table-width">3568</span>
-                    <span class="table__text table-width">4</span>
-
-                    <div class="table__cart table-width">
-                      <div class="table__number-input number-input">
-                        <button class="number-input__btn number-input__btn--minus pseudo-shadow" type="button">--
-                          <span class="hide">отнять 1</span>
-                        </button>
-                        <label class="number-input__label pseudo-shadow">
-                          <span class="hide">количество приобретаемого товара</span>
-                          <input class="number-input__input" type="number" min="1" value="1" max="20">
-                        </label>
-                        <button class="number-input__btn number-input__btn--plus pseudo-shadow" type="button">
-                          <span class="hide">прибавить 1</span>+
-                        </button>
-                      </div>
-                      <button class="table__btn cart" type="submit">
-                        <span class="hide">добавить в корзину</span>
-                        <svg width="24" height="24">
-                          <use xlink:href="images/sprite.svg#cart"></use>
-                        </svg>
-                      </button>
-                    </div>
-                  </form>
-                </li>
-
-                <li class="table__item swiper-slide">
-                  <div class="table__head  table__head--slider">
-                    <span class="table__caption table-width">Производитель</span>
-                    <span class="table__caption table-width">Наименование</span>
-                    <span class="table__caption table-width">ОЕ Артикул</span>
-                    <span class="table__caption table-width">Артикул</span>
-                    <span class="table__caption table-width">Цена</span>
-                    <span class="table__caption table-width">Наличие</span>
-                    <span class="table__caption table-width">В корзину</span>
-                  </div>
-
-                  <form class="table__inner">
-                    <span class="table__text table-width">Denso K16RU-11 свеча зажигания</span>
-                    <span class="table__text table-width">Denso</span>
-                    <span class="table__text table-width">1822A030</span>
-                    <span class="table__text table-width">K16RU-11</span>
-                    <span class="table__text table-width">3568</span>
-                    <span class="table__text table-width">4</span>
-
-                    <div class="table__cart table-width">
-                      <div class="table__number-input number-input">
-                        <button class="number-input__btn number-input__btn--minus pseudo-shadow" type="button">--
-                          <span class="hide">отнять 1</span>
-                        </button>
-                        <label class="number-input__label pseudo-shadow">
-                          <span class="hide">количество приобретаемого товара</span>
-                          <input class="number-input__input" type="number" min="1" value="1" max="20">
-                        </label>
-                        <button class="number-input__btn number-input__btn--plus pseudo-shadow" type="button">
-                          <span class="hide">прибавить 1</span>+
-                        </button>
-                      </div>
-                      <button class="table__btn cart" type="submit">
-                        <span class="hide">добавить в корзину</span>
-                        <svg width="24" height="24">
-                          <use xlink:href="images/sprite.svg#cart"></use>
-                        </svg>
-                      </button>
-                    </div>
                   </form>
                 </li>
               </ul>
+              <div class="swiper-pagination"></div>
             </div>
+            <button class="table__arrow table__arrow--prev next2" type="button"></button>
+            <button class="table__arrow table__arrow--next next2" type="button"></button>
           </div>
 
         </div>
-
+        
         <h3 class="result-search__no-analog">
           Мы не нашли аналогов...
         </h3>
-
+        
+        <button class="result-search__btn btn" type="button"> Показать аналоги</button>
+        
         <h3 class="result-search__analog">
           Аналоги
         </h3>
 
-        <button class="result-search__btn btn" type="button"> Показать аналоги</button>
-        <div class="table ">
+        <div class="table">
           <div class="table__head">
-            <span class="table__caption table-width">Наименование</span>
-            <span class="table__caption table-width">Производитель</span>
-            <span class="table__caption table-width">ОЕ Артикул</span>
-            <span class="table__caption table-width">Артикул</span>
-            <span class="table__caption table-width">Цена</span>
-            <span class="table__caption table-width">Наличие</span>
-            <span class="table__caption table-width">В корзину</span>
+            <span class="table__caption table__caption--brand">Производитель</span>
+            <span class="table__caption table__caption--name">Наименование</span>
+            <span class="table__caption table__caption--oe-article">ОЕ Артикул</span>
+            <span class="table__caption table__caption--article">Артикул</span>
+            <span class="table__caption table__caption--price">Цена</span>
+            <span class="table__caption table__caption--much">Наличие</span>
+            <span class="table__caption table__caption--cart">В корзину</span>
           </div>
 
           <div class="table__relative">
             <div class="table__slider swiper swiper3">
               <ul class="">
                 <li class="table__item swiper-slide">
-                  <div class="table__head  table__head--slider">
-                    <span class="table__caption table-width">Производитель</span>
-                    <span class="table__caption table-width">Наименование</span>
-                    <span class="table__caption table-width">ОЕ Артикул</span>
-                    <span class="table__caption table-width">Артикул</span>
-                    <span class="table__caption table-width">Цена</span>
-                    <span class="table__caption table-width">Наличие</span>
-                    <span class="table__caption table-width">В корзину</span>
-                  </div>
-
                   <form class="table__inner">
-                    <span class="table__text table-width">Denso K16RU-11 свеча зажигания</span>
-                    <span class="table__text table-width">Denso Denso Denso Denso Denso Denso Denso Denso Denso
-                      DensoDenso</span>
-                    <span class="table__text table-width">1822A030</span>
-                    <span class="table__text table-width">K16RU-11</span>
-                    <span class="table__text table-width">3568</span>
-                    <span class="table__text table-width">4</span>
-
-                    <div class="table__cart table-width">
+                    <span class="table__caption">Производитель</span>
+                    <div class="table__text table__text--brand">Denso Denso Denso Denso Denso Denso Denso Denso Denso
+                      DensoDenso</div>
+                    <span class="table__caption">Наименование</span>
+                    <div class="table__text table__text--name">Denso K16RU-11 свеча зажигания</div>
+                    <span class="table__caption">ОЕ Артикул</span>
+                    <div class="table__text table__text--oe-article">1822A030</div>
+                    <span class="table__caption">Артикул</span>
+                    <div class="table__text table__text--article">K16RU-11</div>
+                    <span class="table__caption">Цена</span>
+                    <div class="table__text table__text--price">3568</div>
+                    <span class="table__caption">Наличие</span>
+                    <div class="table__text table__text--much">4</div>
+                    <span class="table__caption">В корзину</span>
+                    <div class="table__cart">
                       <div class="table__number-input number-input ">
                         <button class="number-input__btn number-input__btn--minus pseudo-shadow" type="button">--
                           <span class="hide">отнять 1</span>
@@ -501,39 +471,35 @@
                 </li>
 
                 <li class="table__item swiper-slide">
-                  <div class="table__head  table__head--slider">
-                    <span class="table__caption table-width">Производитель</span>
-                    <span class="table__caption table-width">Наименование</span>
-                    <span class="table__caption table-width">ОЕ Артикул</span>
-                    <span class="table__caption table-width">Артикул</span>
-                    <span class="table__caption table-width">Цена</span>
-                    <span class="table__caption table-width">Наличие</span>
-                    <span class="table__caption table-width">В корзину</span>
-                  </div>
-
                   <form class="table__inner">
-                    <span class="table__text table-width">Denso K16RU-11 свеча зажигания Denso K16RU-11 свеча
-                      зажигания</span>
-                    <span class="table__text table-width">Denso</span>
-                    <span class="table__text table-width">1822A030</span>
-                    <span class="table__text table-width">K16RU-11</span>
-                    <span class="table__text table-width">3568</span>
-                    <span class="table__text table-width">4</span>
-
-                    <div class="table__cart table-width">
-                      <div class="table__number-input number-input">
+                    <span class="table__caption">Производитель</span>
+                    <div class="table__text table__text--brand">Denso Denso Denso Denso Denso Denso Denso Denso Denso
+                      DensoDenso</div>
+                    <span class="table__caption">Наименование</span>
+                    <div class="table__text table__text--name">Denso K16RU-11 свеча зажигания</div>
+                    <span class="table__caption">ОЕ Артикул</span>
+                    <div class="table__text table__text--oe-article">1822A030</div>
+                    <span class="table__caption">Артикул</span>
+                    <div class="table__text table__text--article">K16RU-11</div>
+                    <span class="table__caption">Цена</span>
+                    <div class="table__text table__text--price">3568</div>
+                    <span class="table__caption">Наличие</span>
+                    <div class="table__text table__text--much">4</div>
+                    <span class="table__caption">В корзину</span>
+                    <div class="table__cart">
+                      <div class="table__number-input number-input ">
                         <button class="number-input__btn number-input__btn--minus pseudo-shadow" type="button">--
                           <span class="hide">отнять 1</span>
                         </button>
                         <label class="number-input__label pseudo-shadow">
                           <span class="hide">количество приобретаемого товара</span>
-                          <input class="number-input__input" type="number" min="1" value="1" max="20">
+                          <input class="number-input__input " type="number" min="1" value="231" max="231">
                         </label>
-                        <button class="number-input__btn number-input__btn--plus pseudo-shadow" type="button">
+                        <button class="number-input__btn pseudo-shadow number-input__btn--plus" type="button">
                           <span class="hide">прибавить 1</span>+
                         </button>
                       </div>
-                      <button class="table__btn cart" type="submit">
+                      <button class="table__btn cart" type="submit" disabled>
                         <span class="hide">добавить в корзину</span>
                         <svg width="24" height="24">
                           <use xlink:href="images/sprite.svg#cart"></use>
@@ -545,132 +511,49 @@
                 </li>
 
                 <li class="table__item swiper-slide">
-                  <div class="table__head  table__head--slider">
-                    <span class="table__caption table-width">Производитель</span>
-                    <span class="table__caption table-width">Наименование</span>
-                    <span class="table__caption table-width">ОЕ Артикул</span>
-                    <span class="table__caption table-width">Артикул</span>
-                    <span class="table__caption table-width">Цена</span>
-                    <span class="table__caption table-width">Наличие</span>
-                    <span class="table__caption table-width">В корзину</span>
-                  </div>
-
                   <form class="table__inner">
-                    <span class="table__text table-width">Denso K16RU-11 свеча зажигания</span>
-                    <span class="table__text table-width">Denso</span>
-                    <span class="table__text table-width">1822A030</span>
-                    <span class="table__text table-width">K16RU-11</span>
-                    <span class="table__text table-width">3568</span>
-                    <span class="table__text table-width">4</span>
-
-                    <div class="table__cart table-width">
-                      <div class="table__number-input number-input">
+                    <span class="table__caption">Производитель</span>
+                    <div class="table__text table__text--brand">Denso Denso Denso Denso Denso Denso Denso Denso Denso
+                      DensoDenso</div>
+                    <span class="table__caption">Наименование</span>
+                    <div class="table__text table__text--name">Denso K16RU-11 свеча зажигания</div>
+                    <span class="table__caption">ОЕ Артикул</span>
+                    <div class="table__text table__text--oe-article">1822A030</div>
+                    <span class="table__caption">Артикул</span>
+                    <div class="table__text table__text--article">K16RU-11</div>
+                    <span class="table__caption">Цена</span>
+                    <div class="table__text table__text--price">3568</div>
+                    <span class="table__caption">Наличие</span>
+                    <div class="table__text table__text--much">4</div>
+                    <span class="table__caption">В корзину</span>
+                    <div class="table__cart">
+                      <div class="table__number-input number-input ">
                         <button class="number-input__btn number-input__btn--minus pseudo-shadow" type="button">--
                           <span class="hide">отнять 1</span>
                         </button>
                         <label class="number-input__label pseudo-shadow">
                           <span class="hide">количество приобретаемого товара</span>
-                          <input class="number-input__input" type="number" min="1" value="1" max="20">
+                          <input class="number-input__input " type="number" min="1" value="231" max="231">
                         </label>
-                        <button class="number-input__btn number-input__btn--plus pseudo-shadow" type="button">
+                        <button class="number-input__btn pseudo-shadow number-input__btn--plus" type="button">
                           <span class="hide">прибавить 1</span>+
                         </button>
                       </div>
-                      <button class="table__btn cart" type="submit">
+                      <button class="table__btn cart" type="submit" disabled>
                         <span class="hide">добавить в корзину</span>
                         <svg width="24" height="24">
                           <use xlink:href="images/sprite.svg#cart"></use>
                         </svg>
                       </button>
                     </div>
-                  </form>
-                </li>
 
-                <li class="table__item swiper-slide">
-                  <div class="table__head  table__head--slider">
-                    <span class="table__caption table-width">Производитель</span>
-                    <span class="table__caption table-width">Наименование</span>
-                    <span class="table__caption table-width">ОЕ Артикул</span>
-                    <span class="table__caption table-width">Артикул</span>
-                    <span class="table__caption table-width">Цена</span>
-                    <span class="table__caption table-width">Наличие</span>
-                    <span class="table__caption table-width">В корзину</span>
-                  </div>
-
-                  <form class="table__inner">
-                    <span class="table__text table-width">Denso K16RU-11 свеча зажигания</span>
-                    <span class="table__text table-width">Denso</span>
-                    <span class="table__text table-width">1822A030</span>
-                    <span class="table__text table-width">K16RU-11</span>
-                    <span class="table__text table-width">3568</span>
-                    <span class="table__text table-width">4</span>
-
-                    <div class="table__cart table-width">
-                      <div class="table__number-input number-input">
-                        <button class="number-input__btn number-input__btn--minus pseudo-shadow" type="button">--
-                          <span class="hide">отнять 1</span>
-                        </button>
-                        <label class="number-input__label pseudo-shadow">
-                          <span class="hide">количество приобретаемого товара</span>
-                          <input class="number-input__input" type="number" min="1" value="1" max="20">
-                        </label>
-                        <button class="number-input__btn number-input__btn--plus pseudo-shadow" type="button">
-                          <span class="hide">прибавить 1</span>+
-                        </button>
-                      </div>
-                      <button class="table__btn cart" type="submit">
-                        <span class="hide">добавить в корзину</span>
-                        <svg width="24" height="24">
-                          <use xlink:href="images/sprite.svg#cart"></use>
-                        </svg>
-                      </button>
-                    </div>
-                  </form>
-                </li>
-
-                <li class="table__item swiper-slide">
-                  <div class="table__head  table__head--slider">
-                    <span class="table__caption table-width">Производитель</span>
-                    <span class="table__caption table-width">Наименование</span>
-                    <span class="table__caption table-width">ОЕ Артикул</span>
-                    <span class="table__caption table-width">Артикул</span>
-                    <span class="table__caption table-width">Цена</span>
-                    <span class="table__caption table-width">Наличие</span>
-                    <span class="table__caption table-width">В корзину</span>
-                  </div>
-
-                  <form class="table__inner">
-                    <span class="table__text table-width">Denso K16RU-11 свеча зажигания</span>
-                    <span class="table__text table-width">Denso</span>
-                    <span class="table__text table-width">1822A030</span>
-                    <span class="table__text table-width">K16RU-11</span>
-                    <span class="table__text table-width">3568</span>
-                    <span class="table__text table-width">4</span>
-
-                    <div class="table__cart table-width">
-                      <div class="table__number-input number-input">
-                        <button class="number-input__btn number-input__btn--minus pseudo-shadow" type="button">--
-                          <span class="hide">отнять 1</span>
-                        </button>
-                        <label class="number-input__label pseudo-shadow">
-                          <span class="hide">количество приобретаемого товара</span>
-                          <input class="number-input__input" type="number" min="1" value="1" max="20">
-                        </label>
-                        <button class="number-input__btn number-input__btn--plus pseudo-shadow" type="button">
-                          <span class="hide">прибавить 1</span>+
-                        </button>
-                      </div>
-                      <button class="table__btn cart" type="submit">
-                        <span class="hide">добавить в корзину</span>
-                        <svg width="24" height="24">
-                          <use xlink:href="images/sprite.svg#cart"></use>
-                        </svg>
-                      </button>
-                    </div>
                   </form>
                 </li>
               </ul>
+              <div class="swiper-pagination"></div>
             </div>
+            <button class="table__arrow table__arrow--prev prev3" type="button"></button>
+            <button class="table__arrow table__arrow--next next3" type="button"></button>
           </div>
 
         </div>
@@ -678,10 +561,6 @@
     </section>
 
     <section class="selection-form">
-      <div class="selection-form__search">
-
-      </div>
-
       <div class="container selection-form__container">
         <div class="selection-form__inner" style="background-image: url(images/selecection-bg.jpg)">
           <div class="selection-form__info">
@@ -811,27 +690,37 @@
               +7-989-827-39-98
             </a>
 
-            <ul class="social">
+            <ul class="footer__social social">
               <li class="social__item">
                 <a class="social__link" href="" class="social__link">
                   <span class="hide">наш ватсап</span>
-
+                  <svg width="30" height="30">
+                    <use xlink:href="images/sprite.svg#whatsapp"></use>
+                  </svg>
                 </a>
               </li>
+
               <li class="social__item">
                 <a href="" class="social__link">
                   <span class="hide">наш телеграм</span>
-
+                  <svg width="30" height="30">
+                    <use xlink:href="images/sprite.svg#telegram"></use>
+                  </svg>
                 </a>
               </li>
+
               <li class="social__item">
                 <a href="" class="social__link">
                   <span class="hide">наш вайбер</span>
+                  <svg width="30" height="30">
+                    <use xlink:href="images/sprite.svg#viber"></use>
+                  </svg>
                 </a>
               </li>
             </ul>
           </address>
         </div>
+
         <div class="footer__copy-wrap">
           <a class="footer__logo-mobile logo">
             <svg width="27" height="27">
@@ -869,11 +758,12 @@
         </li>
 
         <li class="footer__nav-item">
-          <a class="footer__nav-link box-in-cart box-in-cart--yes" href="">
+          <a class="footer__nav-link" href="">
             <svg height="33" width="33">
               <use xlink:href="images/sprite.svg#footer-nav3"></use>
             </svg>
             <span class="hide">Корзина</span>
+            <span class="footer__cart-much cart-much">356</span>
           </a>
         </li>
 

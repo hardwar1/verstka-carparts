@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+@@include('components/page/_1_head.html',{
+'title': 'Онлайн магазин автозапчастей | Главная страница',
+'favicon': 'favicon.ico',
+'favicon192x192': 'images/favicon/android-chrome-192x192.png',
+'favicon512x512': 'images/favicon/android-chrome-512x512.png',
+'favicon16x16': 'images/favicon/favicon-16x16.png',
+'favicon32x32': 'images/favicon/favicon-32x32.png',
+'apple-touch-icon': 'images/favicon/apple-touch-icon.png',
+})
+
+<body>
+  @@include('components/page/_2_header.html')
+  <main class="main">
+    <section class="look-at-order">
+      <div class="look-at-order__container container">
+        <h1 class="look-at-order__title title">
+          Поиск заказа или обращения по номеру
+        </h1>
+
+        <div class="look-at-order__main-search main-search main-search--big">
+          <form class="main-search__form">
+            <label class="main-search__label">
+              <span class="hide">Введите артикул или наименование</span>
+              <input class="main-search__search input input--main" type="search" placeholder="Введите номер заказа">
+            </label>
+            <button class="main-search__burger burger burger--close" type="button">
+              <span class="burger__line"></span>
+              <span class="hide"> открыть/закрыть меню</span>
+            </button>
+          </form>
+        </div>
+
+        <div class="look-at-order__message">
+          <p>
+            Такого заказа не существует
+          </p>
+        </div>
+
+        <div class="look-at-order__message">
+          <p>
+            Номер последнего заказа
+          </p>
+          <div class="look-at-order__number">
+            6454537829_99
+            <button class="look-at-order__copy-btn copy-btn" type="button"></button>
+          </div>
+        </div>
+
+        <div class="look-at-order__message look-at-order__message--small">
+          <p>
+            Стату заказа:
+            <span style="color: #858585">Ожидает рассмотрения</span>
+            <span style="color: #FF0000">Отменен</span>
+            <span style="color: #FBFF00">Обрабатывается</span>
+            <span style="color: #0075FF">Ожидает оплаты</span>
+            <span style="color: #0008FF">В пути</span>
+            <span style="color: #009506">Доставлен</span>
+            <span style="color: #CB00C3">Выполнен</span>
+          </p>
+          <p>
+            Причина: <span style="color: #FF0000">Ты урод ебаный</span>
+          </p>
+          <p>
+            Ваш номер телефона: +79612356989
+          </p>
+          <p>
+            Сумма заказа: 100 руб.
+          </p>
+        </div>
+
+        <div class="look-at-order__btns-wrapper">
+          <a class="look-at-order__btn btn" href>
+            Дополнительная информация
+          </a>
+          <button class="look-at-order__btn btn" type="button">
+            Оплатить
+          </button>
+          <a class="look-at-order__btn look-at-order__btn--small btn" href>
+            Отменить заказ
+          </a>
+        </div>
+        
+        <div class="look-at-order__info">
+          <button class="look-at-order__button" type="button">
+            Подробнее о статусах
+            <svg width="70" height="70">
+              <use xlink:href="images/sprite.svg#info"></use>
+            </svg>
+
+            <svg width="22" height="30">
+              <use xlink:href="images/sprite.svg#arrow"></use>
+            </svg>
+          </button>
+
+        </div>
+        <div class="look-at-order__info-text">
+          <p>
+            “<span style="color: #858585">Ожидает рассмотрения</span>”- Ваша заявка в очереди на рассмотрение
+          </p>
+          <p>
+            “<span style="color: #FF0000">Отменен</span>”- Заказ был отменен менеджером или клиентом
+          </p>
+          <p>
+            “<span style="color: #FBFF00">Обрабатывается</span>”- Менеджер обрабатывает Ваш заказ, проверяет наличие
+            товаров
+          </p>
+          <p>
+            “<span style="color: #0075FF">Ожидает оплаты</span>”- Ваша заявка подтверждена, товары зарезервированы
+          </p>
+          <p>
+            “<span style="color: #0008FF">В пути</span>”- Ваша заявка подтверждена и оплачена, товары отправлены
+          </p>
+          <p>
+            “<span style="color: #009506">Доставлен</span>”- Ваш заказ прибыл в пункт сортировки и выдачи
+          </p>
+          <p>
+            “<span style="color: #CB00C3">Выполнен</span>”- Ваш заказ получен
+          </p>
+        </div>
+      </div>
+      <div class="look-at-order__bg" style="background-image: url(images/look_at_order-bg.jpg);"></div>
+    </section>
+
+  </main>
+  @@include('components/page/_3_footer.html')
+  @@include('components/page/_4_scripts.html')
+</body>
+
+</html>
