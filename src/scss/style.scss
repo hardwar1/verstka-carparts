@@ -16,6 +16,10 @@ body {
   overflow: hidden;
 }
 
+.relative {
+  position: relative;
+}
+
 .fancybox__backdrop {
   background-color: rgba(178, 189, 227, 0.59);
   backdrop-filter: blur(10px);
@@ -688,7 +692,7 @@ body {
     background-position: center;
 
     @include max-w($sm) {
-    height: 250px;
+      height: 250px;
     }
   }
 
@@ -754,6 +758,77 @@ body {
   display: block;
   width: fit-content;
   color: #5d78d9;
+}
+
+.total {
+  margin-bottom: 50px;
+  display: flex;
+  justify-content: flex-end;
+  max-width: 1297px;
+  font-weight: 600;
+  font-size: 17px;
+  line-height: 2;
+  color: #292525;
+  @include max-w($xl) {
+    max-width: 900px;
+    margin: 0 auto 50px;
+    justify-content: flex-start;
+  }
+
+  &__show {
+    display: flex;
+    @include max-w($xl) {
+      position: absolute;
+      top: 0;
+      left: calc(50vw - 465px);
+    }
+
+    @include max-w($lg) {
+      left: 20px;
+    }
+
+    @include max-w($sm) {
+      left: 0;
+    }
+  }
+
+  &__text {
+    width: 140px;
+    background-color: #fff;
+    border-radius: 0 0 0 10px;
+    padding: 5px 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-right: 1px solid #ededed;
+
+    @include max-w($xl) {
+      border-radius: 10px 0 0 10px;
+    }
+
+    @include max-w($sm) {
+      width: 78px;
+    }
+
+    &--number {
+      border-radius: 0 10px 10px 0;
+      width: 161px;
+      margin-right: 12px;
+      border-right: 0;
+
+      @include max-w($sm) {
+        width: 94px;
+      }
+    }
+  }
+
+  &__btn {
+    font-weight: 900;
+    font-size: 13px;
+    line-height: 15px;
+    color: #5d78d9;
+    padding: 15px 21px;
+  }
 }
 
 .table {
@@ -997,6 +1072,7 @@ body {
     border-right: 1px solid #ededed;
     padding: 5px 15px;
     line-height: 1;
+    min-height: 52px;
 
     &--brand {
       width: 186px;
@@ -1023,9 +1099,15 @@ body {
       width: 140px;
     }
 
+    &--cost {
+      width: 160px;
+      border-radius: 0 10px 10px 0;
+    }
+
     @include max-w($xl) {
       width: calc(100% - 131px);
       text-align: left;
+      min-height: 37px;
 
       border-bottom: 1px solid #ededed;
       border-right: 0;
@@ -1081,7 +1163,7 @@ body {
       box-shadow: 0 0 4px rgba(0, 0, 0, 0.2);
       border-radius: 5px;
     }
-    @include max-w($xl) {
+    @include max-w($sm) {
       width: 40px;
     }
 
@@ -1124,6 +1206,119 @@ body {
 
       &:last-child::after {
         right: 2px;
+      }
+    }
+  }
+
+  &__cost {
+    background-color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 0 10px 10px 0;
+    width: 160px;
+    @include max-w($xl) {
+      width: unset;
+    }
+  }
+
+  &__wrap-btn {
+    display: flex;
+    align-items: center;
+  }
+
+  &--cart {
+    &::after {
+      display: none;
+    }
+    margin-bottom: 0;
+    @include max-w($xl) {
+      padding-top: 61px;
+    }
+
+    .table {
+      &__head {
+        max-width: 1312px;
+      }
+
+      &__caption {
+        &--much,
+        &--article,
+        &--oe-article {
+          padding: 0 0 0 15px;
+
+          @include max-w($xl) {
+            padding: 0;
+          }
+        }
+
+        &--cart {
+          width: 286px;
+        }
+      }
+
+      &__cart {
+        align-items: stretch;
+        width: 286px;
+
+        @include max-w($xl) {
+          width: calc(100% - 131px);
+          justify-content: space-between;
+          padding: 0 25px 0 17px;
+        }
+
+        @include max-w($sm) {
+          width: calc(100% - 79px);
+          padding: 0 20px 0 10px;
+        }
+      }
+
+      &__btn {
+        @include max-w($sm) {
+          width: 65px;
+        }
+      }
+    }
+  }
+
+  &--del {
+    .table {
+      &__head {
+        max-width: 1197px;
+      }
+
+      &__caption {
+        &--much,
+        &--article,
+        &--oe-article {
+          padding: 0 0 0 15px;
+
+          @include max-w($xl) {
+            padding: 0;
+          }
+        }
+
+        &--cart {
+          width: 160px;
+        }
+      }
+
+      &__text {
+        background-color: #ffd7d7;
+      }
+
+      @include max-w($xl) {
+        &__item::after {
+          border-bottom: 2px dashed #d95d5d;
+        }
+
+        &__text {
+          background-color: #fff;
+        }
+
+        &__inner {
+          border: 3px solid #d95d5d;
+        }
       }
     }
   }
@@ -2057,3 +2252,102 @@ body {
 }
 
 // ========= /faq ============
+// ========= cart ============
+.cart {
+  padding-top: 150px;
+
+  &__title {
+    margin-bottom: 30px;
+    padding-left: 240px;
+    @include max-w($xl) {
+      text-align: center;
+      padding-left: 0;
+      font-size: 30px;
+    }
+
+    @include max-w($md) {
+      font-size: 24px;
+    }
+    @include max-w($sm) {
+      margin-bottom: 10px;
+      font-size: 20px;
+    }
+
+    &--left {
+      padding-left: 0;
+    }
+  }
+
+  &__empty-text {
+    font-weight: 700;
+    font-size: 35px;
+    line-height: 1.2;
+    margin-bottom: 35px;
+
+    @include max-w($xl) {
+      font-size: 24px;
+      text-align: center;
+    }
+
+    @include max-w($md) {
+      font-size: 18px;
+    }
+    @include max-w($sm) {
+      font-size: 15px;
+    }
+  }
+
+  &__text {
+    font-weight: 500;
+    font-size: 17px;
+    line-height: 2;
+    margin-left: 240px;
+    margin-bottom: 80px;
+    @include max-w($xl) {
+      margin: 0 auto 20px;
+      max-width: 900px;
+      text-align: center;
+    }
+
+    @include max-w($sm) {
+      font-size: 15px;
+    }
+  }
+
+  &__btn-wrap {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 45px;
+    max-width: 1300px;
+
+    @include max-w($xl) {
+      position: absolute;
+      left: 50%;
+      top: 0;
+    }
+
+    @include max-w($lg) {
+      left: 340px;
+    }
+
+    @include max-w($sm) {
+      left: 184px;
+      button {
+        width: 100px;
+        @include line-clamp;
+        text-overflow: clip;
+        padding: 9px 10px;
+      }
+    }
+  }
+
+  &__caption {
+    text-align: center;
+    font-weight: 700;
+    font-size: 25px;
+    line-height: 29px;
+    margin-bottom: 20px;
+  }
+}
+
+// ========= /cart ============
