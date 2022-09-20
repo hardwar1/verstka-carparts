@@ -783,6 +783,7 @@ body {
   font-size: 17px;
   line-height: 2;
   color: #292525;
+
   @include max-w($xl) {
     max-width: 900px;
     margin: 0 auto 50px;
@@ -816,12 +817,19 @@ body {
     justify-content: center;
     border-right: 1px solid #ededed;
 
+    span {
+      display: none;
+    }
+
     @include max-w($xl) {
+      span {
+        display: block;
+      }
       border-radius: 10px 0 0 10px;
     }
 
     @include max-w($sm) {
-      width: 78px;
+      width: 60px;
     }
 
     &--number {
@@ -831,7 +839,7 @@ body {
       border-right: 0;
 
       @include max-w($sm) {
-        width: 94px;
+        width: 110px;
       }
     }
   }
@@ -1118,6 +1126,10 @@ body {
       border-radius: 0 10px 10px 0;
     }
 
+    span {
+      display: none;
+    }
+
     @include max-w($xl) {
       width: calc(100% - 131px);
       text-align: left;
@@ -1134,6 +1146,10 @@ body {
       &--much {
         margin-bottom: 10px;
         border-radius: 0 0 10px 10px;
+      }
+
+      span {
+        display: block;
       }
     }
 
@@ -1231,9 +1247,19 @@ body {
     justify-content: center;
     border-radius: 0 10px 10px 0;
     width: 160px;
+
+    span {
+      display: none;
+    }
+
     @include max-w($xl) {
       width: unset;
+
+      span {
+        display: block;
+      }
     }
+
   }
 
   &__wrap-btn {
