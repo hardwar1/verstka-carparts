@@ -253,8 +253,6 @@
       </div>
     </section>
 
-
-
     <section class="selection-form">
       <div class="container selection-form__container">
         <div class="selection-form__inner" style="background-image: url(images/selecection-bg.jpg)">
@@ -283,7 +281,6 @@
               <div class="selection-form__text">
                 Нажимая кнопку «Отправить» Вы:
 
-
                 <ul class="selection-form__list">
                   <li class="selection-form__item">
                     — Даете право на обработку <a href="">персональных данных</a>
@@ -299,6 +296,191 @@
             </form>
           </div>
         </div>
+      </div>
+    </section>
+
+    <section class="making-order">
+      <div class="container">
+        <h2 class="title">
+          Общая стоимость заказа 12650 рублей
+          Заполните поля заявки и нажмите «подтвердить»
+        </h2>
+
+        <form class="making-order__body">
+          <div class="making-order__box">
+            <label class="making-order__label">
+              <span class="making-order__text">
+                ФИО
+              </span>
+              <input class="input" type="text" placeholder="Иванов Иван Иванович">
+            </label>
+
+            <label class="making-order__label">
+              <span class="making-order__text">
+                Номер телефона *
+              </span>
+              <input class="input" type="tel" placeholder="+7 (986)568-99-96">
+            </label>
+
+            <div class="making-order__info-wrapper">
+              <label class="making-order__checkbox checkbox">
+                <input class="checkbox__box" type="checkbox">
+                <span class="checkbox__fake">
+                  <svg width="19" height="12">
+                    <use xlink:href="images/sprite.svg#checkbox"></use>
+                  </svg>
+                </span>
+
+                <span class="making-order__text">
+                  не звонить
+                </span>
+              </label>
+
+              <div class="making-order__hover">
+                <button class="making-order__info-btn" type="button"></button>
+
+                <div class="making-order__error-message error-message">
+                  <p>
+                    *Выберите соц. сеть,
+                  </p>
+                  <p>
+                    в которой мы свяжемся с Вами
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div class="making-order__choice">
+              <label class="making-order__label select">
+                <div class="making-order__text">
+                  Способ связи *
+                </div>
+                <div class="select__header">
+                  <span class="select__current">Telegram</span>
+                  <svg width="12" height="24">
+                    <use xlink:href="images/sprite.svg#arrow"></use>
+                  </svg>
+                </div>
+                <select class="hide js-select" name="country" data-validate-field="country">
+                  <option value="Россия">Россия</option>
+                  <option value="Китай" selected>Китай</option>
+                  <option value="Индия">Индия</option>
+                  <option value="Бразилия">Бразилия</option>
+                  <option value="Мексика">Мексика</option>
+                </select>
+
+                <ul class="select__body">
+
+                </ul>
+              </label>
+
+              <label class="making-order__label making-order__label--short">
+                <span class="hide">
+                  Введите ваше имя в соц сети
+                </span>
+                <input class="input" type="text" placeholder="@ivanovivan">
+              </label>
+            </div>
+
+            <label class="making-order__label">
+              <span class="making-order__text">
+                Электронная почта
+              </span>
+              <input class="input" type="email" placeholder="example@ex.com">
+            </label>
+
+            <label class="making-order__label">
+              <span class="making-order__text">
+                Адрес доставки
+              </span>
+              <input class="input" type="text" placeholder="г. Иваново ул. Ивановская д. 17">
+            </label>
+          </div>
+
+          <div class="making-order__box">
+            <div class="relative">
+              <div class="making-order__hover">
+                <button class="making-order__info-btn making-order__info-btn--position" type="button"></button>
+
+                <div class="making-order__error-message making-order__error-message--2 error-message">
+                  <p>
+                    *Выберите соц. сеть,
+                  </p>
+                  <p>
+                    в которой мы свяжемся с Вами
+                  </p>
+                </div>
+              </div>
+
+              <label class="making-order__label select">
+                <div class="making-order__text">
+                  Способ доставки *
+                </div>
+                <div class="select__header">
+                  <span class="select__current">Telegram</span>
+                  <svg width="12" height="24">
+                    <use xlink:href="images/sprite.svg#arrow"></use>
+                  </svg>
+                </div>
+                <select class="hide js-select" name="country">
+                  <option value="Россия" selected>Выбор</option>
+                  <option value="Индия">Индия</option>
+                  <option value="Бразилия">Бразилия</option>
+                  <option value="Мексика">Мексика</option>
+                </select>
+
+                <ul class="select__body select__body--none">
+
+                </ul>
+              </label>
+            </div>
+            <label class="making-order__label select">
+              <div class="making-order__text">
+                Cпособ оплаты *
+              </div>
+              <div class="select__header">
+                <span class="select__current">Telegram</span>
+                <svg width="12" height="24">
+                  <use xlink:href="images/sprite.svg#arrow"></use>
+                </svg>
+              </div>
+              <select class="hide js-select" name="country" data-validate-field="country">
+                <option value="Россия" selected>Выбор</option>
+                <option value="Индия">Индия</option>
+                <option value="Бразилия">Бразилия</option>
+                <option value="Мексика">Мексика</option>
+              </select>
+
+              <ul class="select__body select__body--none">
+
+              </ul>
+            </label>
+
+            <label class="making-order__label">
+              <span class="making-order__text">
+                Коментарий к доставке *
+              </span>
+              <textarea class="making-order__textarea input" placeholder="Введите текст"></textarea>
+            </label>
+
+            <label class="making-order__label">
+              <span class="making-order__text">
+                Подтвердите согласие на обработку <a class="making-order__link" href="">персональных данных</a> напишите
+                в поле “согласен”
+              </span>
+              <input class="input" type="text" placeholder="Согласен/согласна">
+            </label>
+
+            <div class="making-order__text">
+              Нажимая кнопку «Подтвердить» Вы соглашаетесь с 
+              <a class="making-order__link" href="">
+                пользовательским соглашением
+              </a>
+            </div>
+
+            <button class="making-order__btn btn" type="submit">Подтвердить</button>
+          </div>
+        </form>
       </div>
     </section>
   </main>

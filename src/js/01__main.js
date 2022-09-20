@@ -170,7 +170,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
   function sliders(number) {
     if (x < 1500 && qOne(`.swiper${number}`)) {
-      qOne(`.swiper${number}`).querySelector("ul").classList.add("swiper-wrapper");
+      qOne(`.swiper${number}`)
+        .querySelector("ul")
+        .classList.add("swiper-wrapper");
     }
 
     var swiper2 = new Swiper(`.swiper${number}`, {
@@ -226,5 +228,64 @@ document.addEventListener("DOMContentLoaded", function () {
       orderInfoText.classList.toggle("show");
       orderButton.classList.toggle("active");
     });
+  }
+
+  //select
+  const selectHeader = qAll(".select__header");
+  if (selectHeader) {
+    for (let item of selectHeader) {
+      let select = item.closest(".select");
+      let options = select.querySelectorAll("option");
+
+      select.querySelector("span").innerText = options[0].innerText;
+
+      for (let option of options) {
+        option
+          .closest(".select")
+          .querySelector(
+            "ul"
+          ).innerHTML += `<li><button class="select__item" type="button">${option.innerText}</button></li>`;
+
+        if (option.hasAttribute("selected")) {
+          option.closest(".select").querySelector("span").innerText =
+            option.innerText;
+        }
+      }
+
+      let selectItem = select.querySelectorAll("li");
+      for (let i = 0; i < selectItem.length; i++) {
+        selectItem[i].addEventListener("click", () => {
+          select.querySelector("select").value = selectItem[i].innerText;
+          select.querySelector("span").innerText = selectItem[i].innerText;
+          select.classList.remove("select--active");
+        });
+      }
+
+      item.addEventListener("click", function () {
+        this.closest(".select").classList.toggle("select--active");
+      });
+    }
+  }
+
+  //checkbox
+  const myCheckbox = qOne(".checkbox__box"),
+    choiceSocial = qOne(".making-order__choice");
+
+  myCheckbox.addEventListener("click", () =>
+    choiceSocial.classList.toggle("show")
+  );
+
+  //info кнопки в корзине
+  const makingOrderInfoBtns = qAll(".making-order__info-btn");
+
+  if (makingOrderInfoBtns) {
+    for (const btn of makingOrderInfoBtns) {
+      btn.addEventListener("click", () =>
+        btn
+          .closest("div")
+          .querySelector(".error-message")
+          .classList.toggle("show")
+      );
+    }
   }
 });
