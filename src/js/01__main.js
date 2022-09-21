@@ -288,4 +288,19 @@ document.addEventListener("DOMContentLoaded", function () {
       );
     }
   }
+
+  //click по оверлею закрывает попап
+  const delMessageBtn = qOne(".del-message__btn"),
+  overlay = qOne(".overlay");
+  
+  function closePopap() {
+    const popaps = qAll(".popap");
+    for (const popap of popaps) {
+      popap.classList.remove("popap--active");
+    }
+    overlay.classList.remove("overlay--active");
+  }
+
+  delMessageBtn.addEventListener("click", () => closePopap());
+  overlay.addEventListener("click", () => closePopap());
 });

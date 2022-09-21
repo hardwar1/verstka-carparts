@@ -479,6 +479,56 @@
         </form>
       </div>
     </section>
+
+    <div class="popap popap--active del-message">
+      <div class="del-message__text">
+        <p>
+          Некоторых товаров в вашей корзине нет в наличии.
+        </p>
+        <p>
+          Подберите другие или обратитесь к менеджеру для подбора аналога
+        </p>
+      </div>
+
+      <div class="del-message__text del-message__text--black">
+        <p>
+          Товары отсутствующие в наличии удалены!
+        </p>
+      </div>
+
+      <button class="btn del-message__btn" type="button">ОК</button>
+    </div>
+
+    <section class="order-placed">
+      <div class="order-placed__container container">
+        <h2 class="order-placed__title">Ваш заказ оформлен</h2>
+        <div class="order-placed__order-wrapper">
+          Номер Вашего заказа
+          <div class="order-placed__order">
+            <span>1236547532_86</span>
+            <button class="copy-btn" type="button"></button>
+          </div>
+        </div>
+
+        <div class="order-placed__text1">
+          <p>
+            По нему вы сможете отследить статус заказа на нашем сайте или у менеджера
+          </p>
+        </div>
+        <div class="order-placed__text2">
+          <p>
+            Так же Вы можете сгенерировать QR-код вашего заказа
+          </p>
+        </div>
+        <button class="btn" type="button">Получить QR-код</button>
+
+      </div>
+      <div class="order-placed__bg-wrapper">
+        <div class="order-placed__bg" style="background-image: url(images/order-placed-bg.jpg)"></div>
+      </div>
+    </section>
+
+    <div class="overlay overlay--active"></div>
   </main>
   @@include('components/page/_3_footer.html')
   @@include('components/page/_4_scripts.html')

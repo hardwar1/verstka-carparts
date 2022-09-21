@@ -10,6 +10,7 @@ body {
   font-style: normal;
   line-height: 1.3;
   overflow-x: hidden;
+  padding-top: 79px;
 }
 
 .lock {
@@ -411,7 +412,7 @@ body {
   background-position: center;
   background-repeat: no-repeat;
   position: relative;
-  margin-bottom: 140px;
+  margin-bottom: 60px;
 
   &::after {
     content: "";
@@ -564,6 +565,7 @@ body {
 
 // ========= result-search ============
 .result-search {
+  padding-top: 70px;
   &__main-search {
     margin-bottom: 50px;
   }
@@ -1259,7 +1261,6 @@ body {
         display: block;
       }
     }
-
   }
 
   &__wrap-btn {
@@ -2653,3 +2654,167 @@ body {
 }
 
 // =========== /select =========
+// =========== order-placed =========
+.order-placed {
+  font-weight: 700;
+  font-size: 25px;
+  line-height: 29px;
+  padding: 40px 0 60px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: calc(100vh - 79px - 157px);
+
+  &__container {
+    margin-right: 390px;
+    max-width: 1000px;
+
+    @include max-w($md) {
+      margin-right: auto;
+    }
+  }
+
+  &__title {
+    font: inherit;
+    margin-bottom: 45px;
+
+    @include max-w($md) {
+      text-align: center;
+      margin-bottom: 16px;
+    }
+  }
+
+  &__order-wrapper {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+
+    @include max-w($lg) {
+      display: block;
+    }
+  }
+
+  &__order {
+    display: flex;
+    align-items: center;
+    margin-left: 40px;
+    span {
+      margin-right: 6px;
+    }
+
+    @include max-w($lg) {
+      margin-left: 0;
+    }
+  }
+
+  &__text1 {
+    margin-bottom: 100px;
+    margin-bottom: 60px;
+    @include max-w($lg) {
+      font-size: 15px;
+    }
+
+    @include max-w($md) {
+      margin-bottom: 45px;
+    }
+  }
+
+  &__text2 {
+    margin-bottom: 30px;
+    @include max-w($lg) {
+      font-size: 15px;
+    }
+  }
+
+  &__bg-wrapper {
+    position: absolute;
+    z-index: -1;
+    top: 0;
+    right: 0;
+    height: 100%;
+    width: 485px;
+    background-color: #fff;
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-end;
+
+    @include max-w($md) {
+      display: none;
+    }
+
+    &::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      width: 250px;
+      background-image: linear-gradient(90deg, #ededed 0%, rgba(237, 237, 237, 0) 100%);
+    }
+  }
+
+  &__bg {
+    height: 100%;
+    width: 100%;
+
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: bottom right;
+  }
+}
+
+// =========== overlay popap del-message =========
+.overlay {
+  position: fixed;
+  z-index: 49;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(217, 93, 93, 0.49);
+  backdrop-filter: blur(10px);
+  transform: translateX(200vw);
+  transition: transform 0.7s;
+
+  &--active {
+    transform: translateX(0);
+  }
+}
+
+.popap {
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  background-color: #fff;
+  border-radius: 10px;
+  padding: 15px;
+  z-index: 50;
+  transform: translate(-50%, -50%) translateX(200vw);
+  transition: transform 0.7s;
+
+  &--active {
+    transform: translate(-50%, -50%) translateX(0);
+  }
+}
+
+.del-message {
+  max-width: 612px;
+  font-weight: 500;
+  font-size: 17px;
+  line-height: 2;
+  text-align: center;
+
+  &__text {
+    margin-bottom: 18px;
+    &--black {
+      font-weight: 900;
+    }
+  }
+
+  &__btn {
+    width: 180px;
+  }
+}
+
+// =========== /popap =========
