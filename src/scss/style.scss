@@ -2172,7 +2172,7 @@ body {
   padding-top: 50px;
   position: relative;
   overflow: hidden;
-  height: calc(100vh - 170px);
+  height: calc(100vh - 79px - 170px);
   font-weight: 700;
   font-size: 25px;
   line-height: 1.2;
@@ -2181,17 +2181,15 @@ body {
   min-height: 660px;
 
   @include max-w($lg) {
-    height: calc(100vh - 41px);
+    height: calc(100vh - 79px - 41px);
     font-size: 20px;
-  }
-
-  @include max-w($lg) {
-    min-height: 590px;
+    min-height: 441px;
   }
 
   @include max-w($sm) {
     font-size: 14px;
     min-height: 500px;
+    padding-top: 100px;
   }
 
   &__container {
@@ -2258,6 +2256,10 @@ body {
       height: 60%;
     }
 
+    @include max-w($md) {
+      display: none;
+    }
+
     &::after,
     &::before {
       content: "";
@@ -2288,6 +2290,10 @@ body {
   line-height: 1.5;
   color: #000000;
 
+  @include max-w($sm) {
+    padding-top: 80px;
+  }
+
   &__doc {
     margin-bottom: 170px;
   }
@@ -2311,6 +2317,11 @@ body {
     text-transform: uppercase;
     font-size: 20px;
     font-weight: 700;
+    margin-bottom: 10px;
+  }
+
+  p {
+    margin-bottom: 20px;
   }
 }
 // ========= /faq ============
@@ -3071,7 +3082,6 @@ body {
     width: 180px;
   }
 }
-
 // =========== /popap =========
 // =========== details-info =========
 .details-info {
@@ -3101,5 +3111,4 @@ body {
     margin-right: 25px;
   }
 }
-
 // =========== /details-info =========
