@@ -2179,6 +2179,7 @@ body {
   text-align: center;
   color: #000000;
   min-height: 660px;
+  padding-bottom: 70px;
 
   @include max-w($lg) {
     height: calc(100vh - 79px - 41px);
@@ -2188,7 +2189,8 @@ body {
 
   @include max-w($sm) {
     font-size: 14px;
-    min-height: 500px;
+    height: unset;
+    min-height: unset;
     padding-top: 100px;
   }
 
