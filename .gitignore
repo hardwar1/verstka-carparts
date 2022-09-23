@@ -5,6 +5,7 @@
 
 .vscode/
 node_modules/
+code/
 myBlocks/
 package.lock.json
 yarn.lock

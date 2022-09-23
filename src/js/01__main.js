@@ -261,8 +261,14 @@ document.addEventListener("DOMContentLoaded", function () {
         });
       }
 
-      item.addEventListener("click", function () {
-        this.closest(".select").classList.toggle("select--active");
+    }
+
+    const selects = qAll("select");
+    for (const select of selects) {
+      select.addEventListener("click", function(event){
+        console.log(event);
+        select.closest(".select").classList.toggle("select--active");
+
       });
     }
   }

@@ -3,7 +3,7 @@
 
 @@include('components/page/_1_head.html',{
 'title': 'Онлайн магазин автозапчастей | Главная страница',
-'favicon': 'favicon.ico',
+'favicon': 'images/favicon/favicon.ico',
 'favicon192x192': 'images/favicon/android-chrome-192x192.png',
 'favicon512x512': 'images/favicon/android-chrome-512x512.png',
 'favicon16x16': 'images/favicon/favicon-16x16.png',
@@ -347,15 +347,10 @@
             </div>
 
             <div class="making-order__choice">
+
               <label class="making-order__label select">
                 <div class="making-order__text">
                   Способ связи *
-                </div>
-                <div class="select__header">
-                  <span class="select__current">Telegram</span>
-                  <svg width="12" height="24">
-                    <use xlink:href="images/sprite.svg#arrow"></use>
-                  </svg>
                 </div>
                 <select class="hide js-select" name="country" data-validate-field="country">
                   <option value="Россия">Россия</option>
@@ -364,10 +359,13 @@
                   <option value="Бразилия">Бразилия</option>
                   <option value="Мексика">Мексика</option>
                 </select>
-
-                <ul class="select__body">
-
-                </ul>
+                <div class="select__header">
+                  <span class="select__current">Telegram</span>
+                  <svg width="12" height="24">
+                    <use xlink:href="images/sprite.svg#arrow"></use>
+                  </svg>
+                </div>
+                <ul class="select__body"></ul>
               </label>
 
               <label class="making-order__label making-order__label--short">
@@ -412,33 +410,26 @@
                 <div class="making-order__text">
                   Способ доставки *
                 </div>
-                <div class="select__header">
-                  <span class="select__current">Telegram</span>
-                  <svg width="12" height="24">
-                    <use xlink:href="images/sprite.svg#arrow"></use>
-                  </svg>
-                </div>
+
                 <select class="hide js-select" name="country">
                   <option value="Россия" selected>Выбор</option>
                   <option value="Индия">Индия</option>
                   <option value="Бразилия">Бразилия</option>
                   <option value="Мексика">Мексика</option>
                 </select>
-
-                <ul class="select__body select__body--none">
-
-                </ul>
+                <div class="select__header">
+                  <span class="select__current">Telegram</span>
+                  <svg width="12" height="24">
+                    <use xlink:href="images/sprite.svg#arrow"></use>
+                  </svg>
+                </div>
+                <ul class="select__body select__body--none"></ul>
               </label>
             </div>
+
             <label class="making-order__label select">
               <div class="making-order__text">
                 Cпособ оплаты *
-              </div>
-              <div class="select__header">
-                <span class="select__current">Telegram</span>
-                <svg width="12" height="24">
-                  <use xlink:href="images/sprite.svg#arrow"></use>
-                </svg>
               </div>
               <select class="hide js-select" name="country" data-validate-field="country">
                 <option value="Россия" selected>Выбор</option>
@@ -446,10 +437,13 @@
                 <option value="Бразилия">Бразилия</option>
                 <option value="Мексика">Мексика</option>
               </select>
-
-              <ul class="select__body select__body--none">
-
-              </ul>
+              <div class="select__header">
+                <span class="select__current">Telegram</span>
+                <svg width="12" height="24">
+                  <use xlink:href="images/sprite.svg#arrow"></use>
+                </svg>
+              </div>
+              <ul class="select__body select__body--none"></ul>
             </label>
 
             <label class="making-order__label">
@@ -461,7 +455,7 @@
 
             <label class="making-order__label">
               <span class="making-order__text">
-                Подтвердите согласие на обработку <a class="making-order__link" href="">персональных данных</a> напишите
+                Подтвердите согласие на обработку <a class="making-order__link link-anime" href="">персональных данных</a> напишите
                 в поле “согласен”
               </span>
               <input class="input" type="text" placeholder="Согласен/согласна">
@@ -469,7 +463,7 @@
 
             <div class="making-order__text">
               Нажимая кнопку «Подтвердить» Вы соглашаетесь с 
-              <a class="making-order__link" href="">
+              <a class="making-order__link link-anime" href="">
                 пользовательским соглашением
               </a>
             </div>
