@@ -3,14 +3,16 @@
 
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport"
+    content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Онлайн магазин автозапчастей | Главная страница</title>
   <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
   <link rel="icon" sizes="192x192" href="images/favicon/android-chrome-192x192.png">
   <link rel="icon" sizes="512x512" href="images/favicon/android-chrome-512x512.png">
   <link rel="icon" sizes="16x16" href="images/favicon/favicon-16x16.png">
-  <link rel="icon" sizes="32x32" href="images/favicon/favicon-32x32.png" >
-  <link rel="apple-touch-icon"  sizes="" href="images/favicon/apple-touch-icon.png" >
+  <link rel="icon" sizes="32x32" href="images/favicon/favicon-32x32.png">
+  <link rel="apple-touch-icon" sizes="" href="images/favicon/apple-touch-icon.png">
   <link rel="stylesheet" href="css/libs.min.css">
   <link rel="stylesheet" href="css/style.min.css">
 </head>
@@ -25,24 +27,24 @@
 
       <ul class="header__menu menu">
         <li class="menu__item">
-          <a class="menu__link link-anime" href="">
+          <button class="menu__link link-anime" type="button"  onclick="showcase()">
             Главная
-          </a>
+          </button>
         </li>
         <li class="menu__item">
-          <a class="menu__link link-anime" href="">
+          <button class="menu__link link-anime" type="button" onclick="basket()">
             Корзина
-            <span class="cart-much">356</span>
-          </a>
+            <span class="cart-much">333</span>
+
+          </button>
         </li>
         <li class="menu__item">
-          <a class="menu__link link-anime" href="">
+          <button class="menu__link link-anime" type="button" onclick="look_at_orders()">
             Отследить
-          </a>
+          </button>
         </li>
       </ul>
     </nav>
-
 
   </div>
 </header>
@@ -115,34 +117,34 @@
 
           <ul class="footer__menu">
             <li class="footer__item">
-              <a class="footer__link link-anime" href="">
+              <button class="footer__link link-anime" onclick="faq()" type="button">
                 Оплата
-              </a>
+              </button>
             </li>
             <li class="footer__item">
-              <a class="footer__link link-anime" href="">
+              <button class="footer__link link-anime" onclick="faq()" type="button">
                 Доставка
-              </a>
+              </button>
             </li>
             <li class="footer__item">
-              <a class="footer__link link-anime" href="">
+              <button class="footer__link link-anime" onclick="faq()" type="button">
                 Возвраты
-              </a>
+              </button>
             </li>
             <li class="footer__item">
-              <a class="footer__link link-anime" href="">
+              <button class="footer__link link-anime" onclick="faq()" type="button">
                 Часто задаваемые вопросы
-              </a>
+              </button>
             </li>
             <li class="footer__item">
-              <a class="footer__link link-anime" href="">
+              <button class="footer__link link-anime" onclick="policy_privacy()" type="button">
                 Политика конфиденциальности
-              </a>
+              </button>
             </li>
             <li class="footer__item">
-              <a class="footer__link link-anime" href="">
+              <button class="footer__link link-anime" onclick="offer()" type="button">
                 Пользовательское соглашение
-              </a>
+              </button>
             </li>
           </ul>
 

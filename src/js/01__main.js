@@ -196,6 +196,12 @@ document.addEventListener("DOMContentLoaded", function () {
   sliders("2");
   sliders("3");
 
+  const suggestionsByDescriptionlinks = qAll('#suggestions_by_description a');
+  console.log(suggestionsByDescriptionlinks);
+  for (const link of suggestionsByDescriptionlinks) {
+    link.addEventListener("click", () => {sliders("2"); sliders("3");});
+  }
+
   //quantity инпут с + и -
   if (qOne(".number-input__btn--plus")) {
     const quantityPlusBtn = qAll(".number-input__btn--plus"),

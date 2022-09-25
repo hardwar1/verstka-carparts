@@ -21,6 +21,14 @@ body {
   }
 }
 
+input.input:valid {
+  border: 2px solid #37ff05;
+}
+
+input.input:invalid:not(:placeholder-shown) {
+  border: 2px solid #fb0000;
+}
+
 .lock {
   overflow: hidden;
 }
@@ -88,6 +96,7 @@ body {
   }
 
   &__link {
+    @include no-btn;
     padding: 13px 0;
     display: inline-block;
     position: relative;
@@ -585,9 +594,6 @@ body {
   position: relative;
 
   &--big {
-    // .main-search__label {
-    //   max-width: 800px;
-    // }
     max-width: 800px;
     margin: 0 auto;
   }
@@ -663,6 +669,42 @@ body {
       display: block;
     }
   }
+
+  &__search-btn {
+    @include no-btn;
+    position: absolute;
+    right: 0;
+    top: 3px;
+    height: 38px;
+    width: 66px;
+    border-left: 1px solid #adadad;
+    outline: 0;
+
+    &::after {
+      content: "";
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 23px;
+      height: 23px;
+      background-image: url(../images/sprite.svg#search);
+      background-position: center;
+      background-size: contain;
+      background-repeat: no-repeat;
+      transition: width 0.3s, height 0.3s;
+    }
+
+    &:focus::after {
+      width: 28px;
+      height: 28px;
+    }
+
+    &:hover::after {
+      width: 35px;
+      height: 35px;
+    }
+  }
 }
 // ========= /main-search ============
 
@@ -720,6 +762,8 @@ body {
     padding: 80px 70px;
     max-width: 900px;
     width: 100%;
+    position: relative;
+    z-index: 20;
 
     @include max-w($lg) {
       padding: 30px 15px;
@@ -1282,7 +1326,6 @@ body {
     &:hover {
       background-color: rgba(0, 0, 0, 0.2);
     }
-
 
     &--next {
       left: calc(50vw + 450px);
@@ -2166,28 +2209,25 @@ body {
     display: inline-block;
     width: 30px;
     height: 30px;
-    // transition: 0.3s;
     outline: 0;
 
     svg {
       transition: fill 0.3s, transform 0.1s;
       fill: white;
     }
-    
+
     &:focus svg {
       fill: rgb(234, 230, 183);
     }
-    
-    &:hover svg { 
+
+    &:hover svg {
       fill: rgb(145, 250, 210);
     }
-    
+
     &:active svg {
-      transform: scale(1.2);      
+      transform: scale(1.2);
     }
   }
-
-
 }
 // ========= /social ============
 // ========= footer ============
@@ -2861,13 +2901,12 @@ body {
     &:focus svg {
       transform: translateY(-50%) scale(1.4);
     }
-    
+
     &:hover svg {
       transform: translateY(-50%) rotate(360deg);
     }
-    
+
     &:active {
-            
     }
   }
 
