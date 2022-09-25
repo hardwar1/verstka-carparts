@@ -1,0 +1,182 @@
+{% extends "default.html" %}
+
+{%block content%}
+<html class="image_background" style="background-image: url(static/background_image/0.jpg);">
+<body>
+<div>
+    <div style="width: 60%; margin: 1% 0% 1% 20%;">
+        {%if last_order%}
+            <div class="center_block" style="margin-top: 2%;">
+                <div>
+                    <label>Номер последнего заказа</label>
+                </div>
+                <div>
+                    <label id="label_order" style="color: blue;"><u>{{ last_order }}</u></label>
+                    <button style="border-radius: 4px; border: none;" onclick="copy()"><img src="{{ url_for('static', filename='clipboard.png') }}" width="16" height="16"></button>
+                    <label style="display: none;" id="on_copied">скопировано</label>
+                </div>
+            </div>
+        {%endif%}
+
+        <div class="center_block" style="margin-top: 2%;">
+            <label>Введите номер заказа или обращения и нажмите "Найти"</label>
+        </div>
+    </div>
+    <form class="center_block">
+        <div>
+            <input class="center_block registry_input"   pattern="^[0-9]{10}_[0-9]{2,3}$" type="text"   name="search" placeholder="номер заказа или обращения" required>
+        </div>
+        <div>
+            <button type="submit" formmethod="get">Найти</button>
+        </div>
+    </form>
+
+    {%if help_order%}
+        <div class="center_block">
+            {%if help_order['uuid_order']%}
+                <div>
+                    <label>Номер заказа прикреплённый к обращению: </label>
+                    <label id="label_order_2" style="color: blue;"><u>{{ help_order['uuid_order'] }}</u></label>
+                    <button style="border-radius: 4px; border: none;" onclick="copy_2()"><img src="{{ url_for('static', filename='clipboard.png') }}" width="16" height="16">
+                        <span style="position: absolute; padding-left: 0.6%;">
+                            <label style="display: none;" id="on_copied_2">скопировано</label>
+                        </span>
+                    </button>
+                </div>
+            {%endif%}
+            {%if help_order['date_complete']%}
+                <div>
+                    <label>Время закрытия обращения: {{ help_order['date_complete'] }}</label>
+                </div>
+            {%endif%}
+            {%if help_order['text_client']%}
+                <div>
+                    <label>Ваш текст: "{{ help_order['text_client'] }}"</label>
+                </div>
+            {%endif%}
+            {%if help_order['text_manager']%}
+                <div>
+                    <label>Текст (ответ) менеджера: "{{ help_order['text_manager'] }}"</label>
+                </div>
+            {%endif%}
+        </div>
+    {%endif%}
+
+    {%if order%}
+        <div style="text-align: center; margin-top: 2%;">
+            {%if number_order%}
+                <div>
+                    <label>Номер заказа: {{ number_order }}</label>
+                </div>
+            {%endif%}
+
+            {%if order['status'] != 'Возврат'%}
+                <div>
+                    <label>Статус заказа: "<u style="{{ color_status_order(order['status']) }}">{{ order['status'] }}</u>"</label>
+                </div>
+            {%else%}
+                <div>
+                    <label>Статус заказа: "<u style="{{ color_status_order('Выполнен') }}">Выполнен</u>"</label>
+                </div>
+            {%endif%}
+
+            {%if order['status_description']%}
+                <div style="margin-top: 1%; margin-bottom: 1%; color: red">
+                    <label>Причина: {{ order['status_description'] }}</label>
+                </div>
+            {%endif%}
+
+            {%if order['personal_info']['tel'] == ''%}
+                <div>
+                    <label>Контактный номер: Не указан</label>
+                </div>
+            {%else%}
+                <div>
+                    <label>Контактный номер: {{ order['personal_info']['tel'] }}</label>
+                </div>
+            {%endif%}
+
+            <div>
+                <label>Стоимость заказа: {{ order['all_costs'] }} руб.</label>
+            </div>
+
+
+            
+            <form style="text-align: center; margin-top: 2%;">
+                <button type="submit" formmethod="post" formtarget="_blank" name="detail_info" value="True">Детальная информация</button>
+            </form>
+
+            {%if order['accept_payment']%}
+                <form>
+                    <button type="submit" formmethod="post" name="payment_bank" value="True">Оплатить</button>
+                </form>
+            {%endif%}
+
+            {%if order['status'] == 'Ожидает рассмотрения' or order['status'] == 'Ожидает оплаты'%}
+                <form>
+                    <button type="submit" formmethod="post" name="cancel_order" value="True">Отменить заказ</button>
+                </form>
+            {%endif%}
+        </div>
+    {%endif%}
+
+    {%if canceled_order%}
+        <div style="text-align: center; margin-top: 2%;">
+            {%if canceled_order == ''%}
+                <div>
+                    <label>Заказ не найден ...</label>
+                </div>
+            {%endif%}
+            {%if canceled_order == 'True'%}
+                <div>
+                    <label>Заказ был отменён!</label>
+                </div>
+            {%endif%}
+            {%if canceled_order == 'False'%}
+                <div>
+                    <label>Заказ уже оплачен. Отменить его может только менеджер. Свяжитесь с менеджером.</label>
+                </div>
+            {%endif%}
+        </div>
+    {%endif%}
+
+    {%if payment_incorrect%}
+        <div style="text-align: center;">
+            <label>Оплата не удалась, попробуйте повторить позднее...</label>
+        </div>
+    {%endif%}
+
+    {%if incorrect_order%}
+        <div class="center_block" style="margin-top: 2%; color: red;">{{ incorrect_order }}</div>
+    {%endif%}
+</div>
+</body>
+<script>
+    function on_copy() {document.getElementById('on_copied').setAttribute('style', 'display: inherit; color: #00ff00; font-size: 13px;');}
+    function copy() {
+    on_copy()
+    var text = document.getElementById('label_order').textContent;
+    var input = document.createElement('textarea');
+    input.innerHTML = text;
+    document.body.appendChild(input);
+    input.select();
+    var result = document.execCommand('copy');
+    document.body.removeChild(input);
+    return result;
+}
+
+    function on_copy_2() {document.getElementById('on_copied_2').setAttribute('style', 'display: inherit; color: #00ff00; font-size: 13px;');}
+    function copy_2() {
+    on_copy_2()
+    var text = document.getElementById('label_order_2').textContent;
+    var input = document.createElement('textarea');
+    input.innerHTML = text;
+    document.body.appendChild(input);
+    input.select();
+    var result = document.execCommand('copy');
+    document.body.removeChild(input);
+    return result;
+}
+</script>
+</html>
+{%endblock%}

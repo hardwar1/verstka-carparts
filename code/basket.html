@@ -1,0 +1,112 @@
+{% extends "default.html" %}
+
+{%block content%}
+<html class="image_background" style="background-image: url(static/background_image/12.jpg);">
+<body>
+<div class="center_block">
+    {%if all_item%}
+
+        {%if len_basket == True%}
+            <div class="grid_showcase">
+                <div>Название детали</div><div>Производитель</div><div>OE артикул</div><div>Артикул производителя</div><div>В корзине</div><div>Стоимость</div><div></div><div></div>
+            </div>
+        {%endif%}
+
+        {%for provider, parts in all_item.items()%}
+            {%for OE_article, part in parts.items()%}
+                <form class="grid_showcase">
+                    <div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div>
+                    <div style="border: 1px solid black;">{{ part[3] }}</div>
+                    <div style="border: 1px solid black;">{{ part[0] }}</div>
+                    <div style="border: 1px solid black;">{{ part[2] }}</div>
+                    <div style="border: 1px solid black;">{{ part[1] }}</div>
+                    <div style="border: 1px solid black;">{{ part[5] }}</div>
+                    <div style="border: 1px solid black;">{{ int(float(part[4]) * int(part[5])) }}</div>
+                    <form>
+                        <button type="submit" formmethod="post" name="delete_one_item" value="{{ part[1] }}|{{ provider }}">Удалить позицию</button>
+                    </form>
+                </form>
+            {%endfor%}
+        {%endfor%}
+
+        {%if calculate_items[0] != '' and calculate_items[0] != 0%}
+            <div class="center_block">
+                <label>{{ calculate_items[0] }}</label>
+            </div>
+        {%endif%}
+
+        {%if len_basket == True%}
+            <div>
+                <label>Общая стоимость заказа: <u style="font-size: 20px;">{{ get_all_cost_basket() }}</u> рублей.</label>
+            </div>
+            <form style="margin-top: 2%;" class="center_block">
+                <div style="width: 86.4%; text-align: right;">
+                    <button type="submit" formmethod="post" name="delete_all_item" value="basket">Очистить корзину</button>
+                </div>
+            </form>
+        {%endif%}
+
+        {%if len_basket == True%}
+            <form class="center_block">
+                <button type="submit" formmethod="post" name="accept_order" value="accept_order">Оформить заказ</button>
+            </form>
+        {%else%}
+            <div class="center_block">Корзина пуста...</div>
+        {%endif%}
+    {%else%}
+        <div class="center_block">Корзина пуста...</div>
+    {%endif%}
+
+    {%if new_basket%}
+        <div style="margin-bottom: 1%;">
+            <div>
+                <label style="color: red; font-size: 20px;">Внимание! Некоторые товары уже были выкуплены другими клиентами, пока вы собирали корзину.</label>
+            </div>
+            <div>
+                <label style="color: red; font-size: 20px;">Перепроверьте внимательно товары, мы удалили отсутствующее на складах.</label>
+            </div>
+        </div>
+
+        {%if delete_items%}
+            <div class="grid_showcase">
+                <div>Название детали</div><div>Производитель</div><div>OE артикул</div><div>Артикул производителя</div><div>В корзине</div><div>Стоимость</div><div></div><div></div>
+            </div>
+            {%for provider, parts in delete_items.items()%}
+                {%for article, info_part in parts.items()%}
+                    <form class="grid_showcase">
+                        <div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div>
+                        <div style="border: 1px solid black;">{{ info_part[3] }}</div>
+                        <div style="border: 1px solid black;">{{ info_part[0] }}</div>
+                        <div style="border: 1px solid black;">{{ info_part[2] }}</div>
+                        <div style="border: 1px solid black;">{{ info_part[1] }}</div>
+                        <div style="border: 1px solid black;">{{ info_part[5] }}</div>
+                        <div style="border: 1px solid black;">{{ int(float(info_part[4]) * int(info_part[5])) }}</div>
+                    </form>
+                {%endfor%}
+            {%endfor%}
+        {%endif%}
+
+        {%if calculate_items[1] != ''%}
+            <div class="center_block">
+                <label>{{ calculate_items[1] }}</label>
+            </div>
+        {%endif%}
+    {%endif%}
+
+    <form class="center_block" name="manager_help">
+        <div>
+            <input required pattern="^\+79[0-9]{9}|8[0-9]{10}|.{1,150}@.{1,150}\..{2,15}$" class="center_block input_order registry_input order_input" name="email_tel" type="text" title="Введите корректно телефон или E-mail" placeholder="Email или номер телефона">
+        </div>
+        <div>
+            <input class="center_block input_order registry_input order_input" required pattern="^.{6,20}$"  title="Введённое не может быть короче 6 символов" name="vin_code" type="text" placeholder="VIN / Frame код">
+        </div>
+        <div>
+            <textarea  minlength="5" style="width: 30%; height: 60px;" class="center_block" name="text_client" title="Введённое не может быть короче 5 символов" placeholder="Список артикулов производителя или произвольный текст" required></textarea>
+        </div>
+        <div style="margin-bottom: 0.3%;">Нажимая кнопку "Отправить запрос":<br>- Вы даёте согласие на обработку <a href="/policy_privacy" style="color: #1000ff; font-size: 20px;" target="_blank">персональных данных</a><br>- Cоглашаетесь с <a href="/offer" style="color: #1000ff; font-size: 20px;" target="_blank">пользовательским соглашением</a></div>
+        <button style="margin-top: 1%;" type="submit" formmethod="post">Отправить запрос</button>
+    </form>
+</div>
+</body>
+</html>
+{%endblock%}

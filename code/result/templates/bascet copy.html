@@ -1,0 +1,447 @@
+{% extends "default.html" %}
+
+{%block content%}
+    <section class="cart">
+      <div class="container">
+        <div class="cart__empty-text">
+          Воспользуйтесь поиском или обратитесь к менеджеру для подбора товаров
+        </div>
+        {%if all_item%}
+        <h1 class="cart__title title">Ваша корзина</h1>
+
+        <div class="cart__text">
+          <p>
+            Вы выбрали выгодные предложения, оформите заказ пока они есть в наличии и не изменилась стоимость!
+          </p>
+        </div>
+
+        <div class="relative">
+          <div class="table table--cart">
+            {%if len_basket == True%}
+            <div class="table__head">
+              <span class="table__caption table__caption--name">Наименование</span>
+              <span class="table__caption table__caption--brand">Производитель</span>
+              <span class="table__caption table__caption--oe-article">ОЕ Артикул</span>
+              <span class="table__caption table__caption--article">Артикул</span>
+              <span class="table__caption table__caption--much">В корзине</span>
+              <span class="table__caption table__caption--cart">Стоимость</span>
+            </div>
+            {%endif%}
+
+            {%for provider, parts in all_item.items()%}
+            <div class="table__relative">
+              <div class="table__slider swiper swiper2">
+                <ul class="">
+                  {%for OE_article, part in parts.items()%}
+                  <li class="table__item swiper-slide">
+                    <form class="table__inner">
+                      <span class="table__caption">Наименование</span>
+                      <div class="table__text table__text--brand">
+                        {{ part[3] }}
+                      </div>
+                      <span class="table__caption">Производитель</span>
+                      <div class="table__text table__text--name">
+                        {{ part[0] }}
+                      </div>
+                      <span class="table__caption">ОЕ Артикул</span>
+                      <div class="table__text table__text--oe-article">
+                        {{ part[2] }}
+                      </div>
+                      <span class="table__caption">Артикул</span>
+                      <div class="table__text table__text--article">{{ part[1] }}</div>
+                      <span class="table__caption table__caption--much">В корзине</span>
+                      <div class="table__text table__text--much">{{ part[5] }}<span>шт.</span></div>
+                      <span class="table__caption">Стоимость</span>
+
+                      <div class="table__cart">
+                        <span class="table__cost">{{ int(float(part[4]) * int(part[5])) }}<span>руб.</span></span>
+                        <div class="table__wrap-btn">
+                          <button class="table__btn" type="submit" formmethod="post" name="delete_one_item"
+                            value="{{ part[1] }}|{{ provider }}">
+                            <span class="hide">добавить в корзину</span>
+                            <svg width="22" height="22">
+                              <use xlink:href="../static/images/sprite.svg#trash"></use>
+                            </svg>
+                          </button>
+                        </div>
+                      </div>
+
+                    </form>
+                  </li>
+                  {%endfor%}
+                </ul>
+
+                <div class="swiper-pagination"></div>
+              </div>
+
+              <button class="table__arrow table__arrow--prev prev2" type="button"></button>
+              <button class="table__arrow table__arrow--next next2" type="button"></button>
+            </div>
+          </div>
+          {%endfor%}
+          {%if len_basket == True%}
+          <div class="total">
+            <div class="total__show">
+              <span class="total__text">Итого</span>
+              <span class="total__text total__text--number">{{ get_all_cost_basket() }}<span>руб.</span></span>
+            </div>
+
+            <form>
+              <button class="total__btn btn" formmethod="post" name="delete_all_item" value="basket">
+                Очистить
+              </button>
+            </form>
+          </div>
+          {%endif%}
+
+          {%if len_basket == True%}
+          <form class="cart__btn-wrap">
+            <button class="btn" type="submit" formmethod="post" name="accept_order" value="accept_order">
+              Оформить заказ
+            </button>
+          </form>
+        </div>
+        {%else%}
+        <h1 class="cart__title cart__title--left title">Ваша корзина пуста!</h1>
+        {%endif%}
+        <h1 class="cart__title cart__title--left title">Ваша корзина пуста!</h1>
+        {%else%}
+        {%endif%}
+
+        {%if new_basket%}
+        <h2 class="cart__caption">Мы удалили отсутствующие товары</h2>
+
+        <div class="table table--del">
+          <div class="table__head">
+            <span class="table__caption table__caption--name">Наименование</span>
+            <span class="table__caption table__caption--brand">Производитель</span>
+            <span class="table__caption table__caption--oe-article">ОЕ Артикул</span>
+            <span class="table__caption table__caption--article">Артикул</span>
+            <span class="table__caption table__caption--much">В корзине</span>
+            <span class="table__caption table__caption--cart">Стоимость</span>
+          </div>
+
+          {%for provider, parts in delete_items.items()%}
+          <div class="table__relative">
+            <div class="table__slider swiper swiper3">
+              <ul class="">
+                {%for article, info_part in parts.items()%}
+                <li class="table__item swiper-slide">
+                  <div class="table__inner">
+                    <span class="table__caption">Наименование</span>
+                    <div class="table__text table__text--name">
+                      {{ info_part[3] }}
+                                        </div>
+                    <span class="table__caption">Производитель</span>
+                    <div class="table__text table__text--brand">
+                      {{ info_part[0] }}
+                    </div>
+                    <span class="table__caption">ОЕ Артикул</span>
+                    <div class="table__text table__text--oe-article">
+                      {{ info_part[2] }}
+                    </div>
+                    <span class="table__caption">Артикул</span>
+                    <div class="table__text table__text--article">
+                      {{ info_part[1] }}
+                    </div>
+                    <span class="table__caption table__caption--much">В корзине</span>
+                    <div class="table__text table__text--much">
+                      {{ info_part[5] }}<span>шт.</span></div>
+                    <span class="table__caption">Стоимость</span>
+                    <div class="table__text table__text--cost">
+                      {{ int(float(info_part[4]) * int(info_part[5])) }}<span>руб.</span></div>
+                  </div>
+                </li>
+                {%endfor%}
+              </ul>
+
+              <div class="swiper-pagination"></div>
+            </div>
+            <button class="table__arrow table__arrow--prev prev3" type="button"></button>
+            <button class="table__arrow table__arrow--next next3" type="button"></button>
+          </div>
+          {%endfor%}
+
+        </div>
+        {%endfor%}
+        {%endif%}
+      </div>
+    </section>
+
+    <section class="selection-form">
+      <div class="container selection-form__container">
+        <div class="selection-form__inner" style="background-image: url(../static/images/selecection-bg.jpg)">
+          <div class="selection-form__info">
+            <h2 class="selection-form__title title">
+              Подберём автозапчасти за вас, заполните форму ниже
+            </h2>
+
+            <form class="selection-form__form" name="manager_help">
+              <label for="" class="selection-form__label">
+                <span class="hide">Введите ваш Email или номер телефона</span>
+                <input class="input" placeholder="Email или номер телефона"  pattern="^\+79[0-9]{9}|8[0-9]{10}|.{1,150}@.{1,150}\..{2,15}$" class="center_block input_order registry_input order_input" name="email_tel" type="text" title="Введите корректно телефон или E-mail" required>
+              </label>
+
+              <label for="" class="selection-form__label">
+                <span class="hide">Введите ваш VIN или Frame код</span>
+                <input class="input"  pattern="^.{6,20}$"  title="Введённое не может быть короче 6 символов" name="vin_code" type="text" placeholder="VIN / Frame код" required>
+              </label>
+
+              <label for="" class="selection-form__label">
+                <span class="hide">Напишите Список артикулов автозапчастей или произвольный текст</span>
+                <textarea class="input input--area"
+                  placeholder="Список артикулов автозапчастей или произвольный текст" name="text_client" title="Введённое не может быть короче 5 символов" placeholder="Список артикулов производителя или произвольный текст" required></textarea>
+              </label>
+
+              <div class="selection-form__text">
+                Нажимая кнопку «Отправить» Вы:
+
+                <ul class="selection-form__list">
+                  <li class="selection-form__item">
+                    — Даете право на обработку <a href="/policy_privacy" target="_blank">персональных данных</a>
+                  </li>
+                  <li class="selection-form__item">
+                    — Соглашаетесь с <a href="/offer" target="_blank">пользовательским соглашением</a>
+                  </li>
+                </ul>
+              </div>
+              <button class="selection-form__btn btn" type="submit" formmethod="post">
+                Отправить
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="making-order">
+      <div class="container">
+        <h2 class="title">
+          Общая стоимость заказа 12650 рублей
+          Заполните поля заявки и нажмите «подтвердить»
+        </h2>
+
+        <form class="making-order__body">
+          <div class="making-order__box">
+            <label class="making-order__label">
+              <span class="making-order__text">
+                ФИО
+              </span>
+              <input class="input" type="text" placeholder="Иванов Иван Иванович">
+            </label>
+
+            <label class="making-order__label">
+              <span class="making-order__text">
+                Номер телефона *
+              </span>
+              <input class="input" type="tel" placeholder="+7 (986)568-99-96">
+            </label>
+
+            <div class="making-order__info-wrapper">
+              <label class="making-order__checkbox checkbox">
+                <input class="checkbox__box" type="checkbox">
+                <span class="checkbox__fake">
+                  <svg width="19" height="12">
+                    <use xlink:href="../static/images/sprite.svg#checkbox"></use>
+                  </svg>
+                </span>
+
+                <span class="making-order__text">
+                  не звонить
+                </span>
+              </label>
+
+              <div class="making-order__hover">
+                <button class="making-order__info-btn" type="button"></button>
+
+                <div class="making-order__error-message error-message">
+                  <p>
+                    *Выберите соц. сеть,
+                  </p>
+                  <p>
+                    в которой мы свяжемся с Вами
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div class="making-order__choice">
+
+              <label class="making-order__label select">
+                <div class="making-order__text">
+                  Способ связи *
+                </div>
+                <select class="hide js-select" name="country" data-validate-field="country">
+                  <option value="Россия">Россия</option>
+                  <option value="Китай" selected>Китай</option>
+                  <option value="Индия">Индия</option>
+                  <option value="Бразилия">Бразилия</option>
+                  <option value="Мексика">Мексика</option>
+                </select>
+                <div class="select__header">
+                  <span class="select__current">Telegram</span>
+                  <svg width="12" height="24">
+                    <use xlink:href="../static/images/sprite.svg#arrow"></use>
+                  </svg>
+                </div>
+                <ul class="select__body"></ul>
+              </label>
+
+              <label class="making-order__label making-order__label--short">
+                <span class="hide">
+                  Введите ваше имя в соц сети
+                </span>
+                <input class="input" type="text" placeholder="@ivanovivan">
+              </label>
+            </div>
+
+            <label class="making-order__label">
+              <span class="making-order__text">
+                Электронная почта
+              </span>
+              <input class="input" type="email" placeholder="example@ex.com">
+            </label>
+
+            <label class="making-order__label">
+              <span class="making-order__text">
+                Адрес доставки
+              </span>
+              <input class="input" type="text" placeholder="г. Иваново ул. Ивановская д. 17">
+            </label>
+          </div>
+
+          <div class="making-order__box">
+            <div class="relative">
+              <div class="making-order__hover">
+                <button class="making-order__info-btn making-order__info-btn--position" type="button"></button>
+
+                <div class="making-order__error-message making-order__error-message--2 error-message">
+                  <p>
+                    *Выберите соц. сеть,
+                  </p>
+                  <p>
+                    в которой мы свяжемся с Вами
+                  </p>
+                </div>
+              </div>
+
+              <label class="making-order__label select">
+                <div class="making-order__text">
+                  Способ доставки *
+                </div>
+
+                <select class="hide js-select" name="country">
+                  <option value="Россия" selected>Выбор</option>
+                  <option value="Индия">Индия</option>
+                  <option value="Бразилия">Бразилия</option>
+                  <option value="Мексика">Мексика</option>
+                </select>
+                <div class="select__header">
+                  <span class="select__current">Telegram</span>
+                  <svg width="12" height="24">
+                    <use xlink:href="../static/images/sprite.svg#arrow"></use>
+                  </svg>
+                </div>
+                <ul class="select__body select__body--none"></ul>
+              </label>
+            </div>
+
+            <label class="making-order__label select">
+              <div class="making-order__text">
+                Cпособ оплаты *
+              </div>
+              <select class="hide js-select" name="country" data-validate-field="country">
+                <option value="Россия" selected>Выбор</option>
+                <option value="Индия">Индия</option>
+                <option value="Бразилия">Бразилия</option>
+                <option value="Мексика">Мексика</option>
+              </select>
+              <div class="select__header">
+                <span class="select__current">Telegram</span>
+                <svg width="12" height="24">
+                  <use xlink:href="../static/images/sprite.svg#arrow"></use>
+                </svg>
+              </div>
+              <ul class="select__body select__body--none"></ul>
+            </label>
+
+            <label class="making-order__label">
+              <span class="making-order__text">
+                Коментарий к доставке *
+              </span>
+              <textarea class="making-order__textarea input" placeholder="Введите текст"></textarea>
+            </label>
+
+            <label class="making-order__label">
+              <span class="making-order__text">
+                Подтвердите согласие на обработку <a class="making-order__link link-anime" href="">персональных
+                  данных</a> напишите
+                в поле “согласен”
+              </span>
+              <input class="input" type="text" placeholder="Согласен/согласна">
+            </label>
+
+            <div class="making-order__text">
+              Нажимая кнопку «Подтвердить» Вы соглашаетесь с 
+              <a class="making-order__link link-anime" href="">
+                пользовательским соглашением
+              </a>
+            </div>
+
+            <button class="making-order__btn btn" type="submit">Подтвердить</button>
+          </div>
+        </form>
+      </div>
+    </section>
+
+    <div class="popap popap--active del-message">
+      <div class="del-message__text">
+        <p>
+          Некоторых товаров в вашей корзине нет в наличии.
+        </p>
+        <p>
+          Подберите другие или обратитесь к менеджеру для подбора аналога
+        </p>
+      </div>
+
+      <div class="del-message__text del-message__text--black">
+        <p>
+          Товары отсутствующие в наличии удалены!
+        </p>
+      </div>
+
+      <button class="btn del-message__btn" type="button">ОК</button>
+    </div>
+
+    <section class="order-placed">
+      <div class="order-placed__container container">
+        <h2 class="order-placed__title">Ваш заказ оформлен</h2>
+        <div class="order-placed__order-wrapper">
+          Номер Вашего заказа
+          <div class="order-placed__order">
+            <span>1236547532_86</span>
+            <button class="copy-btn" type="button"></button>
+          </div>
+        </div>
+
+        <div class="order-placed__text1">
+          <p>
+            По нему вы сможете отследить статус заказа на нашем сайте или у менеджера
+          </p>
+        </div>
+        <div class="order-placed__text2">
+          <p>
+            Так же Вы можете сгенерировать QR-код вашего заказа
+          </p>
+        </div>
+        <button class="btn" type="button">Получить QR-код</button>
+
+      </div>
+      <div class="order-placed__bg-wrapper">
+        <div class="order-placed__bg" style="background-image: url(../static/images/order-placed-bg.jpg)"></div>
+      </div>
+    </section>
+
+    
+
+{%endblock%}

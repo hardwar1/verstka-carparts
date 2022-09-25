@@ -1,0 +1,291 @@
+{% extends "default.html" %}
+
+{%block content%}
+
+<section class="look-at-order">
+  <div class="look-at-order__container container">
+    <h1 class="look-at-order__title title">
+      Поиск заказа или обращения по номеру
+    </h1>
+
+    <div class="look-at-order__main-search main-search main-search--big">
+      <form class="main-search__form">
+        <label class="main-search__label">
+          <span class="hide">Введите артикул или наименование</span>
+          <input class="main-search__search input input--main" pattern="^[0-9]{10}_[0-9]{2,3}$" type="text"
+            name="search" placeholder="номер заказа или обращения" required>
+        </label>
+        <button class="main-search__search-btn" type="submit" formmethod="get">
+          <span class="hide"> найти</span>
+        </button>
+      </form>
+    </div>
+
+    <div class="look-at-order__message">
+      <p>
+        Такого заказа не существует
+      </p>
+    </div>
+
+    {%if last_order%}
+    <div class="look-at-order__message">
+      <p>
+        Номер последнего заказа
+      </p>
+      <div class="look-at-order__number">
+        {{ last_order }}
+        <button class="look-at-order__copy-btn copy-btn" onclick="copy()" type="button">
+          <span class="hide">скопировать</span>
+        </button>
+      </div>
+    </div>
+    {%endif%}
+
+    {%if order%}
+    <div class="look-at-order__message look-at-order__message--small">
+      {%if number_order%}
+      <p>
+        Номер заказа: {{ number_order }}
+      </p>
+      {%endif%}
+
+      {%if order['status'] != 'Возврат'%}
+      <p>
+        Стату заказа: "<span style="{{ color_status_order(order['status']) }}">{{ order['status'] }}</span>"
+      </p>
+      {%else%}
+      <p>
+        Стату заказа: "<span style="{{ color_status_order('Выполнен') }}">Выполнен</span>"
+      </p>
+      {%endif%}
+
+      {%if order['status_description']%}
+      <p>
+        Причина: <span style="color: #FF0000">{{ order['status_description'] }}</span>
+      </p>
+      {%endif%}
+
+      {%if order['personal_info']['tel'] == ''%}
+      <p>
+        Ваш номер телефона: Не указан
+      </p>
+      {%else%}
+      <p>
+        Ваш номер телефона: {{ order['personal_info']['tel'] }}
+      </p>
+      {%endif%}
+
+      <p>
+        Сумма заказа: {{ order['all_costs'] }} 100 руб.
+      </p>
+    </div>
+
+    <div class="look-at-order__btns-wrapper">
+      <form>
+        <button class="look-at-order__btn btn" type="submit" formmethod="post" formtarget="_blank" name="detail_info"
+          value="True">
+          Дополнительная информация
+        </button>
+      </form>
+
+      {%if order['accept_payment']%}
+      <form>
+        <button class="look-at-order__btn btn" type="submit" formmethod="post" name="payment_bank" value="True">
+          Оплатить
+        </button>
+      </form>
+      {%endif%}
+
+      {%if order['status'] == 'Ожидает рассмотрения' or order['status'] == 'Ожидает оплаты'%}
+      <button class="look-at-order__btn look-at-order__btn--small btn" type="submit" formmethod="post"
+        name="cancel_order" value="True">
+        Отменить заказ
+      </button>
+      {%endif%}
+    </div>
+    {%endif%}
+
+
+    <div class="look-at-order__info">
+      <button class="look-at-order__button" type="button">
+        Подробнее о статусах
+        <svg width="70" height="70">
+          <use xlink:href="../static/images/sprite.svg#info"></use>
+        </svg>
+
+        <svg width="22" height="30">
+          <use xlink:href="../static/images/sprite.svg#arrow"></use>
+        </svg>
+      </button>
+    </div>
+
+    <div class="look-at-order__info-text">
+      <p>
+        “<span style="color: #858585">Ожидает рассмотрения</span>”- Ваша заявка в очереди на рассмотрение
+      </p>
+      <p>
+        “<span style="color: #FF0000">Отменен</span>”- Заказ был отменен менеджером или клиентом
+      </p>
+      <p>
+        “<span style="color: #FBFF00">Обрабатывается</span>”- Менеджер обрабатывает Ваш заказ, проверяет наличие
+        товаров
+      </p>
+      <p>
+        “<span style="color: #0075FF">Ожидает оплаты</span>”- Ваша заявка подтверждена, товары зарезервированы
+      </p>
+      <p>
+        “<span style="color: #0008FF">В пути</span>”- Ваша заявка подтверждена и оплачена, товары отправлены
+      </p>
+      <p>
+        “<span style="color: #009506">Доставлен</span>”- Ваш заказ прибыл в пункт сортировки и выдачи
+      </p>
+      <p>
+        “<span style="color: #CB00C3">Выполнен</span>”- Ваш заказ получен
+      </p>
+    </div>
+  </div>
+  <div class="look-at-order__bg" style="background-image: url(../static/images/look_at_order-bg.jpg);"></div>
+</section>
+
+<section class="details-info">
+  <div class="container">
+    <h1 class="details-info__title title">
+      Номер заказа: {{ title }}
+    </h1>
+
+    {%for provider, parts in detail_info['basket'].items()%}
+    <div class="table2">
+      <div class="table2__head">
+        <span class="table2__caption table2__caption--brand">Производитель</span>
+        <span class="table2__caption table2__caption--name">Наименование</span>
+        <span class="table2__caption table2__caption--oe-article">ОЕ Артикул</span>
+        <span class="table2__caption table2__caption--article">Артикул</span>
+        <span class="table2__caption table2__caption--much">В корзине</span>
+        <span class="table2__caption table2__caption--cost">Стоимость</span>
+      </div>
+      <div class="table2__relative">
+        <div class="table2__slider">
+          <ul class="table2__list">
+
+            {%for OE_article, part in parts.items()%}
+            <li class="table2__item">
+              <div class="table2__inner">
+                <span class="table2__caption">Наименование</span>
+                <span class="table2__caption">Производитель</span>
+                <div class="table2__text table2__text--name">
+                  {{ part[3] }}
+                </div>
+                <div class="table2__text table2__text--brand">{{ part[0] }}</div>
+                <span class="table2__caption">ОЕ Артикул</span>
+                <span class="table2__caption">Артикул</span>
+                <div class="table2__text table2__text--oe-article">{{ part[2] }}</div>
+                <div class="table2__text table2__text--article">{{ part[1] }}</div>
+                <div class="table2__text table2__text--much">
+                  {{ part[5] }}<span>шт.</span>
+                </div>
+                <div class="table2__text table2__text--cost">
+                  {{ int(float(part[4]) * int(part[5])) }}<span>руб.</span>
+                </div>
+              </div>
+            </li>
+            {%endfor%}
+
+          </ul>
+
+          <div class="table2__total total">
+            <div class="total__show">
+              <span class="total__text">Итого</span>
+              <span class="total__text total__text--number">{{ detail_info['all_costs'] }}<span>руб.</span></span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    {%endfor%}
+
+    <div class="details-info__text">
+      <p>
+        <span>Номер заказа:</span> ??????????????????
+      </p>
+      <p>
+        <span>Время создания заказа:</span> {{ detail_info['time_create_from_look'] }}
+      </p>
+      <p>
+        <span>Доставка:</span> {{ detail_info['other_info']['delivery'] }}
+      </p>
+      <p>
+        <span>Оплата:</span> {{ detail_info['other_info']['payment'] }}
+      </p>
+      <p>
+        <span>Адрес доставки:</span>
+        {%if detail_info['other_info']['address']%}
+        <span>{{ detail_info['other_info']['address'] }}</span>
+        {%else%}
+        <span>Не указан</span>
+        {%endif%}
+      </p>
+      <p>
+        <span>Сумма заказа:</span> {{ detail_info['all_costs'] }} <span>рублей</span>
+      </p>
+    </div>
+
+    <div class="details-info__text">
+
+      <p class="other_info_detail_order" style="text-align: center;">
+        <span>Текущий способ доставки</span>
+        {{ detail_info['other_info']['delivery'] }}
+      </p>
+      <p class="other_info_detail_order" style="text-align: center;">
+        <span>Текущий способ оплаты</span>
+        {{ detail_info['other_info']['payment'] }}
+      </p>
+      <p class="other_info_detail_order" style="text-align: center; width: 30%;">
+        <span>Адрес доставки</span>
+        {%if detail_info['other_info']['address']%}
+        {{ detail_info['other_info']['address'] }}
+        {%else%}
+        <label style="margin-top: 6.7%; height: 20px; text-align: center;">Не указан</label>
+        {%endif%}
+      </p>
+
+    </div>
+
+    <form class="details-info__btn-wrapper">
+      <button class="details-info__btn btn" formmethod="post" name="qr_code" value="True">QR-код</button>
+      <button class="details-info__btn btn" onclick="window.print()" type="button">PDF</button>
+    </form>
+
+  </div>
+</section>
+
+
+<script>
+  function on_copy() { document.getElementById('on_copied').setAttribute('style', 'display: inherit; color: #00ff00; font-size: 13px;'); }
+  function copy() {
+    on_copy()
+    var text = document.getElementById('label_order').textContent;
+    var input = document.createElement('textarea');
+    input.innerHTML = text;
+    document.body.appendChild(input);
+    input.select();
+    var result = document.execCommand('copy');
+    document.body.removeChild(input);
+    return result;
+  }
+
+  function on_copy_2() { document.getElementById('on_copied_2').setAttribute('style', 'display: inherit; color: #00ff00; font-size: 13px;'); }
+  function copy_2() {
+    on_copy_2()
+    var text = document.getElementById('label_order_2').textContent;
+    var input = document.createElement('textarea');
+    input.innerHTML = text;
+    document.body.appendChild(input);
+    input.select();
+    var result = document.execCommand('copy');
+    document.body.removeChild(input);
+    return result;
+  }
+</script>
+
+
+{%endblock%}

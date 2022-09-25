@@ -1,0 +1,45 @@
+{% extends "default.html" %}
+
+{%block content%}
+<html class="image_background" style="background-image: url(static/background_image/0.jpg);">
+<body>
+<div style="text-align: center;">
+    {%if number_help_order%}
+        <div>
+            <div>
+                <label>Спасибо!<br>Обращение принято, скоро менеджер свяжется с Вами и поможет подобрать автозапчасти.<br>Обязательно запишите номер обращения.</label>
+            </div>
+            <div class="center_block" style="display: inline-flex;">
+                <label>Номер обращения: </label>
+                <label id="label_order"><u style="color: blue;">{{ number_help_order }}</u></label>
+                <div>
+                    <button style="margin-left: 15px; margin-right: 15px; padding: 6px 6px 0px 6px; border-radius: 16px; border: 0.5px solid;" onclick="copy()"><img src="{{ url_for('static', filename='clipboard.png') }}" width="16" height="16"></button>
+                    <label style="display: none;" id="on_copied">скопировано</label>
+                </div>
+            </div>
+        </div>
+    {%endif%}
+
+    {%if re_captcha_bad%}
+        <div class="center_block">
+            <label>Ваше обращение не принято, так как вы неверно решили Captcha.</label>
+            <label>Вернитесь и попробуйте снова.</label>
+        </div>
+    {%endif%}
+</div>
+</body>
+<script>
+    function on_copy() {document.getElementById('on_copied').setAttribute('style', 'display: inherit; color: #00ff00; font-size: 13px;');}
+    function copy() {
+    on_copy()
+    var text = document.getElementById('label_order').textContent;
+    var input = document.createElement('textarea');
+    input.innerHTML = text;
+    document.body.appendChild(input);
+    input.select();
+    var result = document.execCommand('copy');
+    document.body.removeChild(input);
+    return result;}
+</script>
+</html>
+{%endblock%}

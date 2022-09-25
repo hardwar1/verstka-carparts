@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport"
+    content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <meta property="og:url" content="https://auto-spaparts.ru" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Оригинальные автозапчасти от производителя!" />
+  <meta property="og:description"
+    content="У нас вы можете заказать автозапчасти на популярные и редкие марки автомобилей. Работаем с поставщиками по всему миру. Доставка по РФ." />
+  <meta property="og:image" content="https://auto-spaparts.ru/static/og_background.jpg" />
+  <meta name="abuseipdb-verification" content="iSLaKgFS" />
+  <meta name="yandex-verification" content="ee9128076c312ee3" />
+  <title>{%if title%}{{ title }}{%else%}title not found!{%endif%}</title>
+
+  <link rel="shortcut icon" href="../static/../static/../static/../static/images/favicon/favicon.ico" type="image/x-icon">
+  <link rel="icon" sizes="192x192" href="../static/../static/../static/../static/images/favicon/android-chrome-192x192.png">
+  <link rel="icon" sizes="512x512" href="../static/../static/../static/../static/images/favicon/android-chrome-512x512.png">
+  <link rel="icon" sizes="16x16" href="../static/../static/../static/../static/images/favicon/favicon-16x16.png">
+  <link rel="icon" sizes="32x32" href="../static/../static/../static/../static/images/favicon/favicon-32x32.png">
+  <link rel="apple-touch-icon" sizes="" href="../static/../static/../static/../static/images/favicon/apple-touch-icon.png">
+  <link rel="stylesheet" href="../static/libs.min.css">
+  <link rel="stylesheet" href="../static/style.min.css">
+
+  <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}" />
+  <link rel="stylesheet" href="{{ url_for('static', filename='style_site.css') }}" />
+  <script
+    type="text/javascript"> (function (m, e, t, r, i, k, a) { m[i] = m[i] || function () { (m[i].a = m[i].a || []).push(arguments) }; m[i].l = 1 * new Date(); k = e.createElement(t), a = e.getElementsByTagName(t)[0], k.async = 1, k.src = r, a.parentNode.insertBefore(k, a) })(window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym"); ym(88354438, "init", { clickmap: true, trackLinks: true, accurateTrackBounce: true, webvisor: true });</script>
+  <noscript>
+    <div>
+      <img src="https://mc.yandex.ru/watch/88354438" style="position:absolute; left:-9999px;" alt="" />
+    </div>
+  </noscript>
+  <noscript>
+    <div>
+      <img src="https://mc.yandex.ru/watch/88354438" style="position:absolute; left:-9999px;" alt="" />
+    </div>
+  </noscript>
+  <script type="text/javascript">
+    var _tmr = window._tmr || (window._tmr = []);
+    _tmr.push({ id: "3249709", type: "pageView", start: (new Date()).getTime() });
+    (function (d, w, id) {
+      if (d.getElementById(id)) return;
+      var ts = d.createElement("script"); ts.type = "text/javascript"; ts.async = true; ts.id = id;
+      ts.src = "https://top-fwz1.mail.ru/js/code.js";
+      var f = function () { var s = d.getElementsByTagName("script")[0]; s.parentNode.insertBefore(ts, s); };
+      if (w.opera == "[object Opera]") { d.addEventListener("DOMContentLoaded", f, false); } else { f(); }
+    })(document, window, "topmailru-code");
+  </script>
+  <noscript>
+    <div>
+      <img src="https://top-fwz1.mail.ru/counter?id=3249709;js=na" style="border:0;position:absolute;left:-9999px;"
+        alt="Top.Mail.Ru" />
+    </div>
+  </noscript>
+  <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+</head>
+
+<body>
+  {%block header%}
+  <header class="header">
+    <div class="container container--big">
+      <nav class="header__nav">
+        <a class="header__logo logo" href="">
+          <img class="logo__img" src="../static/../static/../static/../static/images/logo.svg" height="65" width="70" alt="логотип Автозапчаси">
+        </a>
+
+        <ul class="header__menu menu">
+          <li class="menu__item">
+            <button class="menu__link link-anime" type="button" onclick="showcase()">
+              Главная
+            </button>
+          </li>
+          <li class="menu__item">
+            <button class="menu__link link-anime" type="button" onclick="basket()">
+              Корзина
+              {%if get_basket_items() != 0%}
+              <span class="cart-much">{{ get_basket_items() }}</span>
+              {%endif%}
+            </button>
+          </li>
+          <li class="menu__item">
+            <button class="menu__link link-anime" type="button" onclick="look_at_orders()">
+              Отследить
+            </button>
+          </li>
+        </ul>
+      </nav>
+
+    </div>
+  </header>
+  {%endblock%}
+  <main class="main">
+    
+    {%block content%}
+
+    {%endblock%}
+
+  </main>
+  {%block footer%}
+  <footer class="footer">
+    <div class="container container--big">
+      <div class="footer__adaptive-menu">
+        <div class="footer__inner">
+          <div class="footer__top">
+            <button class="footer__burger burger burger--close" type="button">
+              <span class="burger__line"></span>
+              <span class="hide"> открыть/закрыть меню</span>
+            </button>
+
+            <a class="footer__logo logo">
+              <svg width="142" height="132">
+                <use xlink:href="../static/../static/../static/../static/images/sprite.svg#logo"></use>
+              </svg>
+              <span class="hide">логотип</span>
+            </a>
+
+            <ul class="footer__menu">
+              <li class="footer__item">
+                <button class="footer__link link-anime" onclick="faq()" type="button">
+                  Оплата
+                </button>
+              </li>
+              <li class="footer__item">
+                <button class="footer__link link-anime" onclick="faq()" type="button">
+                  Доставка
+                </button>
+              </li>
+              <li class="footer__item">
+                <button class="footer__link link-anime" onclick="faq()" type="button">
+                  Возвраты
+                </button>
+              </li>
+              <li class="footer__item">
+                <button class="footer__link link-anime" onclick="faq()" type="button">
+                  Часто задаваемые вопросы
+                </button>
+              </li>
+              <li class="footer__item">
+                <button class="footer__link link-anime" onclick="policy_privacy()" type="button">
+                  Политика конфиденциальности
+                </button>
+              </li>
+              <li class="footer__item">
+                <button class="footer__link link-anime" onclick="offer()" type="button">
+                  Пользовательское соглашение
+                </button>
+              </li>
+            </ul>
+
+            <ul class="footer__list">
+              <li class="footer__text">
+                ИП Иванов И.И.
+              </li>
+              <li class="footer__text">
+                ИНН: <span>1234567890</span>
+              </li>
+              <li class="footer__text">
+                ОГРН: <span>1234567890</span>
+              </li>
+              <li class="footer__text">
+                Р/с: <span>1234567890</span>
+              </li>
+              <li class="footer__text">
+                <address>
+                  Адрес: <span>г. Краснодар</span>
+                </address>
+              </li>
+            </ul>
+
+            <address class="footer__address">
+              <a class="footer__text link-anime" href="mailto:avto.zapchasti.tech@yandex.ru">
+                avto.zapchasti.tech@yandex.ru
+              </a>
+              <a class="footer__text link-anime" href="mailto:avto.zapchasti.support@yandex.ru">
+                avto.zapchasti.support@yandex.ru
+              </a>
+              <a class="footer__text link-anime" href="tel:+79898273998">
+                +7-989-827-39-98
+              </a>
+
+              <ul class="footer__social social">
+                <li class="social__item">
+                  <a class="social__link" href="" class="social__link">
+                    <span class="hide">наш ватсап</span>
+                    <svg width="30" height="30">
+                      <use xlink:href="../static/../static/../static/../static/images/sprite.svg#whatsapp"></use>
+                    </svg>
+                  </a>
+                </li>
+
+                <li class="social__item">
+                  <a href="" class="social__link">
+                    <span class="hide">наш телеграм</span>
+                    <svg width="30" height="30">
+                      <use xlink:href="../static/../static/../static/../static/images/sprite.svg#telegram"></use>
+                    </svg>
+                  </a>
+                </li>
+
+                <li class="social__item">
+                  <a href="" class="social__link">
+                    <span class="hide">наш вайбер</span>
+                    <svg width="30" height="30">
+                      <use xlink:href="../static/../static/../static/../static/images/sprite.svg#viber"></use>
+                    </svg>
+                  </a>
+                </li>
+              </ul>
+            </address>
+          </div>
+
+          <div class="footer__copy-wrap">
+            <a class="footer__logo-mobile logo">
+              <svg width="27" height="27">
+                <use xlink:href="../static/../static/../static/../static/images/sprite.svg#logo"></use>
+              </svg>
+              <span class="hide">логотип</span>
+            </a>
+            <span class="footer__copy">
+              © design by Andrey Dereza
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <nav class="footer__nav ">
+      <div class="footer__container container">
+        <ul class="footer__nav-list">
+          <li class="footer__nav-item">
+            <a class="footer__nav-link" href="">
+              <svg height="33" width="33">
+                <use xlink:href="../static/../static/../static/../static/images/sprite.svg#footer-nav1"></use>
+              </svg>
+              <span class="hide">Главная</span>
+            </a>
+          </li>
+
+          <li class="footer__nav-item">
+            <a class="footer__nav-link" href="">
+              <svg height="33" width="33">
+                <use xlink:href="../static/../static/../static/../static/images/sprite.svg#footer-nav2"></use>
+              </svg>
+              <span class="hide">Отследить</span>
+            </a>
+          </li>
+
+          <li class="footer__nav-item">
+            <a class="footer__nav-link" href="">
+              <svg height="33" width="33">
+                <use xlink:href="../static/../static/../static/../static/images/sprite.svg#footer-nav3"></use>
+              </svg>
+              <span class="hide">Корзина</span>
+              <span class="footer__cart-much cart-much">356</span>
+            </a>
+          </li>
+
+          <li class="footer__nav-item">
+            <button class="footer__nav-link js-menu" type="button">
+              <svg height="33" width="33">
+                <use xlink:href="../static/../static/../static/../static/images/sprite.svg#footer-nav4"></use>
+              </svg>
+              <span class="hide">Информация</span>
+            </button>
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+  </footer>
+  <div class="overlay overlay--active"></div>
+  {%endblock%}
+  <script src="js/libs.min.js"></script>
+  <script src="js/main.min.js"></script>
+  <script>
+    function showcase() { return window.location.assign("/"); }
+    function basket() { return window.location.assign("/basket"); }
+    function look_at_orders() { return window.location.assign("/order"); }
+    function policy_privacy() { return window.location.assign("/policy_privacy"); }
+    function offer() { return window.location.assign("/offer"); }
+    function faq() { return window.location.assign("/faq"); }
+  </script>
+
+</body>
+
+</html>

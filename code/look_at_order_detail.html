@@ -1,0 +1,75 @@
+{% extends "default.html" %}
+
+{%block content%}
+<html class="image_background" style="background-image: url(static/background_image/0.jpg);">
+<body>
+<div>
+    <div style="text-align: center; margin-bottom: 1%;">
+        <label>Номер заказа: {{ title }}</label>
+    </div>
+
+    <div style="margin-bottom: 1%; text-align: center;">
+        {%for provider, parts in detail_info['basket'].items()%}
+            <div style="text-align: center;" class="grid_showcase">
+                <div>Название детали</div><div>Производитель</div><div>OE артикул</div><div>Артикул производителя</div><div>В заказе</div><div>Стоимость</div>
+            </div>
+            {%for OE_article, part in parts.items()%}
+                <form class="grid_showcase">
+                    <div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div>
+                    <div style="border: 1px solid black; text-align: center;">{{ part[3] }}</div>
+                    <div style="border: 1px solid black; text-align: center;">{{ part[0] }}</div>
+                    <div style="border: 1px solid black; text-align: center;">{{ part[2] }}</div>
+                    <div style="border: 1px solid black; text-align: center;">{{ part[1] }}</div>
+                    <div style="border: 1px solid black; text-align: center;">{{ part[5] }}</div>
+                    <div style="border: 1px solid black;">{{ int(float(part[4]) * int(part[5])) }}</div>
+                </form>
+            {%endfor%}
+        {%endfor%}
+    </div>
+
+    <div style="border: 1px solid black; padding: 1% 0% 1% 1%;">
+        <label>Время создания заказа: </label>
+        <label><u>{{ detail_info['time_create_from_look'] }}</u></label>
+    </div>
+
+    <div style="border: 1px solid black; padding: 1% 0% 1% 1%;">
+        <div>
+            <div class="other_info_detail_order" style="text-align: center;">
+                <label>Текущий способ доставки</label>
+                <label><u>{{ detail_info['other_info']['delivery'] }}</u></label>
+            </div>
+            <div class="other_info_detail_order" style="text-align: center;">
+                <label>Текущий способ оплаты</label>
+                <label><u>{{ detail_info['other_info']['payment'] }}</u></label>
+            </div>
+            <div class="other_info_detail_order" style="text-align: center; width: 30%;">
+                <label>Адрес доставки</label>
+                {%if detail_info['other_info']['address']%}
+                    <label style="margin-top: 6.7%; height: 20px; text-align: center;">{{ detail_info['other_info']['address'] }}</label>
+                {%else%}
+                    <label style="margin-top: 6.7%; height: 20px; text-align: center;">Не указан</label>
+                {%endif%}
+            </div>
+        </div>
+    </div>
+
+    <div style="border: 1px solid black; padding: 1% 0% 1% 1%;">
+        <div class="other_info_detail_order" style="text-align: center; margin-left: 2%;">
+            <label style="margin-top: 3.5%;">Общая сумма заказа: </label>
+        </div>
+        <div class="other_info_detail_order" style="text-align: center; margin-left: 1%;">
+            <label style="font-size: 25px; text-decoration: underline;">{{ detail_info['all_costs'] }} рублей</label>
+        </div>
+    </div>
+
+    <form style="margin-top: 1%;">
+        <div style="text-align: center;">
+            <button type="submit" formmethod="post" name="qr_code" value="True">QR-код заказа</button>
+<!--            <button type="submit" formmethod="post" name="pdf_file" value="True">PDF-файл заказа</button>-->
+            <button type="button" onclick="window.print()">Вывести на печать</button>
+        </div>
+    </form>
+</div>
+</body>
+</html>
+{%endblock%}

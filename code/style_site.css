@@ -1,0 +1,213 @@
+html.image_background {
+	background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position-x: center;
+    background-position-y: center;
+}
+
+input.hide_arrows_input::-webkit-outer-spin-button,
+input.hide_arrows_input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+input.hide_arrows_input[type=number] {
+    -moz-appearance:textfield; /* Firefox */
+}
+
+*.header {
+	text-align: center;
+	margin-top: 2%;
+}
+
+*.header_button {
+	width: 10%;
+    height: 40px;
+	font-weight: bold;
+    font-family: cursive;
+	font-size: 100%;
+	border-radius: 10px 10px 10px 10px;
+    border-width: 4px;
+}
+
+.header_button_logout {
+    width: 4%;
+	font-weight: bold;
+    font-family: cursive;
+	font-size: 80%;
+	border-radius: 3px 3px 3px 3px;
+    border-width: 1.5px;
+}
+
+.button_policy_privacy {
+	top: auto;
+    left: 20px;
+	bottom: 20px;
+    position: fixed;
+	font-weight: bold;
+    font-family: cursive;
+	font-size: 80%;
+	border-radius: 3px 3px 3px 3px;
+    border-width: 1.5px;
+}
+
+.order_form {
+	display: grid;
+    text-align: center;
+	margin: 0px 10% 0px 10%;
+}
+
+label.cursor_link:hover {
+    cursor: pointer;
+}
+
+label.registry_label {
+    color: red;
+    font-size: 10px;
+    width: 23%;
+    display: inline-block;
+}
+
+.grid_showcase {
+    display: grid;
+    grid-template-columns: 20% 10% 10% 10% 10% 15% 10% 10%;
+    grid-gap: 0.5vw;
+}
+
+.grid_showcase_button {
+    width: 75%;
+    height: 20px;
+    margin-left: 12%;
+}
+
+.grid_basket {
+    display: grid;
+    width: 90%;
+    grid-template-columns: 20% 10% 10% 10% 10% 15%;
+    grid-gap: 0.5vw;
+}
+
+.grid_admin_orders {
+    display: grid;
+    margin: 2% 0% 2% 26%;
+    grid-template-columns: 20% 30% 5%;
+    grid-gap: 0.5vw;
+}
+
+.small_margin {
+    margin-bottom: 0.3%;
+    margin-top: 3%;
+}
+
+.other_info_detail_order {
+    display: inline-grid;
+    margin-left: 1%;
+    grid-template-columns: 100%;
+}
+
+.label_admin_menu {
+    text-align: center;
+    font-size: 25px;
+    background-color: #0095ff;
+    width: 20%;
+    margin-left: 40%;
+    margin-bottom: 10px;
+    margin-top: 15px;
+}
+
+.label_admin_detail_order {
+    text-align: center;
+    font-size: 27px;
+    margin-bottom: 25px;
+    margin-top: 20px;
+}
+
+.input_basket {
+    margin-left: 30%;
+    width: 35%;
+    text-align: center;
+    height: calc(30% + 10px);
+}
+
+.input_basket:hover::-webkit-inner-spin-button {
+    width: 18px;
+    height: 30px;
+}
+
+.form_order_accept {
+    display: block;
+    margin-top: 1%;
+}
+
+.input_order {
+	width: 20%;
+    height: 20px;
+}
+
+.drop_down_order {
+	width: 15%;
+	height: 25px;
+	text-align-last: center;
+}
+
+.label_status_order {
+    margin-bottom: 1%;
+}
+
+.inputs_order_accept {
+    margin-bottom: 1%;
+}
+
+.order_input {
+    width: 15%;
+}
+
+.admin_grid_basket {
+    display: grid;
+    grid-template-columns: 20% 10% 10% 10% 7% 7% 10% 10%;
+    text-align: center;
+    grid-gap: 0.5vw;
+}
+
+.media_screen {
+	zoom: 100%;
+}
+
+*.center_block {
+    text-align: center;
+    margin-bottom: 5px;
+}
+
+.unauth_fields {
+    background-color: rgba(0, 0, 0, 0.75);
+    padding: 10px 10px;
+    border-radius: 10px;
+}
+
+input.registry_input:valid {
+    border: 2px solid #00ff00;
+}
+input.registry_input:invalid:not(:placeholder-shown) {
+    border: 2px solid red;
+}
+input.registry_input:focus {
+    outline: none
+}
+
+.admin_menu {
+    position: fixed;
+    padding: 1% 1% 1% 1%;
+    border-radius: 20px;
+    background-color: #0095ff96;
+    width: 11%;
+    margin: 2% 1% 1% 2%;
+}
+
+.buttons_admin_menu {
+    margin-bottom: 5%;
+    font-size: 9px;
+    width: 100%;
+    width: -moz-available;
+    width: -webkit-fill-available;
+    width: fill-available;
+}

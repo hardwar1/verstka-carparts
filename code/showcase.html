@@ -1,0 +1,222 @@
+{% extends "default.html" %}
+
+{%block content%}
+<html class="image_background" style="background-image: url(static/background_image/0.jpg);">
+<body>
+<div>
+    {%if brand_text%}
+        <div class="center_block">
+            <h3>{{ brand_text }}</h3>
+        </div>
+    {%else%}
+        <div class="center_block">
+            <h3>Найдите автозапчасти любых производителей на ваше авто</h3>
+        </div>
+    {%endif%}
+    <div class="center_block">
+        <p>Сайт ещё находится в разработке, инструменты оплаты не подключены, но вы всё равно можете воспользоваться поиском автозапчастей. Скоро сайт будет иметь отличный дизайн и удобный функционал.</p>
+    </div>
+
+    <form class="center_block">
+        <input required pattern="^.{3,}$" autoComplete="on" list="suggestions_by_description" oninput="search_by_name" title="Введённое не может быть короче 3 символов" class="center_block input_order registry_input search_by_name_input" type="text" placeholder="Артикул производителя или название" name="search" id="search_field">
+        <datalist id="suggestions_by_description">
+        </datalist>
+        <button type="submit" formmethod="get" id="button_okay">Найти</button>
+    </form>
+    <br>
+    <div class="center_block">
+        {%if article_search%}
+            {%if url_image%}
+                {%if url_image[0].get('no_image')%}
+                    <img style="margin-bottom: 2%;" src="{{ url_image[0].get('no_image') }}" width="256" height="256">
+                {%else%}
+                    <div>
+                        {%for site, url in url_image[0].items()%}
+                        
+                            <img src="{{ url }}" width="256" height="256">
+                        {%endfor%}
+                    </div>
+                {%endif%}
+                <div style="margin-top: 1%; margin-bottom: 2%;">
+                    <a href="https://yandex.ru/images/search?text={{ url_image[1] }} {{ url_image[2] }}" target="_blank">Посмотреть картинки в Яндекс</a>
+                </div>
+            {%endif%}
+
+            <div class="grid_showcase">
+                <div>Название детали</div><div>Производитель</div><div>OE артикул</div><div>Артикул производителя</div><div>1 шт./руб.</div><div>Наличие</div><div>Сколько добавить</div><div></div>
+            </div>
+            {%for provider, parts in article_search.items()%}
+                {%for OE_article, part in parts.items()%}
+                    <form class="grid_showcase">
+                        <div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div>
+                        <div style="border: 1px solid black;">{{ part[3] }}</div>
+                        <div style="border: 1px solid black;">{{ part[0] }}</div>
+                        <div style="border: 1px solid black;">{{ part[2] }}</div>
+                        <div style="border: 1px solid black;">{{ part[1] }}</div>
+                        <div style="border: 1px solid black;">{{ part[4] }}</div>
+                        <div style="border: 1px solid black;">{{ part[5] }}</div>
+                        <input type="number" class="input_basket" name="add_part2" value="1" max="{{ part[5] }}" min="1" title="Максимальное значение {{ part[5] }}">
+                        <button type="submit" class="grid_showcase_button" formmethod="post" value="{{ part[0] }}|{{ part[1] }}|{{ part[2] }}|{{ part[3] }}|{{ part[4] }}|{{ part[5] }}|{{ provider }}" name="add_part">Добавить в корзину</button>
+                    </form>
+                {%endfor%}
+            {%endfor%}
+            
+          
+        {%else%}
+            {%if crosses and crosses[0] == False%}
+                <label>Оригиналы отсутствуют у поставщиков...</label><br>
+                <label>Но вы можете попробовать найти кроссовые запчасти</label>
+            {%endif%}
+            {%if crosses and crosses[0] == True%}
+                <label>Оригиналы отсутствуют у поставщиков...</label><br>
+                <label>Но мы нашли аналоги</label>
+            {%endif%}
+            {%if not crosses and main_page%}
+                <label>Оригиналы отсутствуют у поставщиков...</label><br>
+                <label>У товара нет кроссовых запчастей</label>
+            {%endif%}
+        {%endif%}
+
+        {%if not crosses and main_page != '' and not article_search%}
+            <label>Такой оригинальный артикул не найден ...</label>
+        {%endif%}
+
+        {%if article_search == {} or article_search and not crosses%}
+            <form class="center_block" style="margin-top: 2%;">
+                <input hidden type="hidden" name="search" value="{{ cross_article[1] }}">
+                <button style="font-size: 20px;" type="submit" formmethod="get" value="{{ cross_article[0] }}" name="crosses">Показать аналоги</button>
+            </form>
+        {%endif%}
+
+        {%if crosses and crosses[0] == True%}
+            <div style="margin-top: 2%; margin-bottom: 10px;">
+                <label style="font-size: 25px;">Аналоги</label>
+            </div>
+            <div class="grid_showcase">
+                <div>Название детали</div><div>Производитель</div><div>OE артикул</div><div>Артикул производителя</div><div>1 шт./руб.</div><div>Наличие</div><div>Сколько добавить</div><div></div>
+            </div>
+            {%for provider, parts in crosses[1].items()%}
+                {%for OE_article, part in parts.items()%}
+                    <form class="grid_showcase">
+                        <div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div>
+                        <div style="border: 1px solid black;">{{ part[3] }}</div>
+                        <div style="border: 1px solid black;">{{ part[0] }}</div>
+                        {%if part[2] == part[1]%}
+                            <div style="border: 1px solid black;"><span style="color: #00ff00;">оригинал</span></div>
+                            <div style="border: 1px solid black;">{{ part[1] }}</div>
+                        {%else%}
+                            <div style="border: 1px solid black;">{{ part[2] }}</div>
+                            <div style="border: 1px solid black;">{{ part[1] }}</div>
+                        {%endif%}
+                        <div style="border: 1px solid black;">{{ part[4] }}</div>
+                        <div style="border: 1px solid black;">{{ part[5] }}</div>
+                        <input type="number" class="input_basket" name="add_part2" value="1" max="{{ part[5] }}" min="1" title="Максимальное значение {{ part[5] }}">
+                        <button type="submit" class="grid_showcase_button" formmethod="post" value="{{ part[0] }}|{{ part[1] }}|{{ part[2] }}|{{ part[3] }}|{{ part[4] }}|{{ part[5] }}|{{ provider }}" name="add_part">Добавить в корзину</button>
+                    </form>
+                {%endfor%}
+            {%endfor%}
+            <div style="text-align: center;">
+                <label>{{ calculate_items[1] }}</label>
+            </div>
+        {%endif%}
+
+        {%if crosses and crosses[0] == False%}
+            <div style="text-align: center; font-size: 26px; margin-top: 1%;">
+                <label>У товара нет кроссовых запчастей или они отсутствуют у поставщиков ...</label>
+            </div>
+        {%endif%}
+
+    </div>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <form class="center_block" name="manager_help">
+        <div>
+            <input required pattern="^\+79[0-9]{9}|8[0-9]{10}|.{1,150}@.{1,150}\..{2,15}$" class="center_block input_order registry_input order_input" name="email_tel" type="text" title="Введите корректно телефон или E-mail" placeholder="Email или номер телефона">
+        </div>
+        <div>
+            <input required pattern="^.{6,20}$" class="center_block input_order registry_input order_input" title="Введённое не может быть короче 6 символов" name="vin_code" type="text" placeholder="VIN / Frame код">
+        </div>
+        <div>
+            <textarea required minlength="5" style="width: 30%; height: 60px;" class="center_block" name="text_client" title="Введённое не может быть короче 5 символов" placeholder="Список артикулов производителя или произвольный текст"></textarea>
+        </div>
+        <div style="display: inline-block;">
+            <div class="g-recaptcha center_block" data-sitekey="6LeH4VAgAAAAAGOXyP-SQdkoGtnNlzpeWCr2Pc5B"></div>
+        </div>
+        <div style="margin-bottom: 0.3%;">Нажимая кнопку "Отправить запрос":<br>- Вы даёте согласие на обработку <a href="/policy_privacy" style="color: #1000ff; font-size: 20px;" target="_blank">персональных данных</a><br>- Cоглашаетесь с <a href="/offer" style="color: #1000ff; font-size: 20px;" target="_blank">пользовательским соглашением</a></div>
+        <button style="margin-top: 1%;" type="submit" formmethod="post">Отправить запрос</button>
+    </form>
+</div>
+</body>
+<script>
+    let eventSource = null;
+
+function search_by_name(event) {
+  var inputs = event.target.value
+
+    if (inputs.length < 3) return;
+
+    fetch('/api/v1/showcase?search_name=' + inputs).then(response => response.json()).then(json => {console.log(json); if(json.hasOwnProperty('data')) {
+
+    if (json.data[0] == 'Ничего не найдено...') {
+      var items = [];
+<!--      items.push(`<option>Ничего не найдено ...</option>`)-->
+      document.getElementById('suggestions_by_description').innerHTML = items.join('');
+      return
+    }
+
+  var items = [];
+
+  json.data.forEach( list => {
+    for (var key_dict in list) {
+        var article = list[key_dict];
+        var description= article[0];
+        var provider = article[1];
+        items.push(`<option value="${key_dict}">${description} | ${provider}</option>`)
+    }
+  } )
+  document.getElementById('suggestions_by_description').innerHTML = items.join('');}
+    } )
+  }
+
+
+function debounce(func, wait, immediate) {
+  var timeout;
+
+  return function() {
+    var context = this,
+        args = arguments;
+
+    var callNow = immediate && !timeout;
+
+    clearTimeout(timeout);
+
+    timeout = setTimeout(function() {
+
+      timeout = null;
+
+      if (!immediate) {
+        func.apply(context, args);
+      }
+    }, wait);
+
+    if (callNow) func.apply(context, args);
+  }
+}
+
+function func_search() {
+  document.getElementById('button_okay').click();
+}
+
+var timeout = 750;
+var request_func = debounce(search_by_name, timeout)
+
+  document.querySelectorAll('.search_by_name_input').forEach( item => item.addEventListener('input', request_func))
+</script>
+<script>
+    function reload_tab() {return window.location.reload();}
+</script>
+</html>
+{%endblock%}

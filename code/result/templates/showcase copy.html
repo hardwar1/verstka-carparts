@@ -1,0 +1,554 @@
+{% extends "default.html" %}
+
+{%block content%}
+
+<section class="hero" style="background-image: url(../static/images/hero-bg.jpg);">
+  <div class="hero__mobile-bg" style="background-image: url(../static/images/hero-mobile-bg.jpg);">
+    <div class="container">
+      <div class="hero__inner">
+        <div class="hero__info">
+          <h2 class="hero__title">Автозапчасти за 2 минуты на <span>______________</span></h2>
+          <div class="hero__mobile ">
+
+            <div class="main-search">
+              <div class="main-search__form">
+                <label class="main-search__label">
+                  <span class="hide">Введите артикул или наименование</span>
+                  <input class="main-search__search input input--main" type="text"
+                    placeholder="Артикул или наименование" required pattern="^.{3,}$" autoComplete="on"
+                    list="suggestions_by_description" oninput="search_by_name"
+                    title="Введённое не может быть короче 3 символов"
+                    class="center_block input_order registry_input search_by_name_input" name="search"
+                    id="search_field">
+                </label>
+                <button class="main-search__burger burger burger--close" type="button">
+                  <span class="burger__line"></span>
+                  <span class="hide"> очистить поиск</span>
+                </button>
+              </div>
+
+              <div class="error-message">
+                <p>
+                  Введите данные в указанном формате
+                </p>
+                <p>
+                  Введеное не может быть коороче 3-х символов
+                </p>
+              </div>
+
+              <ul class="main-search__answer" id="suggestions_by_description">
+                <li>
+                  <a href="">
+                    <span>№ детали</span>
+                    Наименование НаименованиеНаименованиеНаименование Наиме нованиеНаименованиеНаименованиеНаименов|
+                    Проиапзводитель...
+                  </a>
+                </li>
+                <li>
+                  <a href="">
+                    <span>№ детали</span>
+                    Наименование Наименование Наименование Наименование Наиме нование Наименование Наименование
+                    Наименов|
+                    Проиапзводитель...
+                  </a>
+                </li>
+                <li>
+                  <a href="">
+                    <span>№ детали</span>
+                    Наименование Наименование Наименование Наименование Наиме нование Наименование Наименование
+                    Наименов|
+                    Проиапзводитель...
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="hero__mobile-bg2" style="background-image: url(../static/images/hero-mobile-bg2.jpg);"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="result-search">
+  <div class="container">
+
+    <div class="result-search__main-search main-search main-search--big">
+      <div class="main-search__form">
+        <label class="main-search__label">
+          <span class="hide">Введите артикул или наименование</span>
+          <input class="main-search__search input input--main" type="search" placeholder="Артикул или наименование">
+        </label>
+        <button class="main-search__burger burger burger--close" type="button">
+          <span class="burger__line"></span>
+          <span class="hide"> открыть/закрыть меню</span>
+        </button>
+      </div>
+
+      <div class="error-message">
+        <p>
+          Заполните поле
+        </p>
+      </div>
+
+      <ul class="main-search__answer" id="suggestions_by_description">
+      </ul>
+    </div>
+    {%if article_search%}
+    {%if url_image%}
+    {%if url_image[0].get('no_image')%}
+    <img style="margin-bottom: 2%;" src="{{ url_image[0].get('no_image') }}" width="256" height="256">
+    {%else%}
+    <div>
+      {%for site, url in url_image[0].items()%}
+      <img src="{{ url }}" width="256" height="256">
+      {%endfor%}
+    </div>
+    {%endif%}
+
+    <a class="result-search__link link"
+      href="https://yandex.ru/../static/images/search?text={{ url_image[1] }} {{ url_image[2] }}" target="_blank">посмотреть
+      картинки в Яндекс</a>
+    {%endif%}
+
+    <div class="result-search__text">
+      <p>
+        Информация о заменах и аналогах является справочной и требует дополнительной проверки с помощью оригинальных
+        программ-каталогов!
+      </p>
+    </div>
+
+    {%for site, url in url_image[0].items()%}
+    <div class="result-search__relative">
+
+      <div class="result-search__slider swiper">
+        <button class="result-search__swiper-button result-search__swiper-button--prev" type="button">
+          <span class="hide">предыдущий слайд</span>
+          <svg width="30" height="30">
+            <use xlink:href="../static/images/sprite.svg#arrow"></use>
+          </svg>
+        </button>
+
+        <button class="result-search__swiper-button result-search__swiper-button--next" type="button">
+          <span class="hide">следующий слайд</span>
+          <svg width="30" height="30">
+            <use xlink:href="../static/images/sprite.svg#arrow"></use>
+          </svg>
+        </button>
+
+        <ul class="result-search__swiper-wrapper swiper-wrapper">
+          <li class="result-search__slide swiper-slide">
+            <div class="result-search__item">
+              <a class="result-search__fancybox" href="../static/images/result-search/1.jpg" data-fancybox="images"
+                data-width="1200" data-height="800"></a>
+              <img class="result-search__img" src="../static/images/result-search/1.jpg" alt="фото товара">
+
+            </div>
+          </li>
+
+          <li class="result-search__slide swiper-slide">
+            <div class="result-search__item">
+              <a class="result-search__fancybox" href="../static/images/result-search/2.jpg" data-fancybox="images"
+                data-width="1200" data-height="800"></a>
+              <img class="result-search__img" src="../static/images/result-search/2.jpg" alt="фото товара">
+            </div>
+          </li>
+
+          <li class="result-search__slide swiper-slide">
+            <div class="result-search__item">
+              <a class="result-search__fancybox" href="../static/images/result-search/3.jpg" data-fancybox="images"
+                data-width="1200" data-height="800"></a>
+              <img class="result-search__img" src="../static/images/result-search/3.jpg" alt="фото товара">
+
+            </div>
+          </li>
+
+          <li class="result-search__slide swiper-slide">
+            <div class="result-search__item">
+              <a class="result-search__fancybox"
+                href="https://tao-hamburg.com/wp-content/uploads/2017/04/shutterstock_16520674-768x1122.jpg"
+                data-fancybox="images" data-width="1200" data-height="800"></a>
+              <img class="result-search__img"
+                src="https://tao-hamburg.com/wp-content/uploads/2017/04/shutterstock_16520674-768x1122.jpg">
+
+            </div>
+          </li>
+
+          <li class="result-search__slide swiper-slide">
+            <div class="result-search__item">
+              <a class="result-search__fancybox"
+                href="https://pic.rutubelist.ru/video/0c/be/0cbebc06b36f513c90486fa150560bf6.jpg" data-fancybox="images"
+                data-width="1200" data-height="800"></a>
+              <img class="result-search__img"
+                src="https://pic.rutubelist.ru/video/0c/be/0cbebc06b36f513c90486fa150560bf6.jpg" alt="фото товара">
+
+            </div>
+          </li>
+
+          <li class="result-search__slide swiper-slide">
+            <div class="result-search__item">
+              <a class="result-search__fancybox" href="../static/images/result-search/1.jpg" data-fancybox="images"
+                data-width="1200" data-height="800"></a>
+              <img class="result-search__img" src="../static/images/result-search/1.jpg" alt="фото товара">
+
+            </div>
+          </li>
+
+          <li class="result-search__slide swiper-slide">
+            <div class="result-search__item">
+              <a class="result-search__fancybox" href="../static/images/result-search/2.jpg" data-fancybox="images"
+                data-width="1200" data-height="800"></a>
+              <img class="result-search__img" src="../static/images/result-search/2.jpg" alt="фото товара">
+
+            </div>
+          </li>
+        </ul>
+
+        <div class="result-search__swiper-pagination swiper-pagination"></div>
+      </div>
+      <!-- <img src="{{ url }}" width="256" height="256"> -->
+    </div>
+    {%endfor%}
+
+    <div class="result-search__no-img">
+      <div class="result-search__no-img-text">
+        <p>
+          Информация о заменах и аналогах является справочной и требует дополнительной проверки по с помощью
+          оригинальных программ-каталогов!
+        </p>
+      </div>
+
+      <div class="result-search__pic" style="background-image: url(../static/images/no-img.png);"></div>
+    </div>
+
+    <a class="result-search__link link" href="">посмотреть картинки в Яндекс</a>
+
+    <div class="table">
+      <div class="table__head">
+        <span class="table__caption table__caption--brand">Производитель</span>
+        <span class="table__caption table__caption--name">Наименование</span>
+        <span class="table__caption table__caption--oe-article">ОЕ Артикул</span>
+        <span class="table__caption table__caption--article">Артикул</span>
+        <span class="table__caption table__caption--price">Цена</span>
+        <span class="table__caption table__caption--much">Наличие</span>
+        <span class="table__caption table__caption--cart">В корзину</span>
+      </div>
+
+      {%for provider, parts in article_search.items()%}
+      <div class="table__relative">
+        <div class="table__slider swiper swiper2">
+
+          <ul class="">
+            {%for OE_article, part in parts.items()%}
+            <li class="table__item swiper-slide">
+              <form class="table__inner">
+                <span class="table__caption">Наименование</span>
+                <div class="table__text table__text--name">
+                  {{ part[3] }}
+                </div>
+                <span class="table__caption">Производитель</span>
+                <div class="table__text table__text--brand">
+                  {{ part[0] }}
+                </div>
+                <span class="table__caption">ОЕ Артикул</span>
+                <div class="table__text table__text--oe-article">{{ part[2] }}</div>
+                <span class="table__caption">Артикул</span>
+                <div class="table__text table__text--article">{{ part[1] }}</div>
+                <span class="table__caption">Цена</span>
+                <div class="table__text table__text--price">{{ part[4] }}<span>руб.</span></div>
+                <span class="table__caption table__caption--much">Наличие</span>
+                <div class="table__text table__text--much">{{ part[5] }}<span>шт.</span></div>
+                <span class="table__caption">В корзину</span>
+                <div class="table__cart">
+                  <div class="table__number-input number-input ">
+                    <button class="number-input__btn number-input__btn--minus pseudo-shadow" type="button">--
+                      <span class="hide">отнять 1</span>
+                    </button>
+                    <label class="number-input__label pseudo-shadow">
+                      <span class="hide">количество приобретаемого товара</span>
+                      <input class="number-input__input " type="number" name="add_part2" value="1" max="{{ part[5] }}"
+                        min="1" title="Максимальное значение {{ part[5] }}">
+                    </label>
+                    <button class="number-input__btn pseudo-shadow number-input__btn--plus" type="button">
+                      <span class="hide">прибавить 1</span>+
+                    </button>
+                  </div>
+                  <button class="table__btn " type="submit" formmethod="post"
+                    value="{{ part[0] }}|{{ part[1] }}|{{ part[2] }}|{{ part[3] }}|{{ part[4] }}|{{ part[5] }}|{{ provider }}"
+                    name="add_part">
+                    <span class="hide">добавить в корзину</span>
+                    <svg width="24" height="24">
+                      <use xlink:href="../static/images/sprite.svg#cart"></use>
+                    </svg>
+                  </button>
+                </div>
+
+              </form>
+            </li>
+            {%endfor%}
+
+          </ul>
+          {%endfor%}
+          <div class="swiper-pagination"></div>
+        </div>
+        <button class="table__arrow table__arrow--prev prev2" type="button"></button>
+        <button class="table__arrow table__arrow--next next2" type="button"></button>
+      </div>
+      {%endfor%}
+    </div>
+
+    {%if not crosses and main_page != '' and not article_search%}
+    <label>Такой оригинальный артикул не найден ...</label>
+    {%endif%}
+
+    <h3 class="result-search__no-analog">
+      Мы не нашли аналогов...
+    </h3>
+
+    {%if article_search == {} or article_search and not crosses%}
+    <form>
+      <input hidden type="hidden" name="search" value="{{ cross_article[1] }}">
+      <button class="result-search__btn btn" type="submit" formmethod="get" value="{{ cross_article[0] }}"
+        name="crosses"> Показать аналоги</button>
+    </form>
+    {%endif%}
+
+    {%if crosses and crosses[0] == True%}
+    <h3 class="result-search__analog">
+      Аналоги
+    </h3>
+    {%else%}
+
+
+    <h3 class="result-search__analog">
+      Оригиналы отсутствуют у поставщиков...<br>
+      Но вы можете попробовать найти кроссовые запчасти
+    </h3>
+    <h3 class="result-search__analog">
+      Оригиналы отсутствуют у поставщиков...<br>
+      Но вы можете попробовать найти кроссовые запчасти
+    </h3>
+    <h3 class="result-search__analog">
+      Оригиналы отсутствуют у поставщиков...<br>
+      Но вы можете попробовать найти кроссовые запчасти
+    </h3>
+
+    <div class="table">
+      <div class="table__head">
+        <span class="table__caption table__caption--brand">Производитель</span>
+        <span class="table__caption table__caption--name">Наименование</span>
+        <span class="table__caption table__caption--oe-article">ОЕ Артикул</span>
+        <span class="table__caption table__caption--article">Артикул</span>
+        <span class="table__caption table__caption--price">Цена</span>
+        <span class="table__caption table__caption--much">Наличие</span>
+        <span class="table__caption table__caption--cart">В корзину</span>
+      </div>
+
+      {%for provider, parts in crosses[1].items()%}
+      <div class="table__relative">
+        <div class="table__slider swiper swiper3">
+          <ul class="">
+            {%for OE_article, part in parts.items()%}
+            <li class="table__item swiper-slide">
+              <form class="table__inner">
+                <span class="table__caption">Производитель</span>
+                <div class="table__text table__text--brand">Denso Denso Denso Denso Denso Denso Denso Denso Denso
+                  DensoDenso</div>
+                <span class="table__caption">Наименование</span>
+                <div class="table__text table__text--name">Denso K16RU-11 свеча зажигания</div>
+                <span class="table__caption">ОЕ Артикул</span>
+                <div class="table__text table__text--oe-article">1822A030</div>
+                <span class="table__caption">Артикул</span>
+                <div class="table__text table__text--article">K16RU-11</div>
+                <span class="table__caption">Цена</span>
+                <div class="table__text table__text--price">3568<span>руб.</span></div>
+                <span class="table__caption table__caption--much">Наличие</span>
+                <div class="table__text table__text--much">4<span>шт.</span></div>
+                <span class="table__caption">В корзину</span>
+                <div class="table__cart">
+                  <div class="table__number-input number-input ">
+                    <button class="number-input__btn number-input__btn--minus pseudo-shadow" type="button">--
+                      <span class="hide">отнять 1</span>
+                    </button>
+                    <label class="number-input__label pseudo-shadow">
+                      <span class="hide">количество приобретаемого товара</span>
+                      <input class="number-input__input " type="number" min="1" value="231" max="231">
+                    </label>
+                    <button class="number-input__btn pseudo-shadow number-input__btn--plus" type="button">
+                      <span class="hide">прибавить 1</span>+
+                    </button>
+                  </div>
+                  <button class="table__btn " type="submit" disabled>
+                    <span class="hide">добавить в корзину</span>
+                    <svg width="24" height="24">
+                      <use xlink:href="../static/images/sprite.svg#cart"></use>
+                    </svg>
+                  </button>
+                </div>
+
+              </form>
+            </li>
+            {%endfor%}
+          </ul>
+          <div class="swiper-pagination"></div>
+        </div>
+        <button class="table__arrow table__arrow--prev prev3" type="button"></button>
+        <button class="table__arrow table__arrow--next next3" type="button"></button>
+      </div>
+      {%endfor%}
+
+      {%else%}
+      {%if crosses and crosses[0] == False%}
+      <label>Оригиналы отсутствуют у поставщиков...</label><br>
+      <label>Но вы можете попробовать найти кроссовые запчасти</label>
+      {%endif%}
+      {%if crosses and crosses[0] == True%}
+      <label>Оригиналы отсутствуют у поставщиков...</label><br>
+      <label>Но мы нашли аналоги</label>
+      {%endif%}
+      {%if not crosses and main_page%}
+      <label>Оригиналы отсутствуют у поставщиков...</label><br>
+      <label>У товара нет кроссовых запчастей</label>
+      {%endif%}
+      {%endif%}
+
+      {%if crosses and crosses[0] == False%}
+      <div style="text-align: center; font-size: 26px; margin-top: 1%;">
+        <label>У товара нет кроссовых запчастей или они отсутствуют у поставщиков ...</label>
+      </div>
+      {%endif%}
+
+    </div>
+  </div>
+</section>
+
+<section class="selection-form">
+  <div class="container selection-form__container">
+    <div class="selection-form__inner" style="background-image: url(../static/images/selecection-bg.jpg)">
+      <div class="selection-form__info">
+        <h2 class="selection-form__title title">
+          Подберём автозапчасти за вас, заполните форму ниже
+        </h2>
+
+        <form class="selection-form__form">
+          <label for="" class="selection-form__label">
+            <span class="hide">Введите ваш Email или номер телефона</span>
+            <input class="input" pattern="^\+79[0-9]{9}|8[0-9]{10}|.{1,150}@.{1,150}\..{2,15}$" name="email_tel"
+              type="text" title="Введите корректно телефон или E-mail" placeholder="Email или номер телефона" required>
+          </label>
+
+          <label for="" class="selection-form__label">
+            <span class="hide">Введите ваш VIN или Frame код</span>
+            <input class="input" pattern="^.{6,20}$" title="Введённое не может быть короче 6 символов" name="vin_code"
+              type="text" placeholder="VIN / Frame код" required>
+          </label>
+
+          <label for="" class="selection-form__label">
+            <span class="hide">Напишите Список артикулов автозапчастей или произвольный текст</span>
+            <textarea class="input input--area" minlength="5" name="text_client"
+              title="Введённое не может быть короче 5 символов"
+              placeholder="Список артикулов производителя или произвольный текст" required></textarea>
+          </label>
+
+          <div style="display: inline-block;">
+            <div class="g-recaptcha center_block" data-sitekey="6LeH4VAgAAAAAGOXyP-SQdkoGtnNlzpeWCr2Pc5B"></div>
+          </div>
+
+          <div class="selection-form__text">
+            Нажимая кнопку «Отправить» Вы:
+
+            <ul class="selection-form__list">
+              <li class="selection-form__item">
+                — Даете право на обработку <a href="/policy_privacy">персональных данных</a>
+              </li>
+              <li class="selection-form__item">
+                — Соглашаетесь с <a href="/offer">пользовательским соглашением</a>
+              </li>
+            </ul>
+          </div>
+          <button class="selection-form__btn btn" type="submit" formmethod="post">
+            Отправить
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+<script>
+  let eventSource = null;
+
+  function search_by_name(event) {
+    var inputs = event.target.value
+
+    if (inputs.length < 3) return;
+
+    fetch('/api/v1/showcase?search_name=' + inputs).then(response => response.json()).then(json => {
+      console.log(json); if (json.hasOwnProperty('data')) {
+
+        if (json.data[0] == 'Ничего не найдено...') {
+          var items = [];
+          // < !--items.push(`<option>Ничего не найдено ...</option>`)-->
+          document.getElementById('suggestions_by_description').innerHTML = items.join('');
+          return
+        }
+
+        var items = [];
+
+        json.data.forEach(list => {
+          for (var key_dict in list) {
+            var article = list[key_dict];
+            var description = article[0];
+            var provider = article[1];
+            // items.push(`<option value="${key_dict}">${description} | ${provider}</option>`)
+            items.push(`<li><a href="/?search=${key_dict}"><span>${key_dict}</span><div>${description}</div>Проиапзводитель: ${provider}</a></li>`)
+            // items.push(`<option value="${key_dict}"><span>НАЗВАНИЕ</span><div>${description}</div>Проиапзводитель: ${provider}</option>`)
+            // items.push(`<li><span>НАЗВАНИЕ</span><div>${description}</div>Проиапзводитель: ${provider}</li>`)
+            // items.push(`<span>НАЗВАНИЕ</span><div>${description}</div>Проиапзводитель: ${provider}`)
+          }
+        })
+        document.getElementById('suggestions_by_description').innerHTML = items.join('');
+      }
+    })
+  }
+
+  function debounce(func, wait, immediate) {
+    var timeout;
+
+    return function () {
+      var context = this,
+        args = arguments;
+
+      var callNow = immediate && !timeout;
+
+      clearTimeout(timeout);
+
+      timeout = setTimeout(function () {
+
+        timeout = null;
+
+        if (!immediate) {
+          func.apply(context, args);
+        }
+      }, wait);
+
+      if (callNow) func.apply(context, args);
+    }
+  }
+
+  function func_search() {
+    document.getElementById('button_okay').click();
+  }
+
+  var timeout = 750;
+  var request_func = debounce(search_by_name, timeout)
+
+  document.querySelectorAll('.search_by_name_input').forEach(item => item.addEventListener('input', request_func))
+</script>
+<script>
+  function reload_tab() { return window.location.reload(); }
+</script>
+
+{%endblock%}

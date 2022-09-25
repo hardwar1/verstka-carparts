@@ -1,0 +1,14 @@
+{% extends "default.html" %}
+
+{%block content%}
+<html class="image_background" style="background-image: url(static/background_image/0.jpg);">
+<body>
+<div style="text-align: center;">
+    {%if payment_result%}
+        номер вашего заказа который оплачен<br>
+        <div>{{ payment_result }}</div>
+    {%endif%}
+</div>
+</body>
+</html>
+{%endblock%}

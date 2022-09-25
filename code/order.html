@@ -1,0 +1,241 @@
+{% extends "default.html" %}
+
+{%block content%}
+<html class="image_background" style="background-image: url(static/background_image/0.jpg);">
+<body>
+<div class="center_block">
+    {%if all_items_cost%}
+        <div>
+            <label>Общая стоимость заказа: <u style="font-size: 20px;">{{ all_items_cost }}</u> рублей.</label>
+        </div>
+        <div>
+            <label>Заполните поля заявки и нажмите "подтвердить".</label>
+        </div>
+
+        <form class="form_order_accept">
+            <div style="margin-bottom: 0.3%;">Ваши ФИО</div>
+            {%if client_info%}
+                {%if client_info['personal_info']['name'] != ''%}
+                    <div class="inputs_order_accept">
+                        <input class="center_block input_order registry_input order_input" type="text" name="name" value="{{ client_info['personal_info']['name'] }}" placeholder="Иванов Иван Иванович">
+                    </div>
+                {%else%}
+                    <div class="inputs_order_accept">
+                        <input class="center_block input_order registry_input order_input" type="text" name="name" placeholder="Иванов Иван Иванович">
+                    </div>
+                {%endif%}
+            {%else%}
+                <div class="inputs_order_accept">
+                    <input class="center_block input_order registry_input order_input" type="text" name="name" placeholder="Иванов Иван Иванович">
+                </div>
+            {%endif%}
+
+            <div style="margin-bottom: 0.3%;">Телефон для подтверждения заказа</div>
+            {%if client_info%}
+                {%if client_info['personal_info']['tel'] != ''%}
+                    <div class="inputs_order_accept">
+                        <input pattern="^\+79[0-9]{9}|8[0-9]{10}$" class="center_block input_order registry_input order_input" type="text" name="tel" value="{{ client_info['personal_info']['tel'] }}" placeholder="+7(900)1234455">
+                    </div>
+                {%else%}
+                    <div class="inputs_order_accept">
+                        <input pattern="^\+79[0-9]{9}|8[0-9]{10}$" class="center_block input_order registry_input order_input" type="text" name="tel" placeholder="+7(900)1234455">
+                    </div>
+                {%endif%}
+            {%else%}
+                <div class="inputs_order_accept">
+                    <input pattern="^\+79[0-9]{9}|8[0-9]{10}$" class="center_block input_order registry_input order_input" type="text" name="tel" placeholder="+7(900)1234455">
+                </div>
+            {%endif%}
+
+            <div>
+            {%if client_info%}
+                {%if client_info['personal_info']['social_only'] == 'True'%}
+                    <input type="checkbox" name="social_only" value="True" checked>
+                    <label>не звонить мне</label>
+                {%else%}
+                    <input type="checkbox" name="social_only" value="True">
+                    <label>не звонить мне</label>
+                {%endif%}
+            {%else%}
+                <input type="checkbox" name="social_only" value="True">
+                <label>не звонить мне</label>
+            {%endif%}
+            </div>
+
+            <div>
+                <div>
+                    <label>выберите соц. сеть, в которой мы свяжемся с вами</label>
+                </div>
+                <div>
+                    <label>*при выборе whatsapp или viber, заполните поле "телефон" выше</label>
+                </div>
+                <div>
+                    {%if client_info%}
+                        {%if client_info['personal_info']['social'] == 'telegram'%}
+                            <input type="radio" name="social" value="telegram" checked>
+                            <label>Telegram</label>
+                            {%if client_info['personal_info']['social_nickname'] != ''%}
+                                <input pattern="^@.{5,32}$" class="registry_input order_input" type="text" style="text-align: center;" placeholder="@nickname" name="social_nickname" value="{{ client_info['personal_info']['social_nickname'] }}">
+                            {%else%}
+                                <input pattern="^@.{5,32}$" class="registry_input order_input" type="text" style="text-align: center;" placeholder="@nickname" name="social_nickname">
+                            {%endif%}
+                        {%endif%}
+                        {%if client_info['personal_info']['social'] == 'whatsapp'%}
+                            <input type="radio" name="social" value="whatsapp" checked>
+                            <label>Whatsapp</label>
+                        {%endif%}
+                        {%if client_info['personal_info']['social'] == 'viber'%}
+                            <input type="radio" name="social" value="viber" checked>
+                            <label>Viber</label>
+                        {%endif%}
+                    {%else%}
+                        <input type="radio" name="social" value="telegram">
+                        <label>Telegram</label>
+                        <input pattern="^@.{5,32}$" class="registry_input order_input" type="text" style="text-align: center;" placeholder="@nickname" name="social_nickname">
+                        <input type="radio" name="social" value="whatsapp">
+                        <label>Whatsapp</label>
+                        <input type="radio" name="social" value="viber">
+                        <label>Viber</label>
+                    {%endif%}
+                </div>
+            </div>
+
+            <div style="margin-bottom: 0.3%;">Электронная почта</div>
+                {%if client_info%}
+                    {%if client_info['personal_info']['email'] != ''%}
+                        <div class="inputs_order_accept">
+                            <input pattern="^.{1,150}@.{1,150}\..{2,15}$" class="center_block input_order registry_input order_input" type="text" name="email" placeholder="example@example.com" value="{{ client_info['personal_info']['email'] }}">
+                        </div>
+                    {%else%}
+                        <div class="inputs_order_accept">
+                            <input pattern="^.{1,150}@.{1,150}\..{2,15}$" class="center_block input_order registry_input order_input" type="text" name="email" placeholder="example@example.com">
+                        </div>
+                    {%endif%}
+                {%else%}
+                    <div class="inputs_order_accept">
+                        <input pattern="^.{1,150}@.{1,150}\..{2,15}$" class="center_block input_order registry_input order_input" type="text" name="email" placeholder="example@example.com">
+                    </div>
+                {%endif%}
+
+            <div style="margin-bottom: 0.3%;">Адрес доставки</div>
+                {%if client_info%}
+                    {%if client_info['other_info']['address'] != ''%}
+                        <div class="inputs_order_accept">
+                            <input required style="width: 25%;" class="center_block input_order" type="text" name="address" placeholder="Петрозаводск, ул. Ленина 30, кв 228" value="{{ client_info['other_info']['address'] }}">
+                        </div>
+                    {%else%}
+                        <div class="inputs_order_accept">
+                            <input required style="width: 25%;" class="center_block input_order" type="text" name="address" placeholder="Петрозаводск, ул. Ленина 30, кв 228">
+                        </div>
+                    {%endif%}
+                {%else%}
+                    <div class="inputs_order_accept">
+                        <input required style="width: 25%;" class="center_block input_order" type="text" name="address" placeholder="Петрозаводск, ул. Ленина 30, кв 228">
+                    </div>
+                {%endif%}
+
+            <div style="margin-bottom: 0.3%;">Способ доставки</div>
+            <div class="inputs_order_accept">
+                <div>
+                    {%if client_info%}
+                        {%if client_info['other_info']['delivery'] == 'ТК СДЕК'%}
+                            <select required class="drop_down_order" name="delivery">
+                                <option value="ТК СДЕК" selected>ТК СДЕК</option>
+                                <option value="Другой">Другой</option>
+                            </select>
+                        {%endif%}
+                        {%if client_info['other_info']['delivery'] == 'Другой'%}
+                            <select required class="drop_down_order" name="delivery">
+                                <option value="ТК СДЕК">ТК СДЕК</option>
+                                <option value="Другой" selected>Другой</option>
+                            </select>
+                        {%endif%}
+                    {%else%}
+                        <select required class="drop_down_order" name="delivery">
+                            <option value="ТК СДЕК" selected>ТК СДЕК</option>
+                            <option value="Другой">Другой</option>
+                        </select>
+                    {%endif%}
+                </div>
+                <div>
+                    <label>*заполните, если указали способ доставки "Другой"</label>
+                </div>
+                <div>
+                    {%if client_info%}
+                        {%if client_info['other_info']['delivery_text'] != ''%}
+                            <input class="input_order" style="text-align: center;" type="text" name="delivery_text" placeholder="на лошадях" value="{{ client_info['other_info']['delivery_text'] }}">
+                        {%else%}
+                            <input class="input_order" style="text-align: center;" type="text" name="delivery_text" placeholder="на лошадях">
+                        {%endif%}
+                    {%else%}
+                        <input class="input_order" style="text-align: center;" type="text" name="delivery_text" placeholder="на лошадях">
+                    {%endif%}
+                </div>
+            </div>
+
+            <div style="margin-bottom: 0.3%;">Способ оплаты</div>
+            <div>
+                {%if client_info%}
+                    {%if client_info['other_info']['payment'] == 'Онлайн после подтверждения'%}
+                        <select required class="drop_down_order" name="payment">
+                            <option value="Онлайн после подтверждения" selected>Онлайн после подтверждения</option>
+                            <option value="Другой">Другой</option>
+                        </select>
+                    {%endif%}
+                    {%if client_info['other_info']['payment'] == 'Другой'%}
+                        <select required class="drop_down_order" name="payment">
+                            <option value="Онлайн после подтверждения">Онлайн после подтверждения</option>
+                            <option value="Другой" selected>Другой</option>
+                        </select>
+                    {%endif%}
+                {%else%}
+                    <select required class="drop_down_order" name="payment">
+                        <option value="Онлайн после подтверждения" selected>Онлайн после подтверждения</option>
+                        <option value="Другой">Другой</option>
+                    </select>
+                {%endif%}
+            </div>
+
+            <div style="margin-bottom: 0.3%;">Подтвердите согласие на обработку <a href="/policy_privacy" style="color: #1000ff; font-size: 20px;" target="_blank">персональных данных</a>, напишите ниже в поле "согласен(на)"</div>
+            <div style="margin-bottom: 0.3%;">Нажимая кнопку "Подтвердить", Вы соглашаетесь с <a href="/offero" style="color: #1000ff; font-size: 20px;" target="_blank">пользовательским соглашением</a>.</div>
+            <div class="inputs_order_accept">
+                <input required pattern="^согласен|Согласен|Согласна|согласна$" class="center_block registry_input order_input" type="text" name="policy_accept">
+            </div>
+            <div>
+                <button type="submit" formmethod="post">Подвердить</button>
+            </div>
+        </form>
+    {%endif%}
+
+    {%if uuid_order%}
+        <div>Номер вашего заказа.</div>
+        <div>По нему вы сможете отсделедить заказ или получить его на складе.</div>
+        <div class="center_block" style="display: inline-flex;">
+            <label style="font-size: 34px; margin-right: 1%;" id="label_order">{{ uuid_order }}</label>
+            <div>
+                <button style="padding: 6px 6px 0px 6px; border-radius: 16px; border: 0.5px solid;" onclick="copy()"><img src="{{ url_for('static', filename='clipboard.png') }}" width="16" height="16"></button>
+                <label style="display: none;" id="on_copied">скопировано</label>
+            </div>
+        </div>
+        <form>
+            <button type="submit" formmethod="post" name="get_qr_code" value="{{ uuid_order }}">получить qr-код заказа</button>
+        </form>
+    {%endif%}
+</div>
+</body>
+<script>
+    function on_copy() {document.getElementById('on_copied').setAttribute('style', 'display: inherit; color: #00ff00; font-size: 13px;');}
+    function copy() {
+    on_copy()
+    var text = document.getElementById('label_order').textContent;
+    var input = document.createElement('textarea');
+    input.innerHTML = text;
+    document.body.appendChild(input);
+    input.select();
+    var result = document.execCommand('copy');
+    document.body.removeChild(input);
+    return result;
+}
+</script>
+</html>
+{%endblock%}
